@@ -163,8 +163,31 @@ pre code { background: none; color: var(--text); padding: 0; font-size: inherit;
 }
 .back:hover { color: var(--teal); }
 
+.practice-cta {
+  margin-top: 60px;
+  padding: 36px 40px;
+  background: var(--teal-d);
+  border: 1px solid var(--teal-b);
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  flex-wrap: wrap;
+}
+.practice-cta-text h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px; letter-spacing: 1px; color: #fff; margin-bottom: 6px;
+}
+.practice-cta-text p { font-size: 13px; color: var(--muted); }
+.practice-btn {
+  display: inline-block;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--bg); background: var(--teal);
+  padding: 12px 28px; text-decoration: none; white-space: nowrap;
+  transition: opacity .15s;
+}
+.practice-btn:hover { opacity: .85; }
+
 footer {
-  margin-top: 60px; padding: 20px 0;
+  margin-top: 40px; padding: 20px 0;
   border-top: 1px solid var(--border);
   display: flex; justify-content: space-between;
   font-family: 'Bebas Neue', sans-serif;
@@ -470,6 +493,14 @@ footer {
     </table>
     <p style="font-size:12px;color:var(--muted);margin-top:8px;">* <code>sticky</code> — у потоці до моменту «прилипання», потім поводиться як fixed.</p>
   </div>
+</div>
+
+<div class="practice-cta">
+  <div class="practice-cta-text">
+    <h2>Практика · Урок 04</h2>
+    <p>Відкрий проєкт у CodeSandbox, прочитай завдання і редагуй style.css прямо в браузері.</p>
+  </div>
+  <a class="practice-btn" href="https://codesandbox.io/p/github/altyntsevlexus/web-development-lessons/main?file=/site/practice/lesson-4/tasks.md" target="_blank">Відкрити практику →</a>
 </div>
 
 <footer>
