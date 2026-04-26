@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Урок 1 · CSS Селектори</title>
+<title>Урок 1 · Вступ до HTML</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -24,7 +24,7 @@
   --blue:    #5b9cf6;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+*{ margin:0; padding:0; box-sizing:border-box; }
 
 body {
   background: var(--bg);
@@ -36,21 +36,14 @@ body {
 
 body::before {
   content:'';
-  position:fixed;inset:0;
+  position:fixed; inset:0;
   background-image: radial-gradient(rgba(0,212,170,.05) 1px, transparent 1px);
   background-size: 28px 28px;
-  pointer-events:none;z-index:0;
+  pointer-events:none; z-index:0;
 }
 
-.wrap {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 0 24px 80px;
-  position: relative;
-  z-index: 1;
-}
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; position: relative; z-index: 1; }
 
-/* HEADER */
 header { padding: 52px 0 40px; border-bottom: 1px solid var(--border2); margin-bottom: 40px; }
 
 .eyebrow {
@@ -67,9 +60,7 @@ h1 {
 h1 .acc { color: var(--teal); }
 
 .header-sub { font-size: 13.5px; color: var(--muted); max-width: 600px; line-height: 1.7; }
-
 .header-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-
 .chip {
   font-family: 'Source Code Pro', monospace;
   font-size: 10.5px; padding: 4px 12px;
@@ -77,7 +68,6 @@ h1 .acc { color: var(--teal); }
 }
 .chip.t { background: var(--teal-d); border-color: var(--teal-b); color: var(--teal); font-weight: 600; }
 
-/* STEPS */
 .step {
   display: grid;
   grid-template-columns: 60px 1fr;
@@ -88,25 +78,19 @@ h1 .acc { color: var(--teal); }
 
 .step-num {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px; line-height: 1; color: var(--border2);
-  padding-top: 4px;
+  font-size: 48px; line-height: 1; color: var(--border2); padding-top: 4px;
 }
 
 .step-body h2 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 26px; letter-spacing: 1px; color: #fff;
-  margin-bottom: 14px;
+  font-size: 26px; letter-spacing: 1px; color: #fff; margin-bottom: 14px;
 }
 
-.step-body p { margin-bottom: 12px; color: var(--text); }
+.step-body p { margin-bottom: 12px; }
 .step-body p:last-child { margin-bottom: 0; }
-
-.step-body ul, .step-body ol {
-  padding-left: 20px; margin-bottom: 12px;
-}
+.step-body ul, .step-body ol { padding-left: 20px; margin-bottom: 12px; }
 .step-body li { margin-bottom: 6px; }
 
-/* CODE */
 pre {
   background: #030810;
   border-left: 3px solid var(--teal);
@@ -127,23 +111,16 @@ code {
   padding: 2px 6px;
   border-radius: 3px;
 }
-
 pre code { background: none; color: var(--text); padding: 0; font-size: inherit; }
 
-.kw  { color: var(--violet); }
-.sel { color: var(--teal); }
-.prop{ color: var(--blue); }
-.val { color: var(--green); }
-.cmt { color: var(--muted); font-style: italic; }
-.str { color: #6adf8a; }
+.tag  { color: var(--teal); }
+.attr { color: var(--blue); }
+.val  { color: var(--green); }
+.cmt  { color: var(--muted); font-style: italic; }
 
-/* BOXES */
 .tip-box, .warn-box, .good-box {
-  padding: 14px 18px;
-  margin: 16px 0;
-  border-radius: 4px;
-  font-size: 13px;
-  line-height: 1.6;
+  padding: 14px 18px; margin: 16px 0;
+  border-radius: 4px; font-size: 13px; line-height: 1.6;
 }
 .tip-box  { border-left: 3px solid var(--blue);  background: rgba(91,156,246,.07); }
 .warn-box { border-left: 3px solid var(--coral); background: rgba(255,122,110,.07); }
@@ -151,39 +128,49 @@ pre code { background: none; color: var(--text); padding: 0; font-size: inherit;
 
 .box-label {
   font-family: 'Source Code Pro', monospace;
-  font-size: 10px; letter-spacing: 2px; font-weight: 600;
-  margin-bottom: 6px;
+  font-size: 10px; letter-spacing: 2px; font-weight: 600; margin-bottom: 6px;
 }
 .tip-box  .box-label { color: var(--blue); }
 .warn-box .box-label { color: var(--coral); }
 .good-box .box-label { color: var(--green); }
 
-/* TABLE */
-.spec-table {
-  width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;
+/* Live demo */
+.demo {
+  background: #030810;
+  border: 1px solid var(--border2);
+  padding: 20px 24px;
+  margin: 16px 0;
 }
-.spec-table th {
-  background: var(--card); color: var(--teal);
-  font-family: 'Source Code Pro', monospace; font-size: 11px; letter-spacing: 1px;
-  padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border2);
+.demo-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 14px;
 }
-.spec-table td {
-  padding: 10px 14px; border-bottom: 1px solid var(--border);
-  vertical-align: top;
+.demo-render {
+  background: #fff;
+  color: #111;
+  padding: 16px 20px;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  line-height: 1.6;
+  border-radius: 2px;
 }
-.spec-table tr:hover td { background: var(--card); }
-.spec-table code { font-size: 12px; }
+.demo-render h1 { font-size: 26px; margin-bottom: 4px; }
+.demo-render h2 { font-size: 21px; margin-bottom: 4px; }
+.demo-render h3 { font-size: 17px; margin-bottom: 4px; }
+.demo-render h4 { font-size: 14px; margin-bottom: 4px; }
+.demo-render h5 { font-size: 12px; margin-bottom: 4px; }
+.demo-render h6 { font-size: 11px; margin-bottom: 4px; color: #555; }
+.demo-render p  { margin-bottom: 8px; }
+.demo-render ul, .demo-render ol { padding-left: 20px; margin-bottom: 8px; }
 
-/* BACK LINK */
 .back {
   display: inline-block; margin: 28px 0 32px;
   font-family: 'Source Code Pro', monospace; font-size: 11px;
-  letter-spacing: 2px; color: var(--text); text-decoration: none;
-  text-transform: uppercase;
+  letter-spacing: 2px; color: var(--text); text-decoration: none; text-transform: uppercase;
 }
 .back:hover { color: var(--teal); }
 
-/* FOOTER */
 footer {
   margin-top: 60px; padding: 20px 0;
   border-top: 1px solid var(--border);
@@ -204,9 +191,9 @@ footer {
 <a class="back" href="index.html">← Всі уроки</a>
 
 <header>
-  <div class="eyebrow">CSS · Урок 01</div>
-  <h1>CSS <span class="acc">Селектори</span></h1>
-  <div class="header-sub">Як підключити CSS до HTML і як вибирати елементи для стилізації</div>
+  <div class="eyebrow">HTML · Урок 01</div>
+  <h1>Вступ до <span class="acc">HTML</span></h1>
+  <div class="header-sub">Що таке HTML, як влаштовані теги, структура вмісту і основні елементи сторінки</div>
   <div class="header-chips">
     <span class="chip t">Теорія</span>
     <span class="chip">~35 хв</span>
@@ -217,18 +204,13 @@ footer {
 <div class="step">
   <div class="step-num">01</div>
   <div class="step-body">
-    <h2>Що таке CSS?</h2>
-    <p><strong>CSS</strong> (Cascading Style Sheets — Каскадні таблиці стилів) — це мова, яку веб-розробники використовують для стилізації HTML-контенту на веб-сторінці.</p>
-    <p>Кожне CSS-правило складається з чотирьох частин:</p>
-<pre><span class="sel">h1</span> {
-  <span class="prop">color</span>: <span class="val">blue</span>;
-}</pre>
-    <ul>
-      <li><strong>Селектор</strong> — <code>h1</code> (який елемент стилізуємо)</li>
-      <li><strong>Властивість</strong> — <code>color</code> (що змінюємо)</li>
-      <li><strong>Значення</strong> — <code>blue</code> (яке значення задаємо)</li>
-      <li><strong>Декларація</strong> — <code>color: blue;</code> (властивість + значення разом)</li>
-    </ul>
+    <h2>Що таке HTML?</h2>
+    <p><strong>HTML</strong> (HyperText Markup Language — мова розмітки гіпертексту) — це мова, якою описується <strong>структура і вміст</strong> веб-сторінки. HTML не відповідає за зовнішній вигляд (це завдання CSS) — він відповідає за <em>що є на сторінці</em>: заголовки, абзаци, зображення, посилання.</p>
+    <p>Браузер читає HTML-файл і будує з нього сторінку, яку ти бачиш на екрані.</p>
+    <div class="tip-box">
+      <div class="box-label">💡 АНАЛОГІЯ</div>
+      Якщо сайт — це будинок, то HTML — це цегла і планування. CSS — це фарба, меблі і декор.
+    </div>
   </div>
 </div>
 
@@ -236,12 +218,17 @@ footer {
 <div class="step">
   <div class="step-num">02</div>
   <div class="step-body">
-    <h2>Вбудовані стилі (Inline)</h2>
-    <p>Стиль можна додати прямо в HTML-тег через атрибут <code>style</code>:</p>
-<pre><span class="kw">&lt;p</span> <span class="prop">style</span>=<span class="str">"color: red; font-size: 20px;"</span><span class="kw">&gt;</span>Текст<span class="kw">&lt;/p&gt;</span></pre>
+    <h2>Теги: відкриваючий і закриваючий</h2>
+    <p>Майже кожен HTML-елемент складається з <strong>відкриваючого тегу</strong>, <strong>вмісту</strong> і <strong>закриваючого тегу</strong>. Закриваючий тег відрізняється косою рискою <code>/</code>:</p>
+<pre><span class="tag">&lt;p&gt;</span>Це абзац тексту.<span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;h1&gt;</span>Це заголовок<span class="tag">&lt;/h1&gt;</span>
+
+<span class="tag">&lt;strong&gt;</span>Жирний текст<span class="tag">&lt;/strong&gt;</span></pre>
+    <p>Весь вміст між тегами — це те, що побачить користувач або на що подіє браузер.</p>
     <div class="warn-box">
-      <div class="box-label">⚠ АНТИПАТЕРН</div>
-      Вбудовані стилі важко підтримувати: щоб змінити один колір, доведеться правити кожен тег окремо. Використовуйте лише у крайніх випадках.
+      <div class="box-label">⚠ ВАЖЛИВО</div>
+      Якщо забути закриваючий тег, браузер може відобразити сторінку неправильно — стиль чи структура «розповзуться» на решту вмісту.
     </div>
   </div>
 </div>
@@ -250,16 +237,26 @@ footer {
 <div class="step">
   <div class="step-num">03</div>
   <div class="step-body">
-    <h2>Тег &lt;style&gt; (внутрішня таблиця)</h2>
-    <p>CSS можна писати між тегами <code>&lt;style&gt;</code> всередині <code>&lt;head&gt;</code>:</p>
-<pre><span class="kw">&lt;head&gt;</span>
-  <span class="kw">&lt;style&gt;</span>
-    <span class="sel">p</span> { <span class="prop">color</span>: <span class="val">red</span>; <span class="prop">font-size</span>: <span class="val">20px</span>; }
-  <span class="kw">&lt;/style&gt;</span>
-<span class="kw">&lt;/head&gt;</span></pre>
-    <div class="warn-box">
-      <div class="box-label">⚠ АНТИПАТЕРН</div>
-      Внутрішня таблиця підходить лише для маленьких сторінок. У реальних проєктах CSS зберігають окремо.
+    <h2>Вкладеність: батько і дитина</h2>
+    <p>HTML-елементи можна вкладати один в одного. Елемент усередині називається <strong>дитиною (child)</strong>, а той що містить — <strong>батьком (parent)</strong>.</p>
+<pre><span class="tag">&lt;div&gt;</span>                    <span class="cmt">&lt;!-- батько --&gt;</span>
+  <span class="tag">&lt;p&gt;</span>Перший абзац<span class="tag">&lt;/p&gt;</span>   <span class="cmt">&lt;!-- дитина --&gt;</span>
+  <span class="tag">&lt;p&gt;</span>Другий абзац<span class="tag">&lt;/p&gt;</span>   <span class="cmt">&lt;!-- дитина --&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+    <div class="demo">
+      <div class="demo-label">Структура вкладеності</div>
+      <div style="font-family:'Source Code Pro',monospace;font-size:12px;line-height:2;color:var(--muted)">
+        <span style="color:var(--coral)">div</span> (батько)<br>
+        &nbsp;&nbsp;<span style="color:var(--teal)">p</span> (дитина 1)<br>
+        &nbsp;&nbsp;<span style="color:var(--teal)">p</span> (дитина 2)<br>
+        &nbsp;&nbsp;<span style="color:var(--teal)">ul</span> (дитина 3)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--blue)">li</span> (дитина ul)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--blue)">li</span> (дитина ul)
+      </div>
+    </div>
+    <div class="tip-box">
+      <div class="box-label">💡 ПРАВИЛО</div>
+      Закривай теги у зворотному порядку: якщо відкрив <code>&lt;div&gt;</code> потім <code>&lt;p&gt;</code> — закривай спочатку <code>&lt;/p&gt;</code>, потім <code>&lt;/div&gt;</code>.
     </div>
   </div>
 </div>
@@ -268,15 +265,17 @@ footer {
 <div class="step">
   <div class="step-num">04</div>
   <div class="step-body">
-    <h2>Зовнішній CSS-файл ✅</h2>
-    <p>Найкращий підхід — окремий файл <code>.css</code>, підключений через тег <code>&lt;link&gt;</code> у <code>&lt;head&gt;</code>:</p>
-<pre><span class="kw">&lt;head&gt;</span>
-  <span class="kw">&lt;link</span> <span class="prop">href</span>=<span class="str">"style.css"</span> <span class="prop">type</span>=<span class="str">"text/css"</span> <span class="prop">rel</span>=<span class="str">"stylesheet"</span><span class="kw">&gt;</span>
-<span class="kw">&lt;/head&gt;</span></pre>
-    <p>Тег <code>&lt;link&gt;</code> потребує трьох атрибутів: <code>href</code> (шлях до файлу), <code>type</code> (завжди <code>text/css</code>), <code>rel</code> (завжди <code>stylesheet</code>).</p>
+    <h2>Тег &lt;body&gt; — видимий вміст</h2>
+    <p>Весь вміст, який має бути видимим на сторінці, розміщується між тегами <code>&lt;body&gt;</code> і <code>&lt;/body&gt;</code>. Якщо елемент поза <code>&lt;body&gt;</code> — браузер може не відобразити його або відобразити некоректно.</p>
+<pre><span class="tag">&lt;body&gt;</span>
+
+  <span class="tag">&lt;h1&gt;</span>Привіт, світ!<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;p&gt;</span>Це перша сторінка.<span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;/body&gt;</span></pre>
     <div class="good-box">
-      <div class="box-label">✓ НАЙКРАЩИЙ ПІДХІД</div>
-      Один CSS-файл керує стилями всього сайту. Зміна в одному місці — оновлення на всіх сторінках.
+      <div class="box-label">✓ ПРАВИЛО</div>
+      Увесь видимий вміст — тільки всередині <code>&lt;body&gt;</code>.
     </div>
   </div>
 </div>
@@ -285,18 +284,25 @@ footer {
 <div class="step">
   <div class="step-num">05</div>
   <div class="step-body">
-    <h2>Селектор за тегом і універсальний *</h2>
-    <p><strong>Селектор за тегом</strong> стилізує всі елементи з вказаним тегом:</p>
-<pre><span class="sel">p</span>  { <span class="prop">color</span>: <span class="val">green</span>; }
-<span class="sel">h1</span> { <span class="prop">color</span>: <span class="val">maroon</span>; }</pre>
-    <p><strong>Універсальний селектор</strong> <code>*</code> вибирає всі елементи на сторінці. Зазвичай використовується для скидання стилів:</p>
-<pre><span class="sel">*</span> {
-  <span class="prop">margin</span>: <span class="val">0</span>;
-  <span class="prop">padding</span>: <span class="val">0</span>;
-}</pre>
+    <h2>Заголовки &lt;h1&gt; – &lt;h6&gt;</h2>
+    <p>Теги від <code>&lt;h1&gt;</code> до <code>&lt;h6&gt;</code> задають заголовки різних рівнів. <code>&lt;h1&gt;</code> — найбільший і найважливіший, <code>&lt;h6&gt;</code> — найменший.</p>
+<pre><span class="tag">&lt;h1&gt;</span>Головний заголовок<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;h2&gt;</span>Підзаголовок розділу<span class="tag">&lt;/h2&gt;</span>
+<span class="tag">&lt;h3&gt;</span>Підрозділ<span class="tag">&lt;/h3&gt;</span></pre>
+    <div class="demo">
+      <div class="demo-label">Як виглядає в браузері</div>
+      <div class="demo-render">
+        <h1>h1 — Головний заголовок</h1>
+        <h2>h2 — Підзаголовок</h2>
+        <h3>h3 — Підрозділ</h3>
+        <h4>h4 — Менший розділ</h4>
+        <h5>h5 — Дрібна секція</h5>
+        <h6>h6 — Найменший заголовок</h6>
+      </div>
+    </div>
     <div class="tip-box">
-      <div class="box-label">💡 ПІДКАЗКА</div>
-      <code>*</code> має найнижчу специфічність (0) — будь-який інший селектор перевизначить його.
+      <div class="box-label">💡 SEO</div>
+      На кожній сторінці має бути лише <strong>один</strong> <code>&lt;h1&gt;</code> — це головна тема сторінки. Пошукові системи зважають на ієрархію заголовків.
     </div>
   </div>
 </div>
@@ -305,17 +311,28 @@ footer {
 <div class="step">
   <div class="step-num">06</div>
   <div class="step-body">
-    <h2>Селектор за класом</h2>
-    <p>Додайте атрибут <code>class</code> до HTML-елемента, а в CSS використовуйте крапку перед назвою класу:</p>
-<pre><span class="cmt">/* HTML */</span>
-<span class="kw">&lt;p</span> <span class="prop">class</span>=<span class="str">"title"</span><span class="kw">&gt;</span>Заголовок<span class="kw">&lt;/p&gt;</span>
+    <h2>&lt;p&gt;, &lt;span&gt; і &lt;div&gt;</h2>
+    <p>Три найуживаніші теги для роботи з текстом і структурою:</p>
+<pre><span class="tag">&lt;p&gt;</span>Абзац тексту. Блоковий елемент — займає весь рядок.<span class="tag">&lt;/p&gt;</span>
 
-<span class="cmt">/* CSS */</span>
-<span class="sel">.title</span> { <span class="prop">color</span>: <span class="val">teal</span>; }</pre>
-    <p>Елемент може мати <strong>кілька класів</strong> (через пробіл у HTML):</p>
-<pre><span class="kw">&lt;h1</span> <span class="prop">class</span>=<span class="str">"title uppercase"</span><span class="kw">&gt;</span>Заголовок<span class="kw">&lt;/h1&gt;</span>
+<span class="tag">&lt;p&gt;</span>
+  Звичайний текст, а тут
+  <span class="tag">&lt;span&gt;</span>виділений фрагмент<span class="tag">&lt;/span&gt;</span>
+  прямо в рядку.
+<span class="tag">&lt;/p&gt;</span>
 
-<span class="sel">.uppercase</span> { <span class="prop">text-transform</span>: <span class="val">uppercase</span>; }</pre>
+<span class="tag">&lt;div&gt;</span>
+  Контейнер для групування інших елементів.
+  Сам по собі не має вигляду — це просто блок.
+<span class="tag">&lt;/div&gt;</span></pre>
+    <div class="demo">
+      <div class="demo-label">Різниця між p, span і div</div>
+      <div style="font-family:'Source Code Pro',monospace;font-size:12px;line-height:1.8">
+        <div style="background:rgba(0,212,170,.08);border:1px dashed rgba(0,212,170,.3);padding:6px 12px;color:var(--teal);margin-bottom:4px">&lt;p&gt; — блок, новий рядок, для абзаців</div>
+        <div style="background:rgba(192,132,252,.08);border:1px dashed rgba(192,132,252,.3);padding:6px 12px;color:var(--violet);margin-bottom:4px">Текст <span style="background:rgba(255,200,69,.15);border:1px solid rgba(255,200,69,.3);padding:1px 6px;color:var(--gold)">&lt;span&gt; рядковий &lt;/span&gt;</span> продовжується далі</div>
+        <div style="background:rgba(91,156,246,.08);border:1px dashed rgba(91,156,246,.3);padding:6px 12px;color:var(--blue)">&lt;div&gt; — контейнер, групує інші елементи</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -323,19 +340,25 @@ footer {
 <div class="step">
   <div class="step-num">07</div>
   <div class="step-body">
-    <h2>Селектор за ID та специфічність</h2>
-    <p><strong>ID</strong> — унікальний ідентифікатор елемента. У CSS використовується <code>#</code>:</p>
-<pre><span class="kw">&lt;h1</span> <span class="prop">id</span>=<span class="str">"article-title"</span><span class="kw">&gt;</span>Великий заголовок<span class="kw">&lt;/h1&gt;</span>
+    <h2>Виділення тексту: &lt;em&gt; і &lt;strong&gt;</h2>
+    <p>Два теги для смислового виділення тексту всередині абзацу:</p>
+<pre><span class="tag">&lt;p&gt;</span>
+  Це <span class="tag">&lt;em&gt;</span>курсивний текст<span class="tag">&lt;/em&gt;</span> — легке смислове виділення.
+<span class="tag">&lt;/p&gt;</span>
 
-<span class="sel">#article-title</span> { <span class="prop">font-family</span>: <span class="val">cursive</span>; }</pre>
-    <p><strong>Специфічність</strong> — порядок пріоритету (від найвищого до найнижчого):</p>
-<pre><span class="sel">h1</span>        { <span class="prop">color</span>: <span class="val">red</span>; }        <span class="cmt">/* тег    → 001 */</span>
-<span class="sel">.headline</span> { <span class="prop">color</span>: <span class="val">firebrick</span>; } <span class="cmt">/* клас   → 010 */</span>
-<span class="sel">#heading</span>  { <span class="prop">color</span>: <span class="val">blue</span>; }       <span class="cmt">/* id     → 100 */</span>
-<span class="cmt">/* Переможе: blue */</span></pre>
+<span class="tag">&lt;p&gt;</span>
+  Це <span class="tag">&lt;strong&gt;</span>жирний текст<span class="tag">&lt;/strong&gt;</span> — важлива інформація.
+<span class="tag">&lt;/p&gt;</span></pre>
+    <div class="demo">
+      <div class="demo-label">Як виглядає в браузері</div>
+      <div class="demo-render">
+        <p>Це <em>курсивний текст (em)</em> — легке смислове виділення.</p>
+        <p>Це <strong>жирний текст (strong)</strong> — важлива інформація.</p>
+      </div>
+    </div>
     <div class="tip-box">
-      <div class="box-label">💡 ПРАВИЛО</div>
-      ID → Клас → Тег. Використовуйте ID рідко — тільки для дійсно унікальних елементів.
+      <div class="box-label">💡 СЕМАНТИКА</div>
+      <code>&lt;em&gt;</code> і <code>&lt;strong&gt;</code> — це <em>смислові</em> теги. Для суто візуального виділення використовують CSS (<code>font-style: italic</code>, <code>font-weight: bold</code>).
     </div>
   </div>
 </div>
@@ -344,16 +367,23 @@ footer {
 <div class="step">
   <div class="step-num">08</div>
   <div class="step-body">
-    <h2>Селектор за атрибутом і псевдокласи</h2>
-    <p><strong>Атрибутний селектор</strong> стилізує елементи за наявністю або значенням атрибута:</p>
-<pre><span class="sel">[disabled]</span>        { <span class="prop">opacity</span>: <span class="val">0.5</span>; }
-<span class="sel">[type="text"]</span>     { <span class="prop">border</span>: <span class="val">1px solid gray</span>; }
-<span class="sel">[href^="https"]</span>   { <span class="prop">color</span>: <span class="val">green</span>; }  <span class="cmt">/* починається з */</span>
-<span class="sel">[href$=".pdf"]</span>    { <span class="prop">color</span>: <span class="val">red</span>; }    <span class="cmt">/* закінчується на */</span></pre>
-    <p><strong>Псевдоклас</strong> описує стан або позицію елемента (через <code>:</code>):</p>
-<pre><span class="sel">a:hover</span>       { <span class="prop">color</span>: <span class="val">darkorange</span>; }
-<span class="sel">li:first-child</span>{ <span class="prop">font-weight</span>: <span class="val">bold</span>; }
-<span class="sel">input:focus</span>   { <span class="prop">border-color</span>: <span class="val">blue</span>; }</pre>
+    <h2>Перенос рядка &lt;br&gt;</h2>
+    <p>Тег <code>&lt;br&gt;</code> переносить текст на новий рядок. Він <strong>самозакриваючий</strong> — не має закриваючого тегу і не містить вмісту.</p>
+<pre><span class="tag">&lt;p&gt;</span>
+  вул. Хрещатик, 1<span class="tag">&lt;br&gt;</span>
+  Київ, 01001<span class="tag">&lt;br&gt;</span>
+  Україна
+<span class="tag">&lt;/p&gt;</span></pre>
+    <div class="demo">
+      <div class="demo-label">Як виглядає в браузері</div>
+      <div class="demo-render">
+        <p>вул. Хрещатик, 1<br>Київ, 01001<br>Україна</p>
+      </div>
+    </div>
+    <div class="warn-box">
+      <div class="box-label">⚠ НЕ ЗЛОВЖИВАЙ</div>
+      <code>&lt;br&gt;</code> — для переносу всередині тексту (адреси, вірші). Для відступів між блоками використовуй CSS <code>margin</code>.
+    </div>
   </div>
 </div>
 
@@ -361,48 +391,63 @@ footer {
 <div class="step">
   <div class="step-num">09</div>
   <div class="step-body">
-    <h2>Ланцюжок, вкладеність, групування</h2>
-    <p><strong>Ланцюжок</strong> — вимагає декількох селекторів одночасно:</p>
-<pre><span class="sel">h1.special</span> { <span class="prop">color</span>: <span class="val">gold</span>; } <span class="cmt">/* тільки h1 з класом "special" */</span></pre>
-    <p><strong>Вкладеність</strong> (нащадок) — вибирає елемент всередині іншого:</p>
-<pre><span class="sel">.main-list li</span> { <span class="prop">color</span>: <span class="val">green</span>; } <span class="cmt">/* li всередині .main-list */</span></pre>
-    <p><strong>Групування</strong> — кілька селекторів через кому:</p>
-<pre><span class="sel">h1,
-.menu</span> { <span class="prop">font-family</span>: <span class="val">Georgia</span>; }</pre>
-    <p><strong>!important</strong> — перевизначає будь-який стиль незалежно від специфічності:</p>
-<pre><span class="sel">p</span> { <span class="prop">color</span>: <span class="val">blue</span> <span class="kw">!important</span>; }</pre>
-    <div class="warn-box">
-      <div class="box-label">⛔ УНИКАЙТЕ</div>
-      <code>!important</code> ускладнює підтримку коду. Використовуйте лише як крайній захід.
+    <h2>Списки &lt;ul&gt; і &lt;ol&gt;</h2>
+    <p><code>&lt;ul&gt;</code> — невпорядкований список (маркери •). <code>&lt;ol&gt;</code> — впорядкований список (числа 1, 2, 3…). Кожен пункт — тег <code>&lt;li&gt;</code>.</p>
+<pre><span class="tag">&lt;ul&gt;</span>               <span class="cmt">&lt;!-- маркований --&gt;</span>
+  <span class="tag">&lt;li&gt;</span>HTML<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>CSS<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>JavaScript<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+
+<span class="tag">&lt;ol&gt;</span>               <span class="cmt">&lt;!-- нумерований --&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Відкрити редактор<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Написати HTML<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Зберегти файл<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span></pre>
+    <div class="demo">
+      <div class="demo-label">Як виглядає в браузері</div>
+      <div class="demo-render" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div>
+          <strong>ul — маркований</strong>
+          <ul><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+        </div>
+        <div>
+          <strong>ol — нумерований</strong>
+          <ol><li>Відкрити редактор</li><li>Написати HTML</li><li>Зберегти файл</li></ol>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- STEP 10 — Summary table -->
+<!-- STEP 10 -->
 <div class="step">
   <div class="step-num">10</div>
   <div class="step-body">
-    <h2>Підсумок: специфічність</h2>
-    <table class="spec-table">
-      <thead>
-        <tr><th>Тип</th><th>Синтаксис</th><th>Специфічність</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Універсальний</td><td><code>*</code></td><td>0</td></tr>
-        <tr><td>Тег</td><td><code>p</code></td><td>1</td></tr>
-        <tr><td>Клас</td><td><code>.name</code></td><td>10</td></tr>
-        <tr><td>ID</td><td><code>#name</code></td><td>100</td></tr>
-        <tr><td>Ланцюжок</td><td><code>p.class</code></td><td>11</td></tr>
-        <tr><td>Нащадок</td><td><code>.parent child</code></td><td>11</td></tr>
-        <tr><td>Групування</td><td><code>h1, h2</code></td><td>окремо 1 і 1</td></tr>
-        <tr><td>!important</td><td><code>color: red !important</code></td><td>перемагає все</td></tr>
-      </tbody>
-    </table>
+    <h2>Зображення &lt;img&gt; і відео &lt;video&gt;</h2>
+    <p>Медіаконтент додається посиланням на файл через атрибути. Обидва теги — самозакриваючі (не мають закриваючого тегу).</p>
+<pre><span class="cmt">&lt;!-- Зображення --&gt;</span>
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"photo.jpg"</span> <span class="attr">alt</span>=<span class="val">"Опис фото"</span><span class="tag">&gt;</span>
+
+<span class="cmt">&lt;!-- Відео --&gt;</span>
+<span class="tag">&lt;video</span> <span class="attr">src</span>=<span class="val">"clip.mp4"</span> <span class="attr">controls</span><span class="tag">&gt;&lt;/video&gt;</span>
+
+<span class="cmt">&lt;!-- Зображення з мережі --&gt;</span>
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"https://site.com/img.jpg"</span> <span class="attr">alt</span>=<span class="val">"..."</span><span class="tag">&gt;</span></pre>
+    <ul>
+      <li><code>src</code> — шлях до файлу (локальний або URL)</li>
+      <li><code>alt</code> — текстовий опис зображення (обов'язково!)</li>
+      <li><code>controls</code> — показує кнопки керування відео</li>
+    </ul>
+    <div class="tip-box">
+      <div class="box-label">💡 АТРИБУТ ALT</div>
+      <code>alt</code> відображається якщо зображення не завантажилось, а також зачитується екранними читачами для людей з вадами зору. Завжди заповнюй його.
+    </div>
   </div>
 </div>
 
 <footer>
-  <span>CSS: СЕЛЕКТОРИ · УРОК 01</span>
+  <span>HTML: ВСТУП · УРОК 01</span>
 </footer>
 
 </div>

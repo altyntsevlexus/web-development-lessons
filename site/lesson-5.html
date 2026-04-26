@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок 5 · CSS Блокова модель</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #060a0f;
+  --surface: #0b1018;
+  --card:    #101820;
+  --border:  #182030;
+  --border2: #203040;
+  --text:    #d5e5f5;
+  --muted:   #4a6080;
+  --teal:    #00d4aa;
+  --teal-d:  rgba(0,212,170,.12);
+  --teal-b:  rgba(0,212,170,.25);
+  --gold:    #ffc845;
+  --green:   #50e3a4;
+  --coral:   #ff7a6e;
+  --violet:  #c084fc;
+  --blue:    #5b9cf6;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+body::before {
+  content:'';
+  position:fixed;inset:0;
+  background-image: radial-gradient(rgba(0,212,170,.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events:none;z-index:0;
+}
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; position: relative; z-index: 1; }
+
+header { padding: 52px 0 40px; border-bottom: 1px solid var(--border2); margin-bottom: 40px; }
+
+.eyebrow {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 12px;
+}
+
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: .95; letter-spacing: 2px; color: #fff; margin-bottom: 16px;
+}
+h1 .acc { color: var(--teal); }
+
+.header-sub { font-size: 13.5px; color: var(--muted); max-width: 600px; line-height: 1.7; }
+.header-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.chip {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10.5px; padding: 4px 12px;
+  border: 1px solid var(--border2); color: var(--text);
+}
+.chip.t { background: var(--teal-d); border-color: var(--teal-b); color: var(--teal); font-weight: 600; }
+
+.step {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 0 24px;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.step-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px; line-height: 1; color: var(--border2); padding-top: 4px;
+}
+
+.step-body h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px; letter-spacing: 1px; color: #fff; margin-bottom: 14px;
+}
+
+.step-body p { margin-bottom: 12px; }
+.step-body p:last-child { margin-bottom: 0; }
+.step-body ul { padding-left: 20px; margin-bottom: 12px; }
+.step-body li { margin-bottom: 6px; }
+
+pre {
+  background: #030810;
+  border-left: 3px solid var(--teal);
+  padding: 16px 20px;
+  margin: 16px 0;
+  overflow-x: auto;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  white-space: pre;
+}
+
+code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 12.5px;
+  background: rgba(255,200,69,.1);
+  color: var(--gold);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; color: var(--text); padding: 0; font-size: inherit; }
+
+.kw  { color: var(--violet); }
+.sel { color: var(--teal); }
+.prop{ color: var(--blue); }
+.val { color: var(--green); }
+.cmt { color: var(--muted); font-style: italic; }
+
+.tip-box, .warn-box, .good-box {
+  padding: 14px 18px; margin: 16px 0;
+  border-radius: 4px; font-size: 13px; line-height: 1.6;
+}
+.tip-box  { border-left: 3px solid var(--blue);  background: rgba(91,156,246,.07); }
+.warn-box { border-left: 3px solid var(--coral); background: rgba(255,122,110,.07); }
+.good-box { border-left: 3px solid var(--green); background: rgba(80,227,164,.07); }
+
+.box-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px; letter-spacing: 2px; font-weight: 600; margin-bottom: 6px;
+}
+.tip-box  .box-label { color: var(--blue); }
+.warn-box .box-label { color: var(--coral); }
+.good-box .box-label { color: var(--green); }
+
+.diagram {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 12px; line-height: 1.5;
+  background: #030810; border-left: 3px solid var(--border2);
+  padding: 16px 20px; margin: 16px 0; color: var(--muted);
+  white-space: pre;
+}
+
+.summary-table {
+  width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;
+}
+.summary-table th {
+  background: var(--card); color: var(--teal);
+  font-family: 'Source Code Pro', monospace; font-size: 11px; letter-spacing: 1px;
+  padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border2);
+}
+.summary-table td {
+  padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top;
+}
+.summary-table tr:hover td { background: var(--card); }
+
+.back {
+  display: inline-block; margin: 28px 0 32px;
+  font-family: 'Source Code Pro', monospace; font-size: 11px;
+  letter-spacing: 2px; color: var(--text); text-decoration: none; text-transform: uppercase;
+}
+.back:hover { color: var(--teal); }
+
+.practice-cta {
+  margin-top: 60px;
+  padding: 36px 40px;
+  background: var(--teal-d);
+  border: 1px solid var(--teal-b);
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  flex-wrap: wrap;
+}
+.practice-cta-text h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px; letter-spacing: 1px; color: #fff; margin-bottom: 6px;
+}
+.practice-cta-text p { font-size: 13px; color: var(--muted); }
+.practice-btn {
+  display: inline-block;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--bg); background: var(--teal);
+  padding: 12px 28px; text-decoration: none; white-space: nowrap;
+  transition: opacity .15s;
+}
+.practice-btn:hover { opacity: .85; }
+
+footer {
+  margin-top: 40px; padding: 20px 0;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px; letter-spacing: 2px; color: var(--muted);
+}
+
+.demo {
+  background: #030810;
+  border: 1px solid var(--border2);
+  padding: 20px;
+  margin: 16px 0;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 12px;
+  text-align: center;
+}
+.demo-label {
+  font-size: 10px; letter-spacing: 2px; color: var(--muted);
+  margin-bottom: 14px; text-transform: uppercase; text-align: left;
+}
+.box-margin  { background: rgba(255,122,110,.07); border: 2px dashed rgba(255,122,110,.4); padding: 16px; color: var(--coral); }
+.box-border  { background: rgba(255,200,69,.07);  border: 3px solid rgba(255,200,69,.45); padding: 14px; color: var(--gold);  margin-top: 10px; }
+.box-padding { background: rgba(91,156,246,.08);  border: 1px dashed rgba(91,156,246,.4); padding: 14px; color: var(--blue);  margin-top: 10px; }
+.box-content { background: rgba(0,212,170,.1);    border: 1px solid rgba(0,212,170,.35);  padding: 12px; color: var(--teal);  margin-top: 10px; }
+
+@media(max-width:560px){
+  .step { grid-template-columns: 1fr; }
+  .step-num { font-size: 32px; margin-bottom: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="back" href="index.html">← Всі уроки</a>
+
+<header>
+  <div class="eyebrow">CSS · Урок 05</div>
+  <h1>Блокова <span class="acc">Модель</span></h1>
+  <div class="header-sub">Кожен елемент — прямокутний блок. Width, height, border, padding, margin, overflow, visibility</div>
+  <div class="header-chips">
+    <span class="chip t">Теорія</span>
+    <span class="chip">~40 хв</span>
+  </div>
+</header>
+
+<!-- STEP 01 -->
+<div class="step">
+  <div class="step-num">01</div>
+  <div class="step-body">
+    <h2>Що таке блокова модель?</h2>
+    <p>Усі елементи на веб-сторінці браузер розглядає як <strong>прямокутні блоки (box)</strong>. Блокова модель визначає чотири шари кожного елемента:</p>
+<div class="demo">
+  <div class="demo-label">Чотири шари кожного елемента</div>
+  <div class="box-margin">
+    MARGIN — зовнішній відступ
+    <div class="box-border">
+      BORDER — рамка
+      <div class="box-padding">
+        PADDING — внутрішній відступ
+        <div class="box-content">
+          CONTENT<br>width × height
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <ul>
+      <li><strong>width / height</strong> — розмір області вмісту</li>
+      <li><strong>padding</strong> — простір між вмістом і рамкою</li>
+      <li><strong>border</strong> — рамка навколо елемента</li>
+      <li><strong>margin</strong> — простір зовні рамки</li>
+    </ul>
+  </div>
+</div>
+
+<!-- STEP 02 -->
+<div class="step">
+  <div class="step-num">02</div>
+  <div class="step-body">
+    <h2>Висота та ширина (height, width)</h2>
+    <p>За замовчуванням браузер підлаштовує розмір елемента під вміст. CSS дозволяє задати точні розміри:</p>
+<pre><span class="sel">p</span> {
+  <span class="prop">height</span>: <span class="val">80px</span>;
+  <span class="prop">width</span>:  <span class="val">240px</span>;
+}</pre>
+    <div class="warn-box">
+      <div class="box-label">⚠ УВАГА</div>
+      Фіксовані пікселі дають точний розмір, але можуть зламати макет на мобільних пристроях. Для адаптивного дизайну використовуйте <code>%</code>, <code>min-width</code>, <code>max-width</code>.
+    </div>
+  </div>
+</div>
+
+<!-- STEP 03 -->
+<div class="step">
+  <div class="step-num">03</div>
+  <div class="step-body">
+    <h2>Рамка (border)</h2>
+    <p>Border — лінія навколо елемента. Три обов'язкові параметри: товщина, стиль, колір:</p>
+<pre><span class="sel">p</span> {
+  <span class="prop">border</span>: <span class="val">3px solid coral</span>;
+}</pre>
+    <p>Стилі рамки: <code>solid</code>, <code>dashed</code>, <code>dotted</code>, <code>none</code>.</p>
+    <p>За замовчуванням: <code>border: medium none currentColor</code> — рамки не видно.</p>
+  </div>
+</div>
+
+<!-- STEP 04 -->
+<div class="step">
+  <div class="step-num">04</div>
+  <div class="step-body">
+    <h2>Закруглення рамки (border-radius)</h2>
+    <p>Закруглює кути елемента. Значення — радіус кривизни:</p>
+<pre><span class="sel">div</span> {
+  <span class="prop">border</span>:        <span class="val">3px solid blue</span>;
+  <span class="prop">border-radius</span>: <span class="val">8px</span>;    <span class="cmt">/* закруглені кути */</span>
+}
+
+<span class="sel">.avatar</span> {
+  <span class="prop">width</span>:         <span class="val">60px</span>;
+  <span class="prop">height</span>:        <span class="val">60px</span>;
+  <span class="prop">border-radius</span>: <span class="val">50%</span>;   <span class="cmt">/* ідеальне коло */</span>
+}</pre>
+    <div class="tip-box">
+      <div class="box-label">💡 ПІДКАЗКА</div>
+      <code>border-radius: 50%</code> створює коло лише якщо <code>width === height</code>.
+    </div>
+  </div>
+</div>
+
+<!-- STEP 05 -->
+<div class="step">
+  <div class="step-num">05</div>
+  <div class="step-body">
+    <h2>Внутрішній відступ (padding)</h2>
+    <p>Padding — простір між вмістом і рамкою. Він використовує колір фону елемента:</p>
+<pre><span class="sel">p</span> {
+  <span class="prop">padding</span>: <span class="val">10px</span>;           <span class="cmt">/* з усіх боків */</span>
+  <span class="prop">padding</span>: <span class="val">10px 20px</span>;     <span class="cmt">/* top/bottom  left/right */</span>
+  <span class="prop">padding</span>: <span class="val">5px 10px 15px</span>; <span class="cmt">/* top  left/right  bottom */</span>
+}
+
+<span class="cmt">/* Або окремо: */</span>
+<span class="sel">p</span> {
+  <span class="prop">padding-top</span>:    <span class="val">10px</span>;
+  <span class="prop">padding-right</span>:  <span class="val">20px</span>;
+  <span class="prop">padding-bottom</span>: <span class="val">10px</span>;
+  <span class="prop">padding-left</span>:   <span class="val">20px</span>;
+}</pre>
+  </div>
+</div>
+
+<!-- STEP 06 -->
+<div class="step">
+  <div class="step-num">06</div>
+  <div class="step-body">
+    <h2>Зовнішній відступ (margin)</h2>
+    <p>Margin — простір зовні елемента, між ним і сусідніми елементами. Скорочений запис такий самий, як у padding:</p>
+<pre><span class="sel">p</span> {
+  <span class="prop">margin</span>: <span class="val">20px</span>;         <span class="cmt">/* з усіх боків */</span>
+  <span class="prop">margin</span>: <span class="val">0 auto</span>;      <span class="cmt">/* центрування по горизонталі */</span>
+}</pre>
+    <p><strong>Злиття margin:</strong> вертикальні відступи двох сусідніх елементів зливаються — береться більший. Горизонтальні завжди додаються.</p>
+    <div class="tip-box">
+      <div class="box-label">💡 ЦЕНТРУВАННЯ</div>
+      <code>margin: 0 auto</code> центрує блок горизонтально. Обов'язкова умова — елемент повинен мати задану ширину (<code>width</code>).
+    </div>
+  </div>
+</div>
+
+<!-- STEP 07 -->
+<div class="step">
+  <div class="step-num">07</div>
+  <div class="step-body">
+    <h2>Мінімальна та максимальна ширина/висота</h2>
+    <p>Задають межі розміру елемента для адаптивного дизайну:</p>
+<pre><span class="sel">p</span> {
+  <span class="prop">min-width</span>:  <span class="val">300px</span>; <span class="cmt">/* не вужче */</span>
+  <span class="prop">max-width</span>:  <span class="val">600px</span>; <span class="cmt">/* не ширше */</span>
+  <span class="prop">min-height</span>: <span class="val">150px</span>; <span class="cmt">/* не нижче */</span>
+  <span class="prop">max-height</span>: <span class="val">300px</span>; <span class="cmt">/* не вище */</span>
+}</pre>
+    <div class="warn-box">
+      <div class="box-label">⚠ УВАГА</div>
+      Якщо <code>max-height</code> задано занадто малим, вміст може «вилізти» за межі елемента. Вирішення — властивість <code>overflow</code>.
+    </div>
+  </div>
+</div>
+
+<!-- STEP 08 -->
+<div class="step">
+  <div class="step-num">08</div>
+  <div class="step-body">
+    <h2>Переповнення (overflow)</h2>
+    <p>Якщо вміст більший за контейнер, <code>overflow</code> визначає що з ним робити:</p>
+<pre><span class="sel">div</span> { <span class="prop">overflow</span>: <span class="val">visible</span>; } <span class="cmt">/* за замовчуванням — виходить за межі */</span>
+<span class="sel">div</span> { <span class="prop">overflow</span>: <span class="val">hidden</span>; }  <span class="cmt">/* обрізається */</span>
+<span class="sel">div</span> { <span class="prop">overflow</span>: <span class="val">scroll</span>; }  <span class="cmt">/* прокрутка */</span></pre>
+    <p>Для керування окремими осями: <code>overflow-x</code> (горизонталь) та <code>overflow-y</code> (вертикаль).</p>
+  </div>
+</div>
+
+<!-- STEP 09 -->
+<div class="step">
+  <div class="step-num">09</div>
+  <div class="step-body">
+    <h2>Скидання стандартних стилів (normalize)</h2>
+    <p>Браузери додають власні <code>margin</code> і <code>padding</code> до елементів, а ширина елементів рахується по-різному залежно від браузера. Розробники скидають це на самому початку CSS:</p>
+<pre><span class="sel">*</span> {
+  <span class="prop">margin</span>:      <span class="val">0</span>;
+  <span class="prop">padding</span>:     <span class="val">0</span>;
+  <span class="prop">box-sizing</span>: <span class="val">border-box</span>;
+}</pre>
+    <div class="tip-box">
+      <div class="box-label">💡 ПІДКАЗКА</div>
+      Значення <code>0</code> не потребує одиниці виміру. Явно написані правила (<code>margin-top: 24px</code>) перевизначать скидання завдяки вищій специфічності. Цей блок завжди пишеться <strong>першим рядком</strong> у файлі CSS.
+    </div>
+  </div>
+</div>
+
+<!-- STEP 10 -->
+<div class="step">
+  <div class="step-num">10</div>
+  <div class="step-body">
+    <h2>box-sizing: border-box</h2>
+    <p>За замовчуванням (<code>content-box</code>) властивості <code>width</code> і <code>height</code> задають розмір лише <strong>вмісту</strong>. Padding і border додаються зверху — реальний елемент виявляється ширшим, ніж написано в CSS:</p>
+<div class="diagram">content-box (DEFAULT)
+─────────────────────────────────────
+  width: 200px   → лише контент
+
+  реальна ширина = 200 + 20 + 20 + 2 + 2 = 244px
+                        ↑padding↑   ↑border↑</div>
+<pre><span class="sel">.box</span> {
+  <span class="prop">width</span>:      <span class="val">200px</span>;
+  <span class="prop">padding</span>:    <span class="val">20px</span>;
+  <span class="prop">border</span>:     <span class="val">2px solid black</span>;
+  <span class="cmt">/* реальна ширина = 200 + 20×2 + 2×2 = 244px */</span>
+}</pre>
+    <p>З <code>box-sizing: border-box</code> браузер <strong>вписує</strong> padding і border всередину заданого розміру. Що написано в CSS — те й займає місце на сторінці:</p>
+<div class="diagram">border-box
+─────────────────────────────────────
+  width: 200px   → разом із padding і border
+
+  реальна ширина = 200px  ✓</div>
+<pre><span class="sel">.box</span> {
+  <span class="prop">width</span>:       <span class="val">200px</span>;
+  <span class="prop">padding</span>:     <span class="val">20px</span>;
+  <span class="prop">border</span>:      <span class="val">2px solid black</span>;
+  <span class="prop">box-sizing</span>: <span class="val">border-box</span>;
+  <span class="cmt">/* реальна ширина = 200px */</span>
+}</pre>
+    <div class="good-box">
+      <div class="box-label">✓ НАЙКРАЩА ПРАКТИКА</div>
+      Завжди починай CSS з нормалізації: <code>* { margin: 0; padding: 0; box-sizing: border-box; }</code>. Це усуває браузерні відступи і робить розрахунок розмірів передбачуваним.
+    </div>
+    <table class="summary-table">
+      <thead>
+        <tr><th>Значення</th><th>width враховує</th><th>Реальна ширина</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>content-box</code> (default)</td><td>лише контент</td><td>width + padding + border</td></tr>
+        <tr><td><code>border-box</code></td><td>контент + padding + border</td><td>рівно width</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- STEP 11 -->
+<div class="step">
+  <div class="step-num">11</div>
+  <div class="step-body">
+    <h2>Видимість (visibility)</h2>
+    <p>Приховує або показує елемент:</p>
+<pre><span class="sel">.hidden</span> { <span class="prop">visibility</span>: <span class="val">hidden</span>; } <span class="cmt">/* невидимий, але займає місце */</span>
+<span class="sel">.gone</span>   { <span class="prop">display</span>:     <span class="val">none</span>; }   <span class="cmt">/* повністю видалений з макету */</span></pre>
+    <table class="summary-table">
+      <thead>
+        <tr><th>Властивість</th><th>Видимий?</th><th>Займає місце?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>visibility: visible</code></td><td>Так</td><td>Так</td></tr>
+        <tr><td><code>visibility: hidden</code></td><td>Ні</td><td><strong>Так</strong></td></tr>
+        <tr><td><code>display: none</code></td><td>Ні</td><td><strong>Ні</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="practice-cta">
+  <div class="practice-cta-text">
+    <h2>Практика · Урок 05</h2>
+    <p>Відкрий проєкт у CodeSandbox, прочитай завдання і редагуй style.css прямо в браузері.</p>
+  </div>
+  <a class="practice-btn" href="https://codesandbox.io/s/github/altyntsevlexus/web-development-lessons/tree/main/site/practice/lesson-5" target="_blank">Відкрити практику →</a>
+</div>
+
+<footer>
+  <span>CSS: БЛОКОВА МОДЕЛЬ · УРОК 05</span>
+</footer>
+
+</div>
+</body>
+</html>

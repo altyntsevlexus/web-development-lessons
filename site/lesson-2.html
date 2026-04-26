@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Урок 2 · CSS Візуальні правила</title>
+<title>Урок 2 · Стандарти HTML-документа</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -24,7 +24,7 @@
   --blue:    #5b9cf6;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+*{ margin:0; padding:0; box-sizing:border-box; }
 
 body {
   background: var(--bg);
@@ -36,10 +36,10 @@ body {
 
 body::before {
   content:'';
-  position:fixed;inset:0;
+  position:fixed; inset:0;
   background-image: radial-gradient(rgba(0,212,170,.05) 1px, transparent 1px);
   background-size: 28px 28px;
-  pointer-events:none;z-index:0;
+  pointer-events:none; z-index:0;
 }
 
 .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; position: relative; z-index: 1; }
@@ -88,7 +88,7 @@ h1 .acc { color: var(--teal); }
 
 .step-body p { margin-bottom: 12px; }
 .step-body p:last-child { margin-bottom: 0; }
-.step-body ul { padding-left: 20px; margin-bottom: 12px; }
+.step-body ul, .step-body ol { padding-left: 20px; margin-bottom: 12px; }
 .step-body li { margin-bottom: 6px; }
 
 pre {
@@ -113,12 +113,11 @@ code {
 }
 pre code { background: none; color: var(--text); padding: 0; font-size: inherit; }
 
-.kw  { color: var(--violet); }
-.sel { color: var(--teal); }
-.prop{ color: var(--blue); }
-.val { color: var(--green); }
-.cmt { color: var(--muted); font-style: italic; }
-.str { color: #6adf8a; }
+.tag  { color: var(--teal); }
+.attr { color: var(--blue); }
+.val  { color: var(--green); }
+.cmt  { color: var(--muted); font-style: italic; }
+.doc  { color: var(--violet); }
 
 .tip-box, .warn-box, .good-box {
   padding: 14px 18px; margin: 16px 0;
@@ -136,18 +135,29 @@ pre code { background: none; color: var(--text); padding: 0; font-size: inherit;
 .warn-box .box-label { color: var(--coral); }
 .good-box .box-label { color: var(--green); }
 
-.summary-table {
-  width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;
+.demo {
+  background: #030810;
+  border: 1px solid var(--border2);
+  padding: 20px 24px;
+  margin: 16px 0;
 }
-.summary-table th {
-  background: var(--card); color: var(--teal);
-  font-family: 'Source Code Pro', monospace; font-size: 11px; letter-spacing: 1px;
-  padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border2);
+.demo-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 14px;
 }
-.summary-table td {
-  padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top;
+
+/* Structure tree */
+.tree {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 12.5px;
+  line-height: 2;
+  background: #030810;
+  border-left: 3px solid var(--border2);
+  padding: 16px 20px;
+  margin: 16px 0;
 }
-.summary-table tr:hover td { background: var(--card); }
+.tree-indent { padding-left: 24px; }
 
 .back {
   display: inline-block; margin: 28px 0 32px;
@@ -176,12 +186,12 @@ footer {
 <a class="back" href="index.html">← Всі уроки</a>
 
 <header>
-  <div class="eyebrow">CSS · Урок 02</div>
-  <h1>Візуальні <span class="acc">Правила</span></h1>
-  <div class="header-sub">Шрифт, розмір, вирівнювання, колір, прозорість і фонові зображення</div>
+  <div class="eyebrow">HTML · Урок 02</div>
+  <h1>Стандарти <span class="acc">HTML-документа</span></h1>
+  <div class="header-sub">DOCTYPE, структура документа, head, title, посилання, пробіли, відступи та коментарі</div>
   <div class="header-chips">
     <span class="chip t">Теорія</span>
-    <span class="chip">~25 хв</span>
+    <span class="chip">~30 хв</span>
   </div>
 </header>
 
@@ -189,18 +199,15 @@ footer {
 <div class="step">
   <div class="step-num">01</div>
   <div class="step-body">
-    <h2>Шрифт (font-family)</h2>
-    <p>Властивість <code>font-family</code> задає шрифт тексту. Якщо назва шрифту складається з кількох слів — вона береться в лапки:</p>
-<pre><span class="sel">h1</span> {
-  <span class="prop">font-family</span>: <span class="val">Garamond</span>;
-}
-
-<span class="sel">h2</span> {
-  <span class="prop">font-family</span>: <span class="val">"Courier New"</span>; <span class="cmt">/* кілька слів — у лапках */</span>
-}</pre>
-    <div class="tip-box">
-      <div class="box-label">💡 ПІДКАЗКА</div>
-      Шрифт повинен бути встановлений на комп'ютері користувача. Стандартний шрифт браузера — <strong>Times New Roman</strong>. Для веб-шрифтів використовуйте Google Fonts.
+    <h2>&lt;!DOCTYPE html&gt;</h2>
+    <p>Перший рядок будь-якого HTML-файлу — це оголошення типу документа. Воно повідомляє браузеру, що файл написаний за стандартом <strong>HTML5</strong>.</p>
+<pre><span class="doc">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html&gt;</span>
+  ...
+<span class="tag">&lt;/html&gt;</span></pre>
+    <div class="warn-box">
+      <div class="box-label">⚠ ЗАВЖДИ ПЕРШИМ</div>
+      <code>&lt;!DOCTYPE html&gt;</code> повинен бути <strong>першим рядком файлу</strong> — до нього нічого не має бути, навіть порожніх рядків. Без нього браузер може перейти в режим сумісності і відображати сторінку некоректно.
     </div>
   </div>
 </div>
@@ -209,12 +216,30 @@ footer {
 <div class="step">
   <div class="step-num">02</div>
   <div class="step-body">
-    <h2>Розмір шрифту (font-size)</h2>
-    <p>Властивість <code>font-size</code> задає розмір тексту. Найпоширеніша одиниця — пікселі (<code>px</code>):</p>
-<pre><span class="sel">p</span> {
-  <span class="prop">font-size</span>: <span class="val">18px</span>;
-}</pre>
-    <p>Також можна використовувати <code>em</code> (відносно батьківського елемента), <code>rem</code> (відносно кореневого елемента), <code>%</code>.</p>
+    <h2>Структура HTML-документа</h2>
+    <p>Кожен HTML-файл має стандартну структуру з трьох основних частин:</p>
+<pre><span class="doc">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="val">"uk"</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;head&gt;</span>
+    <span class="cmt">&lt;!-- інформація про сторінку --&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+
+  <span class="tag">&lt;body&gt;</span>
+    <span class="cmt">&lt;!-- видимий вміст --&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+
+<span class="tag">&lt;/html&gt;</span></pre>
+    <div class="tree">
+      <span style="color:var(--violet)">&lt;!DOCTYPE html&gt;</span><br>
+      <span style="color:var(--teal)">&lt;html&gt;</span>
+      <div class="tree-indent">
+        <span style="color:var(--blue)">&lt;head&gt;</span> — невидима частина: мета-дані, заголовок вкладки, підключення CSS<br>
+        <span style="color:var(--green)">&lt;body&gt;</span> — видима частина: весь контент сторінки
+      </div>
+      <span style="color:var(--teal)">&lt;/html&gt;</span>
+    </div>
+    <p>Атрибут <code>lang="uk"</code> вказує браузеру і пошуковим системам мову вмісту сторінки.</p>
   </div>
 </div>
 
@@ -222,11 +247,20 @@ footer {
 <div class="step">
   <div class="step-num">03</div>
   <div class="step-body">
-    <h2>Жирність шрифту (font-weight)</h2>
-    <p>Властивість <code>font-weight</code> задає товщину (жирність) шрифту:</p>
-<pre><span class="sel">p</span>    { <span class="prop">font-weight</span>: <span class="val">bold</span>; }   <span class="cmt">/* жирний */</span>
-<span class="sel">span</span> { <span class="prop">font-weight</span>: <span class="val">normal</span>; } <span class="cmt">/* звичайний */</span></pre>
-    <p>Замість ключових слів можна використовувати числа: <code>100</code> (найтонший) … <code>900</code> (найжирніший). Стандартне значення — <code>400</code>, жирне — <code>700</code>.</p>
+    <h2>&lt;head&gt; — інформація про сторінку</h2>
+    <p>Тег <code>&lt;head&gt;</code> містить мета-дані: інформацію про сторінку, яку браузер використовує, але <strong>не показує</strong> користувачу.</p>
+<pre><span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="val">"UTF-8"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="val">"viewport"</span> <span class="attr">content</span>=<span class="val">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;title&gt;</span>Назва вкладки<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="val">"stylesheet"</span> <span class="attr">href</span>=<span class="val">"style.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span></pre>
+    <ul>
+      <li><code>charset="UTF-8"</code> — підтримка кирилиці та інших символів</li>
+      <li><code>viewport</code> — коректне відображення на мобільних</li>
+      <li><code>&lt;title&gt;</code> — текст у вкладці браузера</li>
+      <li><code>&lt;link&gt;</code> — підключення CSS-файлу</li>
+    </ul>
   </div>
 </div>
 
@@ -234,11 +268,29 @@ footer {
 <div class="step">
   <div class="step-num">04</div>
   <div class="step-body">
-    <h2>Вирівнювання тексту (text-align)</h2>
-    <p>Властивість <code>text-align</code> керує горизонтальним вирівнюванням тексту всередині елемента:</p>
-<pre><span class="sel">h1</span> { <span class="prop">text-align</span>: <span class="val">center</span>; } <span class="cmt">/* по центру */</span>
-<span class="sel">p</span>  { <span class="prop">text-align</span>: <span class="val">left</span>; }   <span class="cmt">/* зліва (за замовчуванням) */</span>
-<span class="sel">.q</span> { <span class="prop">text-align</span>: <span class="val">right</span>; }  <span class="cmt">/* справа */</span></pre>
+    <h2>&lt;title&gt; — назва вкладки</h2>
+    <p>Тег <code>&lt;title&gt;</code> всередині <code>&lt;head&gt;</code> задає текст, який з'являється у вкладці браузера і в результатах пошуку Google.</p>
+<pre><span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;title&gt;</span>Мій перший сайт<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;/head&gt;</span></pre>
+    <div class="demo">
+      <div class="demo-label">Де з'являється title</div>
+      <div style="font-family:'Source Code Pro',monospace;font-size:12px">
+        <div style="background:#1e2a3a;border-radius:6px 6px 0 0;padding:8px 14px;display:flex;align-items:center;gap:8px">
+          <div style="background:#2d3f52;border-radius:4px;padding:5px 16px;color:var(--text);font-size:12px;border:1px solid var(--border2)">
+            Мій перший сайт ×
+          </div>
+          <div style="background:var(--border);border-radius:4px;padding:5px 12px;color:var(--muted);font-size:11px">+</div>
+        </div>
+        <div style="background:#0d1117;padding:8px 14px;color:var(--muted);font-size:11px;border:1px solid var(--border2)">
+          ← → ⟳  🔒 example.com
+        </div>
+      </div>
+    </div>
+    <div class="tip-box">
+      <div class="box-label">💡 SEO</div>
+      Хороший title — коротко і точно описує зміст сторінки (до 60 символів). Пошукові системи показують його у результатах пошуку.
+    </div>
   </div>
 </div>
 
@@ -246,18 +298,20 @@ footer {
 <div class="step">
   <div class="step-num">05</div>
   <div class="step-body">
-    <h2>Колір (color та background-color)</h2>
-    <p><code>color</code> — колір тексту. <code>background-color</code> — колір фону елемента:</p>
-<pre><span class="sel">h1</span> {
-  <span class="prop">color</span>: <span class="val">red</span>;             <span class="cmt">/* колір тексту */</span>
-  <span class="prop">background-color</span>: <span class="val">blue</span>; <span class="cmt">/* колір фону */</span>
-}</pre>
-    <p>Колір можна задавати різними способами:</p>
+    <h2>Посилання &lt;a&gt;</h2>
+    <p>Тег <code>&lt;a&gt;</code> (anchor — якір) створює посилання. Атрибут <code>href</code> вказує куди воно веде.</p>
+<pre><span class="cmt">&lt;!-- Зовнішнє посилання --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"https://google.com"</span><span class="tag">&gt;</span>Відкрити Google<span class="tag">&lt;/a&gt;</span>
+
+<span class="cmt">&lt;!-- Внутрішня сторінка --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"about.html"</span><span class="tag">&gt;</span>Про нас<span class="tag">&lt;/a&gt;</span>
+
+<span class="cmt">&lt;!-- Відкрити в новій вкладці --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"https://google.com"</span> <span class="attr">target</span>=<span class="val">"_blank"</span><span class="tag">&gt;</span>Google<span class="tag">&lt;/a&gt;</span></pre>
     <ul>
-      <li>Назва: <code>red</code>, <code>coral</code>, <code>teal</code></li>
-      <li>HEX: <code>#ff0000</code>, <code>#00d4aa</code></li>
-      <li>RGB: <code>rgb(255, 0, 0)</code></li>
-      <li>RGBA (з прозорістю): <code>rgba(0, 212, 170, 0.5)</code></li>
+      <li>Зовнішні посилання починаються з <code>https://</code></li>
+      <li>Внутрішні — просто ім'я файлу: <code>about.html</code></li>
+      <li><code>target="_blank"</code> — відкрити в новій вкладці</li>
     </ul>
   </div>
 </div>
@@ -266,18 +320,21 @@ footer {
 <div class="step">
   <div class="step-num">06</div>
   <div class="step-body">
-    <h2>Прозорість (opacity)</h2>
-    <p>Властивість <code>opacity</code> задає прозорість всього елемента. Значення від <code>0</code> (повністю прозорий) до <code>1</code> (повністю непрозорий):</p>
-<pre><span class="sel">.overlay</span> {
-  <span class="prop">opacity</span>: <span class="val">0.5</span>; <span class="cmt">/* 50% прозорості */</span>
-}
+    <h2>Якоря — переходи по сторінці</h2>
+    <p>Можна створити посилання на конкретний розділ тієї самої сторінки. Для цього елементу присвоюється <code>id</code>, а посилання веде на <code>#id</code>.</p>
+<pre><span class="cmt">&lt;!-- Посилання-якір (зазвичай у навігації) --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"#contacts"</span><span class="tag">&gt;</span>Перейти до контактів<span class="tag">&lt;/a&gt;</span>
 
-<span class="sel">.hidden</span> {
-  <span class="prop">opacity</span>: <span class="val">0</span>;   <span class="cmt">/* невидимий, але займає місце */</span>
-}</pre>
+<span class="cmt">&lt;!-- ... далі по сторінці ... --&gt;</span>
+
+<span class="cmt">&lt;!-- Цільовий розділ --&gt;</span>
+<span class="tag">&lt;section</span> <span class="attr">id</span>=<span class="val">"contacts"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;h2&gt;</span>Контакти<span class="tag">&lt;/h2&gt;</span>
+  ...
+<span class="tag">&lt;/section&gt;</span></pre>
     <div class="tip-box">
-      <div class="box-label">💡 ПІДКАЗКА</div>
-      <code>opacity</code> впливає на весь елемент разом із вмістом. Для прозорості лише фону використовуйте <code>rgba()</code> у <code>background-color</code>.
+      <div class="box-label">💡 ЗАСТОСУВАННЯ</div>
+      Якоря використовують для навігаційних меню на landing-сторінках: «Про нас», «Послуги», «Контакти» — кліки прокручують сторінку до потрібного розділу.
     </div>
   </div>
 </div>
@@ -286,46 +343,66 @@ footer {
 <div class="step">
   <div class="step-num">07</div>
   <div class="step-body">
-    <h2>Фонове зображення (background-image)</h2>
-    <p>Властивість <code>background-image</code> задає зображення як фон елемента:</p>
-<pre><span class="sel">.hero</span> {
-  <span class="prop">background-image</span>: <span class="kw">url</span>(<span class="str">"https://example.com/photo.jpg"</span>);
-}</pre>
-    <p>Зазвичай разом із зображенням використовують додаткові властивості:</p>
-<pre><span class="sel">.hero</span> {
-  <span class="prop">background-image</span>:    <span class="kw">url</span>(<span class="str">"photo.jpg"</span>);
-  <span class="prop">background-size</span>:     <span class="val">cover</span>;   <span class="cmt">/* заповнює весь елемент */</span>
-  <span class="prop">background-position</span>: <span class="val">center</span>;  <span class="cmt">/* центрує зображення */</span>
-  <span class="prop">background-repeat</span>:   <span class="val">no-repeat</span>;
-}</pre>
+    <h2>Пробіли і відступи в коді</h2>
+    <p>Браузер ігнорує зайві пробіли, переноси рядків і відступи в HTML-коді — вони впливають лише на <strong>читабельність коду</strong>, не на вигляд сторінки.</p>
+<pre><span class="cmt">&lt;!-- Обидва варіанти дають однаковий результат: --&gt;</span>
+
+<span class="tag">&lt;p&gt;</span>Привіт<span class="tag">&lt;/p&gt;</span><span class="tag">&lt;p&gt;</span>Світ<span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;p&gt;</span>Привіт<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;p&gt;</span>Світ<span class="tag">&lt;/p&gt;</span></pre>
+    <p>Між словами в тексті кілька пробілів підряд браузер стиснить до одного. Для реальних відступів між елементами використовуй CSS <code>margin</code>.</p>
+    <div class="good-box">
+      <div class="box-label">✓ ПОРАДА</div>
+      Залишай порожні рядки між великими секціями коду — так код легше читати.
+    </div>
   </div>
 </div>
 
-<!-- STEP 08 — Summary -->
+<!-- STEP 08 -->
 <div class="step">
   <div class="step-num">08</div>
   <div class="step-body">
-    <h2>Підсумок</h2>
-    <table class="summary-table">
-      <thead>
-        <tr><th>Властивість</th><th>Що робить</th><th>Приклад</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><code>font-family</code></td><td>Тип шрифту</td><td><code>font-family: Arial;</code></td></tr>
-        <tr><td><code>font-size</code></td><td>Розмір шрифту</td><td><code>font-size: 18px;</code></td></tr>
-        <tr><td><code>font-weight</code></td><td>Жирність шрифту</td><td><code>font-weight: bold;</code></td></tr>
-        <tr><td><code>text-align</code></td><td>Вирівнювання тексту</td><td><code>text-align: center;</code></td></tr>
-        <tr><td><code>color</code></td><td>Колір тексту</td><td><code>color: #333;</code></td></tr>
-        <tr><td><code>background-color</code></td><td>Колір фону</td><td><code>background-color: teal;</code></td></tr>
-        <tr><td><code>opacity</code></td><td>Прозорість елемента</td><td><code>opacity: 0.7;</code></td></tr>
-        <tr><td><code>background-image</code></td><td>Фонове зображення</td><td><code>background-image: url("img.jpg");</code></td></tr>
-      </tbody>
-    </table>
+    <h2>Відступи (індентація)</h2>
+    <p>Вкладені елементи прийнято зсувати вправо на два або чотири пробіли (або один Tab). Це не впливає на роботу коду, але робить структуру наочною.</p>
+<pre><span class="cmt">&lt;!-- Погано — важко зрозуміти структуру --&gt;</span>
+<span class="tag">&lt;ul&gt;</span><span class="tag">&lt;li&gt;</span>HTML<span class="tag">&lt;/li&gt;</span><span class="tag">&lt;li&gt;</span>CSS<span class="tag">&lt;/li&gt;</span><span class="tag">&lt;/ul&gt;</span>
+
+<span class="cmt">&lt;!-- Добре — структура видна одразу --&gt;</span>
+<span class="tag">&lt;ul&gt;</span>
+  <span class="tag">&lt;li&gt;</span>HTML<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>CSS<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></pre>
+    <div class="tip-box">
+      <div class="box-label">💡 ПРАВИЛО</div>
+      Кожен рівень вкладеності — один відступ Tab. Відступи показують відносини батько–дитина так само, як дерево структури.
+    </div>
+  </div>
+</div>
+
+<!-- STEP 09 -->
+<div class="step">
+  <div class="step-num">09</div>
+  <div class="step-body">
+    <h2>Коментарі &lt;!-- --&gt;</h2>
+    <p>Коментарі — це нотатки в коді. Браузер їх не відображає. Вони допомагають пояснити код собі та іншим розробникам.</p>
+<pre><span class="cmt">&lt;!-- Це коментар — браузер його ігнорує --&gt;</span>
+
+<span class="tag">&lt;header&gt;</span>
+  <span class="cmt">&lt;!-- Навігація --&gt;</span>
+  <span class="tag">&lt;nav&gt;</span>...<span class="tag">&lt;/nav&gt;</span>
+<span class="tag">&lt;/header&gt;</span>
+
+<span class="cmt">&lt;!-- TODO: додати форму зворотнього зв'язку --&gt;</span></pre>
+    <div class="warn-box">
+      <div class="box-label">⚠ УВАГА</div>
+      Коментарі видно у вихідному коді сторінки (через «Переглянути код» у браузері). Не пиши в коментарях паролі чи конфіденційні дані.
+    </div>
   </div>
 </div>
 
 <footer>
-  <span>CSS: ВІЗУАЛЬНІ ПРАВИЛА · УРОК 02</span>
+  <span>HTML: СТАНДАРТИ ДОКУМЕНТА · УРОК 02</span>
 </footer>
 
 </div>

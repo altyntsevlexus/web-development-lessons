@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Урок 4 · CSS Display та Позиціонування</title>
+<title>Урок 4 · CSS Візуальні правила</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -118,6 +118,7 @@ pre code { background: none; color: var(--text); padding: 0; font-size: inherit;
 .prop{ color: var(--blue); }
 .val { color: var(--green); }
 .cmt { color: var(--muted); font-style: italic; }
+.str { color: #6adf8a; }
 
 .tip-box, .warn-box, .good-box {
   padding: 14px 18px; margin: 16px 0;
@@ -134,72 +135,6 @@ pre code { background: none; color: var(--text); padding: 0; font-size: inherit;
 .tip-box  .box-label { color: var(--blue); }
 .warn-box .box-label { color: var(--coral); }
 .good-box .box-label { color: var(--green); }
-
-.demo {
-  background: #030810;
-  border: 1px solid var(--border2);
-  padding: 20px;
-  margin: 16px 0;
-}
-.demo-label {
-  font-family: 'Source Code Pro', monospace;
-  font-size: 10px; letter-spacing: 2px; color: var(--muted);
-  margin-bottom: 14px; text-transform: uppercase;
-}
-.d-block {
-  background: rgba(0,212,170,.12);
-  border: 1px solid var(--teal-b);
-  color: var(--teal);
-  font-family: 'Source Code Pro', monospace; font-size: 12px;
-  padding: 8px 14px; margin-bottom: 4px;
-}
-.d-inline {
-  background: rgba(255,200,69,.12);
-  border: 1px solid rgba(255,200,69,.3);
-  color: var(--gold);
-  font-family: 'Source Code Pro', monospace; font-size: 12px;
-  padding: 4px 10px;
-}
-.d-inline-block {
-  display: inline-block;
-  background: rgba(192,132,252,.12);
-  border: 1px solid rgba(192,132,252,.3);
-  color: var(--violet);
-  font-family: 'Source Code Pro', monospace; font-size: 12px;
-  padding: 8px 0; width: 110px; text-align: center;
-  margin-right: 4px; vertical-align: top;
-}
-.d-relative {
-  position: relative;
-  background: rgba(91,156,246,.08);
-  border: 1px dashed rgba(91,156,246,.35);
-  color: var(--blue);
-  font-family: 'Source Code Pro', monospace; font-size: 12px;
-  padding: 16px; height: 110px;
-}
-.d-absolute {
-  position: absolute;
-  top: 12px; right: 12px;
-  background: var(--coral); color: var(--bg);
-  font-family: 'Source Code Pro', monospace; font-size: 11px;
-  padding: 4px 10px;
-}
-.demo-scroll {
-  height: 160px; overflow-y: auto;
-  scroll-behavior: smooth;
-}
-.d-sticky {
-  position: sticky; top: 0;
-  background: rgba(0,212,170,.18);
-  border-bottom: 1px solid var(--teal-b);
-  color: var(--teal);
-  font-family: 'Source Code Pro', monospace; font-size: 12px;
-  padding: 8px 14px;
-}
-.d-content {
-  font-family: 'Source Code Pro', monospace; font-size: 12px;
-  color: var(--muted); padding: 10px 14px; line-height: 2;
-}
 
 .summary-table {
   width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;
@@ -221,31 +156,8 @@ pre code { background: none; color: var(--text); padding: 0; font-size: inherit;
 }
 .back:hover { color: var(--teal); }
 
-.practice-cta {
-  margin-top: 60px;
-  padding: 36px 40px;
-  background: var(--teal-d);
-  border: 1px solid var(--teal-b);
-  display: flex; align-items: center; justify-content: space-between; gap: 24px;
-  flex-wrap: wrap;
-}
-.practice-cta-text h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px; letter-spacing: 1px; color: #fff; margin-bottom: 6px;
-}
-.practice-cta-text p { font-size: 13px; color: var(--muted); }
-.practice-btn {
-  display: inline-block;
-  font-family: 'Source Code Pro', monospace;
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--bg); background: var(--teal);
-  padding: 12px 28px; text-decoration: none; white-space: nowrap;
-  transition: opacity .15s;
-}
-.practice-btn:hover { opacity: .85; }
-
 footer {
-  margin-top: 40px; padding: 20px 0;
+  margin-top: 60px; padding: 20px 0;
   border-top: 1px solid var(--border);
   display: flex; justify-content: space-between;
   font-family: 'Bebas Neue', sans-serif;
@@ -265,11 +177,11 @@ footer {
 
 <header>
   <div class="eyebrow">CSS · Урок 04</div>
-  <h1>Display та <span class="acc">Позиціонування</span></h1>
-  <div class="header-sub">Як елементи розташовуються на сторінці: потік документа, position, z-index, display, float</div>
+  <h1>Візуальні <span class="acc">Правила</span></h1>
+  <div class="header-sub">Шрифт, розмір, вирівнювання, колір, прозорість і фонові зображення</div>
   <div class="header-chips">
     <span class="chip t">Теорія</span>
-    <span class="chip">~45 хв</span>
+    <span class="chip">~25 хв</span>
   </div>
 </header>
 
@@ -277,21 +189,19 @@ footer {
 <div class="step">
   <div class="step-num">01</div>
   <div class="step-body">
-    <h2>Потік документа</h2>
-    <p>За замовчуванням браузер розміщує елементи <strong>зверху вниз</strong> у порядку їх появи в HTML. Це називається <strong>нормальним потоком (normal flow)</strong>.</p>
-    <p>Блокові елементи (<code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>) займають весь рядок і стоять один під одним. Рядкові елементи (<code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>) течуть як слова в тексті.</p>
-<div class="demo">
-  <div class="demo-label">Так виглядає нормальний потік</div>
-  <div class="d-block">&lt;div&gt; — блоковий, займає весь рядок</div>
-  <div class="d-block">&lt;div&gt; — наступний блок, теж на новому рядку</div>
-  <div style="margin-top:4px">
-    <span class="d-inline">&lt;span&gt;</span>
-    <span class="d-inline">&lt;span&gt;</span>
-    <span class="d-inline">&lt;a&gt;</span>
-    <span style="font-family:'Source Code Pro',monospace;font-size:12px;color:var(--muted)"> ← рядкові, течуть як слова</span>
-  </div>
-</div>
-    <p>Властивості <code>position</code> та <code>display</code> дозволяють змінити цей потік і розмістити елементи саме так, як потрібно.</p>
+    <h2>Шрифт (font-family)</h2>
+    <p>Властивість <code>font-family</code> задає шрифт тексту. Якщо назва шрифту складається з кількох слів — вона береться в лапки:</p>
+<pre><span class="sel">h1</span> {
+  <span class="prop">font-family</span>: <span class="val">Garamond</span>;
+}
+
+<span class="sel">h2</span> {
+  <span class="prop">font-family</span>: <span class="val">"Courier New"</span>; <span class="cmt">/* кілька слів — у лапках */</span>
+}</pre>
+    <div class="tip-box">
+      <div class="box-label">💡 ПІДКАЗКА</div>
+      Шрифт повинен бути встановлений на комп'ютері користувача. Стандартний шрифт браузера — <strong>Times New Roman</strong>. Для веб-шрифтів використовуйте Google Fonts.
+    </div>
   </div>
 </div>
 
@@ -299,18 +209,12 @@ footer {
 <div class="step">
   <div class="step-num">02</div>
   <div class="step-body">
-    <h2>position: relative</h2>
-    <p>Елемент залишається в потоці, але може бути <strong>зсунутий</strong> відносно свого нормального місця за допомогою <code>top</code>, <code>left</code>, <code>right</code>, <code>bottom</code>.</p>
-<pre><span class="sel">.card</span> {
-  <span class="prop">position</span>: <span class="val">relative</span>;
-  <span class="prop">top</span>:      <span class="val">10px</span>;  <span class="cmt">/* зсув вниз на 10px */</span>
-  <span class="prop">left</span>:     <span class="val">20px</span>;  <span class="cmt">/* зсув вправо на 20px */</span>
+    <h2>Розмір шрифту (font-size)</h2>
+    <p>Властивість <code>font-size</code> задає розмір тексту. Найпоширеніша одиниця — пікселі (<code>px</code>):</p>
+<pre><span class="sel">p</span> {
+  <span class="prop">font-size</span>: <span class="val">18px</span>;
 }</pre>
-    <div class="tip-box">
-      <div class="box-label">💡 ГОЛОВНА РОЛЬ</div>
-      Найчастіше <code>position: relative</code> використовують <strong>не для зсуву</strong>, а щоб зробити елемент <strong>«контейнером позиціонування»</strong> для вкладених <code>absolute</code>-елементів.
-    </div>
-    <p>Місце, яке елемент займав у потоці, <strong>зберігається</strong> — інші елементи не «заповнюють» його позицію.</p>
+    <p>Також можна використовувати <code>em</code> (відносно батьківського елемента), <code>rem</code> (відносно кореневого елемента), <code>%</code>.</p>
   </div>
 </div>
 
@@ -318,28 +222,11 @@ footer {
 <div class="step">
   <div class="step-num">03</div>
   <div class="step-body">
-    <h2>position: absolute</h2>
-    <p>Елемент <strong>повністю виходить з потоку</strong> і позиціонується відносно найближчого предка з <code>position</code> (не static). Якщо такого предка немає — відносно вікна браузера.</p>
-<pre><span class="sel">.parent</span> {
-  <span class="prop">position</span>: <span class="val">relative</span>; <span class="cmt">/* контейнер */</span>
-}
-
-<span class="sel">.badge</span> {
-  <span class="prop">position</span>: <span class="val">absolute</span>;
-  <span class="prop">top</span>:      <span class="val">16px</span>;
-  <span class="prop">right</span>:    <span class="val">16px</span>; <span class="cmt">/* кут батьківського елемента */</span>
-}</pre>
-<div class="demo">
-  <div class="demo-label">Живий приклад — .badge всередині .parent</div>
-  <div class="d-relative">
-    .parent — position: relative
-    <div class="d-absolute">.badge</div>
-  </div>
-</div>
-    <div class="warn-box">
-      <div class="box-label">⚠ ВАЖЛИВО</div>
-      Absolute-елемент <strong>не займає місця</strong> в потоці — решта елементів його ігнорують і можуть перекриватися з ним.
-    </div>
+    <h2>Жирність шрифту (font-weight)</h2>
+    <p>Властивість <code>font-weight</code> задає товщину (жирність) шрифту:</p>
+<pre><span class="sel">p</span>    { <span class="prop">font-weight</span>: <span class="val">bold</span>; }   <span class="cmt">/* жирний */</span>
+<span class="sel">span</span> { <span class="prop">font-weight</span>: <span class="val">normal</span>; } <span class="cmt">/* звичайний */</span></pre>
+    <p>Замість ключових слів можна використовувати числа: <code>100</code> (найтонший) … <code>900</code> (найжирніший). Стандартне значення — <code>400</code>, жирне — <code>700</code>.</p>
   </div>
 </div>
 
@@ -347,19 +234,11 @@ footer {
 <div class="step">
   <div class="step-num">04</div>
   <div class="step-body">
-    <h2>position: fixed</h2>
-    <p>Елемент фіксується відносно <strong>вікна браузера (viewport)</strong>. Він <strong>не рухається при прокрутці</strong>.</p>
-<pre><span class="sel">.header</span> {
-  <span class="prop">position</span>: <span class="val">fixed</span>;
-  <span class="prop">top</span>:      <span class="val">0</span>;
-  <span class="prop">width</span>:    <span class="val">100%</span>;
-  <span class="prop">z-index</span>:  <span class="val">100</span>;
-}</pre>
-    <p>Типові застосування: навігаційна шапка, кнопка «вгору», чат-кнопка, cookie-банер.</p>
-    <div class="tip-box">
-      <div class="box-label">💡 КОМПЕНСАЦІЯ</div>
-      Fixed-елемент виходить з потоку. Щоб вміст не ховався під шапкою, додайте <code>padding-top</code> до <code>body</code> — рівний висоті шапки.
-    </div>
+    <h2>Вирівнювання тексту (text-align)</h2>
+    <p>Властивість <code>text-align</code> керує горизонтальним вирівнюванням тексту всередині елемента:</p>
+<pre><span class="sel">h1</span> { <span class="prop">text-align</span>: <span class="val">center</span>; } <span class="cmt">/* по центру */</span>
+<span class="sel">p</span>  { <span class="prop">text-align</span>: <span class="val">left</span>; }   <span class="cmt">/* зліва (за замовчуванням) */</span>
+<span class="sel">.q</span> { <span class="prop">text-align</span>: <span class="val">right</span>; }  <span class="cmt">/* справа */</span></pre>
   </div>
 </div>
 
@@ -367,29 +246,19 @@ footer {
 <div class="step">
   <div class="step-num">05</div>
   <div class="step-body">
-    <h2>position: sticky</h2>
-    <p>Гібрид <code>relative</code> і <code>fixed</code>. Елемент рухається в потоці як звичайний, але <strong>«прилипає»</strong> до краю viewport при прокрутці до заданого порогу.</p>
-<pre><span class="sel">.sidebar</span> {
-  <span class="prop">position</span>: <span class="val">sticky</span>;
-  <span class="prop">top</span>:      <span class="val">80px</span>; <span class="cmt">/* прилипає коли залишається 80px до верху */</span>
+    <h2>Колір (color та background-color)</h2>
+    <p><code>color</code> — колір тексту. <code>background-color</code> — колір фону елемента:</p>
+<pre><span class="sel">h1</span> {
+  <span class="prop">color</span>: <span class="val">red</span>;             <span class="cmt">/* колір тексту */</span>
+  <span class="prop">background-color</span>: <span class="val">blue</span>; <span class="cmt">/* колір фону */</span>
 }</pre>
-<div class="demo demo-scroll">
-  <div class="demo-label" style="padding:0 14px">Прокрути вниз — заголовок прилипне ↓</div>
-  <div class="d-content">текст... текст... текст...</div>
-  <div class="d-sticky">position: sticky — прилипає тут</div>
-  <div class="d-content">
-    текст після sticky-елемента<br>
-    більше тексту...<br>
-    ще більше тексту...<br>
-    прокручуй далі...<br>
-    і ще рядок...<br>
-    заголовок залишається вгорі
-  </div>
-</div>
-    <div class="warn-box">
-      <div class="box-label">⚠ ОБМЕЖЕННЯ</div>
-      Sticky не працює, якщо батьківський елемент має <code>overflow: hidden</code> або <code>overflow: auto</code>.
-    </div>
+    <p>Колір можна задавати різними способами:</p>
+    <ul>
+      <li>Назва: <code>red</code>, <code>coral</code>, <code>teal</code></li>
+      <li>HEX: <code>#ff0000</code>, <code>#00d4aa</code></li>
+      <li>RGB: <code>rgb(255, 0, 0)</code></li>
+      <li>RGBA (з прозорістю): <code>rgba(0, 212, 170, 0.5)</code></li>
+    </ul>
   </div>
 </div>
 
@@ -397,29 +266,18 @@ footer {
 <div class="step">
   <div class="step-num">06</div>
   <div class="step-body">
-    <h2>z-index — порядок шарів</h2>
-    <p>Коли елементи перекриваються, <code>z-index</code> визначає, хто буде «зверху». Більший номер — вище.</p>
-<pre><span class="sel">.header</span> {
-  <span class="prop">position</span>: <span class="val">fixed</span>;
-  <span class="prop">z-index</span>:  <span class="val">100</span>;
+    <h2>Прозорість (opacity)</h2>
+    <p>Властивість <code>opacity</code> задає прозорість всього елемента. Значення від <code>0</code> (повністю прозорий) до <code>1</code> (повністю непрозорий):</p>
+<pre><span class="sel">.overlay</span> {
+  <span class="prop">opacity</span>: <span class="val">0.5</span>; <span class="cmt">/* 50% прозорості */</span>
 }
 
-<span class="sel">.popup</span> {
-  <span class="prop">position</span>: <span class="val">absolute</span>;
-  <span class="prop">z-index</span>:  <span class="val">200</span>; <span class="cmt">/* поверх header */</span>
-}
-
-<span class="sel">.overlay</span> {
-  <span class="prop">position</span>: <span class="val">fixed</span>;
-  <span class="prop">z-index</span>:  <span class="val">150</span>; <span class="cmt">/* між header і popup */</span>
+<span class="sel">.hidden</span> {
+  <span class="prop">opacity</span>: <span class="val">0</span>;   <span class="cmt">/* невидимий, але займає місце */</span>
 }</pre>
-    <div class="warn-box">
-      <div class="box-label">⚠ УМОВА</div>
-      <code>z-index</code> працює <strong>лише на позиціонованих елементах</strong> — тих, що мають <code>position</code>, відмінний від <code>static</code> (тобто relative, absolute, fixed або sticky).
-    </div>
     <div class="tip-box">
-      <div class="box-label">💡 КОНВЕНЦІЯ</div>
-      У реальних проектах задають «рівні»: контент — 1–10, шапка — 100, модальне вікно — 1000, tooltip — 9999.
+      <div class="box-label">💡 ПІДКАЗКА</div>
+      <code>opacity</code> впливає на весь елемент разом із вмістом. Для прозорості лише фону використовуйте <code>rgba()</code> у <code>background-color</code>.
     </div>
   </div>
 </div>
@@ -428,151 +286,46 @@ footer {
 <div class="step">
   <div class="step-num">07</div>
   <div class="step-body">
-    <h2>display: inline</h2>
-    <p>Елемент ведеться як частина тексту: <strong>не починає новий рядок</strong> і займає рівно стільки ширини, скільки потрібно для вмісту.</p>
-<pre><span class="sel">span</span>    { <span class="prop">display</span>: <span class="val">inline</span>; }   <span class="cmt">/* за замовчуванням */</span>
-<span class="sel">a</span>       { <span class="prop">display</span>: <span class="val">inline</span>; }
-<span class="sel">strong</span>  { <span class="prop">display</span>: <span class="val">inline</span>; }</pre>
-    <p>Обмеження <code>display: inline</code>:</p>
-    <ul>
-      <li><code>width</code> та <code>height</code> — не мають ефекту</li>
-      <li>Вертикальні <code>margin</code> (top/bottom) — не впливають на макет</li>
-      <li>Горизонтальні <code>padding</code> і <code>margin</code> — працюють</li>
-    </ul>
-    <div class="tip-box">
-      <div class="box-label">💡 INLINE ЗА ЗАМОВЧУВАННЯМ</div>
-      <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>
-    </div>
+    <h2>Фонове зображення (background-image)</h2>
+    <p>Властивість <code>background-image</code> задає зображення як фон елемента:</p>
+<pre><span class="sel">.hero</span> {
+  <span class="prop">background-image</span>: <span class="kw">url</span>(<span class="str">"https://example.com/photo.jpg"</span>);
+}</pre>
+    <p>Зазвичай разом із зображенням використовують додаткові властивості:</p>
+<pre><span class="sel">.hero</span> {
+  <span class="prop">background-image</span>:    <span class="kw">url</span>(<span class="str">"photo.jpg"</span>);
+  <span class="prop">background-size</span>:     <span class="val">cover</span>;   <span class="cmt">/* заповнює весь елемент */</span>
+  <span class="prop">background-position</span>: <span class="val">center</span>;  <span class="cmt">/* центрує зображення */</span>
+  <span class="prop">background-repeat</span>:   <span class="val">no-repeat</span>;
+}</pre>
   </div>
 </div>
 
-<!-- STEP 08 -->
+<!-- STEP 08 — Summary -->
 <div class="step">
   <div class="step-num">08</div>
   <div class="step-body">
-    <h2>display: block</h2>
-    <p>Елемент <strong>починає новий рядок</strong> і займає всю доступну ширину батьківського контейнера.</p>
-<pre><span class="sel">div</span> { <span class="prop">display</span>: <span class="val">block</span>; }   <span class="cmt">/* за замовчуванням */</span>
-<span class="sel">p</span>   { <span class="prop">display</span>: <span class="val">block</span>; }
-<span class="sel">h1</span>  { <span class="prop">display</span>: <span class="val">block</span>; }</pre>
-    <p>Переваги <code>display: block</code>:</p>
-    <ul>
-      <li>Можна задати <code>width</code>, <code>height</code></li>
-      <li>Всі <code>padding</code> та <code>margin</code> (у тому числі top/bottom) — працюють</li>
-      <li><code>margin: 0 auto</code> — центрує елемент горизонтально</li>
-    </ul>
-    <div class="tip-box">
-      <div class="box-label">💡 BLOCK ЗА ЗАМОВЧУВАННЯМ</div>
-      <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;–&lt;h6&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code>
-    </div>
-  </div>
-</div>
-
-<!-- STEP 09 -->
-<div class="step">
-  <div class="step-num">09</div>
-  <div class="step-body">
-    <h2>display: inline-block</h2>
-    <p>Гібрид: елементи <strong>стоять в рядок</strong> (як inline), але їм можна задавати <strong>ширину, висоту і всі відступи</strong> (як block).</p>
-<pre><span class="sel">.button</span> {
-  <span class="prop">display</span>:        <span class="val">inline-block</span>;
-  <span class="prop">width</span>:          <span class="val">120px</span>;
-  <span class="prop">height</span>:         <span class="val">40px</span>;
-  <span class="prop">padding</span>:        <span class="val">8px 16px</span>;
-  <span class="prop">vertical-align</span>: <span class="val">top</span>; <span class="cmt">/* вирівнювання по верху */</span>
-}</pre>
-<div class="demo">
-  <div class="demo-label">display: block — кожен на новому рядку</div>
-  <div class="d-block" style="margin-bottom:8px">block елемент</div>
-  <div class="d-block" style="margin-bottom:20px">block елемент</div>
-  <div class="demo-label">display: inline-block — стоять в рядок, але мають ширину і висоту</div>
-  <span class="d-inline-block">inline-block</span>
-  <span class="d-inline-block">inline-block</span>
-  <span class="d-inline-block">inline-block</span>
-</div>
-    <p>Сьогодні <code>inline-block</code> часто замінюють <code>flex</code>, але він досі корисний для <strong>кнопок, іконок, чіпів</strong>.</p>
-  </div>
-</div>
-
-<!-- STEP 10 -->
-<div class="step">
-  <div class="step-num">10</div>
-  <div class="step-body">
-    <h2>Підсумкова таблиця</h2>
+    <h2>Підсумок</h2>
     <table class="summary-table">
       <thead>
-        <tr>
-          <th>Властивість</th>
-          <th>Значення</th>
-          <th>Ефект</th>
-          <th>У потоці?</th>
-        </tr>
+        <tr><th>Властивість</th><th>Що робить</th><th>Приклад</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td><code>position</code></td>
-          <td><code>relative</code></td>
-          <td>Зсув від свого місця; контейнер для absolute</td>
-          <td>Так</td>
-        </tr>
-        <tr>
-          <td><code>position</code></td>
-          <td><code>absolute</code></td>
-          <td>Відносно найближчого positioned предка</td>
-          <td>Ні</td>
-        </tr>
-        <tr>
-          <td><code>position</code></td>
-          <td><code>fixed</code></td>
-          <td>Фіксований відносно вікна браузера</td>
-          <td>Ні</td>
-        </tr>
-        <tr>
-          <td><code>position</code></td>
-          <td><code>sticky</code></td>
-          <td>Прилипає при прокрутці до порогу</td>
-          <td>Так / Ні*</td>
-        </tr>
-        <tr>
-          <td><code>z-index</code></td>
-          <td><code>число</code></td>
-          <td>Порядок шарів (більше = вище)</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td><code>display</code></td>
-          <td><code>inline</code></td>
-          <td>Рядковий; без width/height</td>
-          <td>Так</td>
-        </tr>
-        <tr>
-          <td><code>display</code></td>
-          <td><code>block</code></td>
-          <td>Новий рядок; повна ширина</td>
-          <td>Так</td>
-        </tr>
-        <tr>
-          <td><code>display</code></td>
-          <td><code>inline-block</code></td>
-          <td>Рядковий + підтримує width/height</td>
-          <td>Так</td>
-        </tr>
+        <tr><td><code>font-family</code></td><td>Тип шрифту</td><td><code>font-family: Arial;</code></td></tr>
+        <tr><td><code>font-size</code></td><td>Розмір шрифту</td><td><code>font-size: 18px;</code></td></tr>
+        <tr><td><code>font-weight</code></td><td>Жирність шрифту</td><td><code>font-weight: bold;</code></td></tr>
+        <tr><td><code>text-align</code></td><td>Вирівнювання тексту</td><td><code>text-align: center;</code></td></tr>
+        <tr><td><code>color</code></td><td>Колір тексту</td><td><code>color: #333;</code></td></tr>
+        <tr><td><code>background-color</code></td><td>Колір фону</td><td><code>background-color: teal;</code></td></tr>
+        <tr><td><code>opacity</code></td><td>Прозорість елемента</td><td><code>opacity: 0.7;</code></td></tr>
+        <tr><td><code>background-image</code></td><td>Фонове зображення</td><td><code>background-image: url("img.jpg");</code></td></tr>
       </tbody>
     </table>
-    <p style="font-size:12px;color:var(--muted);margin-top:8px;">* <code>sticky</code> — у потоці до моменту «прилипання», потім поводиться як fixed.</p>
   </div>
-</div>
-
-<div class="practice-cta" style="opacity:.4; pointer-events:none;">
-  <div class="practice-cta-text">
-    <h2>Практика · Урок 04</h2>
-    <p>Практичне завдання з'явиться після уроку.</p>
-  </div>
-  <span class="practice-btn" style="background:var(--muted); cursor:default;">Скоро</span>
 </div>
 
 <footer>
-  <span>CSS · УРОК 04</span>
+  <span>CSS: ВІЗУАЛЬНІ ПРАВИЛА · УРОК 04</span>
 </footer>
 
 </div>
