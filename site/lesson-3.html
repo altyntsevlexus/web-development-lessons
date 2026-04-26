@@ -194,6 +194,24 @@ footer {
   font-size: 11px; letter-spacing: 2px; color: var(--muted);
 }
 
+.demo {
+  background: #030810;
+  border: 1px solid var(--border2);
+  padding: 20px;
+  margin: 16px 0;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 12px;
+  text-align: center;
+}
+.demo-label {
+  font-size: 10px; letter-spacing: 2px; color: var(--muted);
+  margin-bottom: 14px; text-transform: uppercase; text-align: left;
+}
+.box-margin  { background: rgba(255,122,110,.07); border: 2px dashed rgba(255,122,110,.4); padding: 16px; color: var(--coral); }
+.box-border  { background: rgba(255,200,69,.07);  border: 3px solid rgba(255,200,69,.45); padding: 14px; color: var(--gold);  margin-top: 10px; }
+.box-padding { background: rgba(91,156,246,.08);  border: 1px dashed rgba(91,156,246,.4); padding: 14px; color: var(--blue);  margin-top: 10px; }
+.box-content { background: rgba(0,212,170,.1);    border: 1px solid rgba(0,212,170,.35);  padding: 12px; color: var(--teal);  margin-top: 10px; }
+
 @media(max-width:560px){
   .step { grid-template-columns: 1fr; }
   .step-num { font-size: 32px; margin-bottom: 8px; }
@@ -223,19 +241,21 @@ footer {
   <div class="step-body">
     <h2>Що таке блокова модель?</h2>
     <p>Усі елементи на веб-сторінці браузер розглядає як <strong>прямокутні блоки (box)</strong>. Блокова модель визначає чотири шари кожного елемента:</p>
-<div class="diagram">┌─────────────────────────────────┐
-│            MARGIN               │
-│  ┌───────────────────────────┐  │
-│  │          BORDER           │  │
-│  │  ┌─────────────────────┐  │  │
-│  │  │       PADDING       │  │  │
-│  │  │  ┌───────────────┐  │  │  │
-│  │  │  │    CONTENT    │  │  │  │
-│  │  │  │  width×height │  │  │  │
-│  │  │  └───────────────┘  │  │  │
-│  │  └─────────────────────┘  │  │
-│  └───────────────────────────┘  │
-└─────────────────────────────────┘</div>
+<div class="demo">
+  <div class="demo-label">Чотири шари кожного елемента</div>
+  <div class="box-margin">
+    MARGIN — зовнішній відступ
+    <div class="box-border">
+      BORDER — рамка
+      <div class="box-padding">
+        PADDING — внутрішній відступ
+        <div class="box-content">
+          CONTENT<br>width × height
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     <ul>
       <li><strong>width / height</strong> — розмір області вмісту</li>
       <li><strong>padding</strong> — простір між вмістом і рамкою</li>
