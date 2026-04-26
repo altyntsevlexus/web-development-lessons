@@ -131,10 +131,9 @@ h1 .acc { color: var(--teal); }
 /* ── CARDS GRID ── */
 .ref-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 12px;
 }
-.ref-grid.wide { grid-template-columns: 1fr; }
 
 .ref-card {
   background: var(--card);
@@ -571,7 +570,7 @@ footer {
 
   <div class="ref-grid">
 
-    <div class="ref-card" style="--card-accent: var(--c-box); grid-column: 1 / -1;">
+    <div class="ref-card" style="--card-accent: var(--c-box)">
       <div class="ref-prop">Блокова модель — як це виглядає</div>
       <div class="mini-demo">
         <div class="mini-demo-label">margin → border → padding → content</div>
@@ -694,7 +693,7 @@ footer {
 
   <div class="ref-grid">
 
-    <div class="ref-card" style="--card-accent: var(--c-dis); grid-column: 1 / -1;">
+    <div class="ref-card" style="--card-accent: var(--c-dis)">
       <div class="ref-prop">Порівняння трьох значень</div>
       <div class="mini-demo">
         <div class="mini-demo-label">display: block — кожен займає весь рядок</div>
