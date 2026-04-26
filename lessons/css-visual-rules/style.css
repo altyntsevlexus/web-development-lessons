@@ -1,0 +1,163 @@
+/* ================================================================
+   ЗАВДАННЯ 1 — font-family
+   Задайте для всіх заголовків h1, h2 шрифт: 'Georgia', serif
+   ================================================================ */
+
+
+
+/* ================================================================
+   ЗАВДАННЯ 2 — font-size
+   Збільшіть .hero-title до font-size: 3rem
+   ================================================================ */
+
+
+
+/* ================================================================
+   ЗАВДАННЯ 3 — font-weight
+   Зробіть посилання .nav-link жирними: font-weight: bold
+   ================================================================ */
+
+
+
+/* ================================================================
+   ЗАВДАННЯ 4 — text-align
+   Відцентруйте вміст .hero-overlay: text-align: center
+   ================================================================ */
+
+
+
+/* ================================================================
+   ЗАВДАННЯ 5 — color + background-color
+   Задайте для .site-header:
+     background-color: #1a1a2e
+     color: #ffffff
+   ================================================================ */
+
+
+
+/* ================================================================
+   ЗАВДАННЯ 6 — opacity
+   Задайте для .hero-overlay opacity: 0.85
+   Спробуйте різні значення від 0 до 1 — спостерігайте ефект.
+   ================================================================ */
+
+
+
+/* ================================================================
+   ЗАВДАННЯ 7 — background-image
+   Додайте для .hero фонове зображення:
+     background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=80');
+     background-size: cover;
+     background-position: center;
+   ================================================================ */
+
+
+
+/* ================================================================
+   БАЗОВІ СТИЛІ — не змінюйте
+   ================================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #222;
+  line-height: 1.6;
+}
+
+.site-header {
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a2a4a;
+}
+
+.hero-overlay {
+  padding: 40px;
+  color: white;
+}
+
+.hero-subtitle {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.about,
+.tracks {
+  max-width: 800px;
+  margin: 48px auto;
+  padding: 0 32px;
+}
+
+.about .section-title,
+.tracks .section-title {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.about-text {
+  margin-bottom: 14px;
+  line-height: 1.8;
+  color: #444;
+}
+
+.track-list {
+  list-style: none;
+  border-top: 1px solid #eee;
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.track-num {
+  font-size: 0.85rem;
+  color: #999;
+  width: 28px;
+}
+
+.track-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.track-duration {
+  font-size: 0.85rem;
+  color: #999;
+  font-family: monospace;
+}
+
+.site-footer {
+  background-color: #1a1a2e;
+  color: #888;
+  padding: 20px 40px;
+  text-align: center;
+  font-size: 0.85rem;
+}

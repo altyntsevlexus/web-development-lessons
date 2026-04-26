@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Explorer Blog</title>
+  <link rel="stylesheet" href="style-finished.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <h1 class="site-title">Space Explorer Blog</h1>
+    <p class="site-tagline">Your guide to the cosmos</p>
+    <nav class="site-nav">
+      <ul class="nav-list">
+        <li class="nav-item">Home</li>
+        <li class="nav-item">Articles</li>
+        <li class="nav-item">About</li>
+        <li class="nav-item nav-item--soon">Premium</li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ЗАВДАННЯ 1 — Height & Width
+       Цей div має колір фону, але висота не задана.
+       Змініть height з 200px на 400px. -->
+  <div class="hero-banner"></div>
+
+  <main class="main-content">
+
+    <!-- ЗАВДАННЯ 5б — container
+         Весь вміст сторінки розтягується на повну ширину.
+         Додайте .container max-width і margin: 0 auto, щоб відцентрувати його. -->
+    <div class="container">
+
+    <!-- ЗАВДАННЯ 2 — Border
+         Картка статті не має рамки. Вона зливається з фоном —
+         не видно, де починається і де закінчується елемент. -->
+    <div class="article-preview">
+      <h2 class="article-preview__title">Jupiter: The Giant Planet</h2>
+      <p class="article-preview__text">Jupiter is the largest planet in the Solar System. Its famous Great Red Spot is a storm that has been raging for over 350 years. One day on Jupiter lasts only 10 hours.</p>
+    </div>
+
+    <!-- ЗАВДАННЯ 3 — Border Radius
+         Частина А: картка статті вище має гострі кути — закругліть їх.
+         Частина Б: аватар автора — квадрат. Зробіть його ідеальним колом. -->
+    <div class="team-section">
+      <div class="author-card">
+        <div class="author-avatar"></div>
+        <p class="author-name">Dr. Anna Kowalski</p>
+        <p class="author-role">Astrophysicist</p>
+      </div>
+    </div>
+
+    <!-- ЗАВДАННЯ 4 — Padding
+         Ця картка має рамку, але текст впритул до краю.
+         Додайте padding, щоб створити простір між текстом і рамкою. -->
+    <div class="fact-card">
+      <h3 class="fact-card__title">Did you know?</h3>
+      <p class="fact-card__text">Light from the Sun takes approximately 8 minutes and 20 seconds to reach Earth. When you look at the Sun, you are seeing it as it was over 8 minutes ago.</p>
+    </div>
+
+    <!-- ЗАВДАННЯ 5а — Margin
+         Чотири абзаци стоять впритул без жодного проміжку.
+         Додайте margin-top до кожного <p>, щоб розділити їх. -->
+    <section class="article-body">
+      <h2 class="section-title">The Solar System</h2>
+      <p>The Solar System formed 4.6 billion years ago from the gravitational collapse of a giant interstellar molecular cloud.</p>
+      <p>The vast majority of the system's mass is in the Sun, with most of the remaining mass contained in the planet Jupiter.</p>
+      <p>The four inner planets — Mercury, Venus, Earth and Mars — are terrestrial planets, composed primarily of rock and metal.</p>
+      <p>Beyond the planets, the Solar System is also home to regions populated by smaller objects, including the asteroid belt between Mars and Jupiter.</p>
+    </section>
+
+    <!-- ЗАВДАННЯ 5б — margin: 0 auto
+         Банер розсилки має фіксовану ширину 500px, але прилип до лівого краю.
+         Відцентруйте його за допомогою margin: 0 auto. -->
+    <div class="newsletter-banner">
+      <p class="newsletter-banner__text">Subscribe — new space articles every Monday!</p>
+    </div>
+
+    <!-- ЗАВДАННЯ 6 — Min / Max Width & Height
+         Цитата розтягується на весь екран на широких моніторах.
+         Додайте max-width, щоб вона залишалась зручною для читання.
+         Додайте min-height, щоб вона не стискалася занадто. -->
+    <blockquote class="featured-quote">
+      "The universe is under no obligation to make sense to you."
+      <cite class="featured-quote__author">— Neil deGrasse Tyson</cite>
+    </blockquote>
+
+    <!-- ЗАВДАННЯ 7 — Overflow
+         Журнал місії має фіксовану висоту 120px, але вміст не вміщується.
+         Спробуйте: overflow: hidden / overflow: scroll / overflow: visible -->
+    <div class="mission-log">
+      <h3 class="mission-log__title">Mission Log</h3>
+      <p>Day 1: Launched from Kennedy Space Center at 09:00 UTC.</p>
+      <p>Day 3: Successfully entered Earth orbit. All systems nominal.</p>
+      <p>Day 7: Passed the Moon. Beautiful view of the lunar surface.</p>
+      <p>Day 14: Crossing the asteroid belt. Minor debris detected, no threat.</p>
+      <p>Day 30: Jupiter is visible with the naked eye. Incredible sight.</p>
+      <p>Day 45: Entered Jupiter's gravitational influence. Preparing for orbital insertion.</p>
+    </div>
+
+    <!-- ЗАВДАННЯ 8 — Resetting Defaults
+         Розкоментуйте блок * { margin: 0; padding: 0; } на початку style.css -->
+
+    <!-- ЗАВДАННЯ 9 — Visibility
+         Пункт «Premium» у навігації вгорі (.nav-item--soon) має бути прихований,
+         але займати місце в меню. Додайте visibility: hidden.
+         Потім порівняйте з display: none — у чому різниця? -->
+
+    </div><!-- /.container -->
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-footer__text">© 2026 Space Explorer Blog. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

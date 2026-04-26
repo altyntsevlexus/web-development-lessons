@@ -1,0 +1,150 @@
+/* ================================================================
+   ВСІ ЗАВДАННЯ ВИКОНАНІ
+   ================================================================ */
+
+/* Завдання 1 — font-family */
+h1, h2 {
+  font-family: 'Georgia', serif;
+}
+
+/* Завдання 2 — font-size */
+.hero-title {
+  font-size: 3rem;
+}
+
+/* Завдання 3 — font-weight */
+.nav-link {
+  font-weight: bold;
+}
+
+/* Завдання 4 — text-align */
+.hero-overlay {
+  text-align: center;
+}
+
+/* Завдання 5 — color + background-color */
+.site-header {
+  background-color: #1a1a2e;
+  color: #ffffff;
+}
+
+/* Завдання 6 — opacity */
+.hero-overlay {
+  opacity: 0.9;
+}
+
+/* Завдання 7 — background-image */
+.hero {
+  background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+/* ================================================================
+   БАЗОВІ СТИЛІ
+   ================================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #222;
+  line-height: 1.6;
+}
+
+.site-header {
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a2a4a;
+}
+
+.hero-overlay {
+  padding: 40px;
+  color: white;
+}
+
+.hero-subtitle {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.about,
+.tracks {
+  max-width: 800px;
+  margin: 48px auto;
+  padding: 0 32px;
+}
+
+.about .section-title,
+.tracks .section-title {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.about-text {
+  margin-bottom: 14px;
+  line-height: 1.8;
+  color: #444;
+}
+
+.track-list {
+  list-style: none;
+  border-top: 1px solid #eee;
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.track-num {
+  font-size: 0.85rem;
+  color: #999;
+  width: 28px;
+}
+
+.track-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.track-duration {
+  font-size: 0.85rem;
+  color: #999;
+  font-family: monospace;
+}
+
+.site-footer {
+  background-color: #1a1a2e;
+  color: #888;
+  padding: 20px 40px;
+  text-align: center;
+  font-size: 0.85rem;
+}

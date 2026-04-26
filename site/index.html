@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS · 7 клас · Altyntsev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:     #0d1117;
+    --card:   #161b22;
+    --border: #30363d;
+    --teal:   #00d4aa;
+    --coral:  #ff6b6b;
+    --gold:   #ffd700;
+    --text:   #e6edf3;
+    --muted:  #8b949e;
+    --locked: #21262d;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    padding: 48px 24px 32px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .school-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+
+  header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 8vw, 72px);
+    letter-spacing: 6px;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  header h1 span { color: var(--teal); }
+
+  .subtitle {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  main {
+    flex: 1;
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  .section-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  .lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-decoration: none;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card.available { cursor: pointer; }
+
+  .card.available:hover {
+    border-color: var(--teal);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0, 212, 170, 0.15);
+  }
+
+  .card.available::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), #00a88a);
+  }
+
+  .card.locked {
+    opacity: 0.45;
+    cursor: default;
+  }
+
+  .card-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--teal);
+  }
+
+  .card.locked .card-num { color: var(--muted); }
+
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .tag {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(0, 212, 170, 0.1);
+    color: var(--teal);
+    border: 1px solid rgba(0, 212, 170, 0.2);
+  }
+
+  .card.locked .tag {
+    background: rgba(139, 148, 158, 0.08);
+    color: var(--muted);
+    border-color: rgba(139, 148, 158, 0.15);
+  }
+
+  .card-status {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: auto;
+    padding-top: 12px;
+  }
+
+  .card.available .card-status { color: var(--teal); }
+  .card.locked   .card-status { color: var(--muted); }
+
+  footer {
+    padding: 20px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    .lessons-grid { grid-template-columns: 1fr; }
+    footer { justify-content: center; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="school-label">ORT 141 НУШ · 7 КЛАС</div>
+  <h1>WEB / <span>CSS</span></h1>
+  <div class="subtitle">Самостійне опрацювання · Матеріали до уроків</div>
+</header>
+
+<main>
+  <div class="section-label">УРОКИ</div>
+  <div class="lessons-grid">
+
+    <a class="card available" href="lesson-1.html">
+      <div class="card-num">УРОК 01</div>
+      <div class="card-title">Селектори</div>
+      <div class="card-desc">Що таке CSS, підключення файлу, типи селекторів, специфічність, псевдокласи</div>
+      <div class="card-tags">
+        <span class="tag">.class</span>
+        <span class="tag">#id</span>
+        <span class="tag">tag</span>
+        <span class="tag">:hover</span>
+        <span class="tag">specificity</span>
+      </div>
+      <div class="card-status">→ ВІДКРИТИ</div>
+    </a>
+
+    <a class="card available" href="lesson-2.html">
+      <div class="card-num">УРОК 02</div>
+      <div class="card-title">Візуальні правила</div>
+      <div class="card-desc">Шрифт, розмір, жирність, вирівнювання, колір, прозорість, фонове зображення</div>
+      <div class="card-tags">
+        <span class="tag">font-family</span>
+        <span class="tag">color</span>
+        <span class="tag">opacity</span>
+        <span class="tag">background</span>
+      </div>
+      <div class="card-status">→ ВІДКРИТИ</div>
+    </a>
+
+    <a class="card available" href="lesson-3.html">
+      <div class="card-num">УРОК 03</div>
+      <div class="card-title">Блокова модель</div>
+      <div class="card-desc">Width, height, border, border-radius, padding, margin, overflow, visibility</div>
+      <div class="card-tags">
+        <span class="tag">padding</span>
+        <span class="tag">margin</span>
+        <span class="tag">border</span>
+        <span class="tag">overflow</span>
+      </div>
+      <div class="card-status">→ ВІДКРИТИ</div>
+    </a>
+
+    <a class="card available" href="lesson-4.html">
+      <div class="card-num">УРОК 04</div>
+      <div class="card-title">Display та Позиціонування</div>
+      <div class="card-desc">position, z-index, display: block/inline/inline-block, float, clear</div>
+      <div class="card-tags">
+        <span class="tag">position</span>
+        <span class="tag">z-index</span>
+        <span class="tag">display</span>
+        <span class="tag">float</span>
+      </div>
+      <div class="card-status">→ ВІДКРИТИ</div>
+    </a>
+
+    <div class="card locked">
+      <div class="card-num">УРОК 05</div>
+      <div class="card-title">Скоро</div>
+      <div class="card-desc">Матеріали з'являться після уроку</div>
+      <div class="card-tags"></div>
+      <div class="card-status">СКОРО</div>
+    </div>
+
+    <div class="card locked">
+      <div class="card-num">УРОК 06</div>
+      <div class="card-title">Скоро</div>
+      <div class="card-desc">Матеріали з'являться після уроку</div>
+      <div class="card-tags"></div>
+      <div class="card-status">СКОРО</div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <span>CSS · 7 КЛАС · ORT 141 НУШ</span>
+  <span>2025–2026</span>
+</footer>
+
+</body>
+</html>
