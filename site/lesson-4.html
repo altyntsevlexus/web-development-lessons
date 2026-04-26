@@ -135,12 +135,70 @@ pre code { background: none; color: var(--text); padding: 0; font-size: inherit;
 .warn-box .box-label { color: var(--coral); }
 .good-box .box-label { color: var(--green); }
 
-.diagram {
+.demo {
+  background: #030810;
+  border: 1px solid var(--border2);
+  padding: 20px;
+  margin: 16px 0;
+}
+.demo-label {
   font-family: 'Source Code Pro', monospace;
-  font-size: 12px; line-height: 1.5;
-  background: #030810; border-left: 3px solid var(--border2);
-  padding: 16px 20px; margin: 16px 0; color: var(--muted);
-  white-space: pre;
+  font-size: 10px; letter-spacing: 2px; color: var(--muted);
+  margin-bottom: 14px; text-transform: uppercase;
+}
+.d-block {
+  background: rgba(0,212,170,.12);
+  border: 1px solid var(--teal-b);
+  color: var(--teal);
+  font-family: 'Source Code Pro', monospace; font-size: 12px;
+  padding: 8px 14px; margin-bottom: 4px;
+}
+.d-inline {
+  background: rgba(255,200,69,.12);
+  border: 1px solid rgba(255,200,69,.3);
+  color: var(--gold);
+  font-family: 'Source Code Pro', monospace; font-size: 12px;
+  padding: 4px 10px;
+}
+.d-inline-block {
+  display: inline-block;
+  background: rgba(192,132,252,.12);
+  border: 1px solid rgba(192,132,252,.3);
+  color: var(--violet);
+  font-family: 'Source Code Pro', monospace; font-size: 12px;
+  padding: 8px 0; width: 110px; text-align: center;
+  margin-right: 4px; vertical-align: top;
+}
+.d-relative {
+  position: relative;
+  background: rgba(91,156,246,.08);
+  border: 1px dashed rgba(91,156,246,.35);
+  color: var(--blue);
+  font-family: 'Source Code Pro', monospace; font-size: 12px;
+  padding: 16px; height: 110px;
+}
+.d-absolute {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: var(--coral); color: var(--bg);
+  font-family: 'Source Code Pro', monospace; font-size: 11px;
+  padding: 4px 10px;
+}
+.demo-scroll {
+  height: 160px; overflow-y: auto;
+  scroll-behavior: smooth;
+}
+.d-sticky {
+  position: sticky; top: 0;
+  background: rgba(0,212,170,.18);
+  border-bottom: 1px solid var(--teal-b);
+  color: var(--teal);
+  font-family: 'Source Code Pro', monospace; font-size: 12px;
+  padding: 8px 14px;
+}
+.d-content {
+  font-family: 'Source Code Pro', monospace; font-size: 12px;
+  color: var(--muted); padding: 10px 14px; line-height: 2;
 }
 
 .summary-table {
@@ -157,9 +215,9 @@ pre code { background: none; color: var(--text); padding: 0; font-size: inherit;
 .summary-table tr:hover td { background: var(--card); }
 
 .back {
-  display: inline-block; margin-bottom: 32px;
+  display: inline-block; margin: 28px 0 32px;
   font-family: 'Source Code Pro', monospace; font-size: 11px;
-  letter-spacing: 2px; color: var(--muted); text-decoration: none; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--text); text-decoration: none; text-transform: uppercase;
 }
 .back:hover { color: var(--teal); }
 
@@ -224,13 +282,17 @@ footer {
     <h2>Потік документа</h2>
     <p>За замовчуванням браузер розміщує елементи <strong>зверху вниз</strong> у порядку їх появи в HTML. Це називається <strong>нормальним потоком (normal flow)</strong>.</p>
     <p>Блокові елементи (<code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>) займають весь рядок і стоять один під одним. Рядкові елементи (<code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>) течуть як слова в тексті.</p>
-<div class="diagram">┌──────────────────────────────────┐
-│  &lt;div&gt;  блок — займає весь рядок  │
-├──────────────────────────────────┤
-│  &lt;div&gt;  наступний блок            │
-├──────────────────────────────────┤
-│  &lt;span&gt; &lt;span&gt; рядкові елементи   │
-└──────────────────────────────────┘</div>
+<div class="demo">
+  <div class="demo-label">Так виглядає нормальний потік</div>
+  <div class="d-block">&lt;div&gt; — блоковий, займає весь рядок</div>
+  <div class="d-block">&lt;div&gt; — наступний блок, теж на новому рядку</div>
+  <div style="margin-top:4px">
+    <span class="d-inline">&lt;span&gt;</span>
+    <span class="d-inline">&lt;span&gt;</span>
+    <span class="d-inline">&lt;a&gt;</span>
+    <span style="font-family:'Source Code Pro',monospace;font-size:12px;color:var(--muted)"> ← рядкові, течуть як слова</span>
+  </div>
+</div>
     <p>Властивості <code>position</code> та <code>display</code> дозволяють змінити цей потік і розмістити елементи саме так, як потрібно.</p>
   </div>
 </div>
@@ -269,13 +331,13 @@ footer {
   <span class="prop">top</span>:      <span class="val">16px</span>;
   <span class="prop">right</span>:    <span class="val">16px</span>; <span class="cmt">/* кут батьківського елемента */</span>
 }</pre>
-<div class="diagram">┌─────────────────────┐
-│ .parent (relative)  │      [.badge] ←─ absolute:
-│                     │       top: 16px, right: 16px
-│           ┌───────┐ │
-│           │ badge │ │
-│           └───────┘ │
-└─────────────────────┘</div>
+<div class="demo">
+  <div class="demo-label">Живий приклад — .badge всередині .parent</div>
+  <div class="d-relative">
+    .parent — position: relative
+    <div class="d-absolute">.badge</div>
+  </div>
+</div>
     <div class="warn-box">
       <div class="box-label">⚠ ВАЖЛИВО</div>
       Absolute-елемент <strong>не займає місця</strong> в потоці — решта елементів його ігнорують і можуть перекриватися з ним.
@@ -313,14 +375,19 @@ footer {
   <span class="prop">position</span>: <span class="val">sticky</span>;
   <span class="prop">top</span>:      <span class="val">80px</span>; <span class="cmt">/* прилипає коли залишається 80px до верху */</span>
 }</pre>
-<div class="diagram">До прокрутки:          Під час прокрутки:
-┌──────────────┐        ┌──────────────┐
-│   header     │        │   header     │ ← fixed
-├──────────────┤        ├──────────────┤
-│   content    │        │   sidebar    │ ← sticky (прилип!)
-│   sidebar    │        │              │
-│              │        │   content    │
-└──────────────┘        └──────────────┘</div>
+<div class="demo demo-scroll">
+  <div class="demo-label" style="padding:0 14px">Прокрути вниз — заголовок прилипне ↓</div>
+  <div class="d-content">текст... текст... текст...</div>
+  <div class="d-sticky">position: sticky — прилипає тут</div>
+  <div class="d-content">
+    текст після sticky-елемента<br>
+    більше тексту...<br>
+    ще більше тексту...<br>
+    прокручуй далі...<br>
+    і ще рядок...<br>
+    заголовок залишається вгорі
+  </div>
+</div>
     <div class="warn-box">
       <div class="box-label">⚠ ОБМЕЖЕННЯ</div>
       Sticky не працює, якщо батьківський елемент має <code>overflow: hidden</code> або <code>overflow: auto</code>.
@@ -416,12 +483,15 @@ footer {
   <span class="prop">padding</span>:        <span class="val">8px 16px</span>;
   <span class="prop">vertical-align</span>: <span class="val">top</span>; <span class="cmt">/* вирівнювання по верху */</span>
 }</pre>
-<div class="diagram">display: block          display: inline-block
-┌──────────────────┐    ┌────┐ ┌────┐ ┌────┐
-│      елемент     │    │    │ │    │ │    │
-├──────────────────┤    └────┘ └────┘ └────┘
-│      елемент     │
-└──────────────────┘</div>
+<div class="demo">
+  <div class="demo-label">display: block — кожен на новому рядку</div>
+  <div class="d-block" style="margin-bottom:8px">block елемент</div>
+  <div class="d-block" style="margin-bottom:20px">block елемент</div>
+  <div class="demo-label">display: inline-block — стоять в рядок, але мають ширину і висоту</div>
+  <span class="d-inline-block">inline-block</span>
+  <span class="d-inline-block">inline-block</span>
+  <span class="d-inline-block">inline-block</span>
+</div>
     <p>Сьогодні <code>inline-block</code> часто замінюють <code>flex</code>, але він досі корисний для <strong>кнопок, іконок, чіпів</strong>.</p>
   </div>
 </div>
