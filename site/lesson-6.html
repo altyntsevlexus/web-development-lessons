@@ -244,6 +244,25 @@ pre code { background: none; color: var(--text); padding: 0; font-size: inherit;
 }
 .practice-btn:hover { opacity: .85; }
 
+.sandbox-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 11px 22px;
+  background: var(--teal-d);
+  border: 1px solid var(--teal-b);
+  color: var(--teal);
+  font-family: 'Source Code Pro', monospace;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none;
+  transition: background .15s, border-color .15s;
+}
+.sandbox-btn:hover { background: rgba(0,212,170,.2); border-color: var(--teal); }
+.sandbox-btn-icon {
+  font-size: 14px; line-height: 1;
+}
+
 footer {
   margin-top: 40px; padding: 20px 0;
   border-top: 1px solid var(--border);
@@ -271,6 +290,9 @@ footer {
     <span class="chip t">Теорія</span>
     <span class="chip">~45 хв</span>
   </div>
+  <a class="sandbox-btn" href="sandbox-6/" target="_blank">
+    <span class="sandbox-btn-icon">⌨</span> Відкрити CSS Sandbox
+  </a>
 </header>
 
 <!-- STEP 01 -->
