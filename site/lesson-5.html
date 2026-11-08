@@ -4,243 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Урок 5 · CSS Блокова модель</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ort.css">
 <style>
-:root {
-  --bg:      #060a0f;
-  --surface: #0b1018;
-  --card:    #101820;
-  --border:  #182030;
-  --border2: #203040;
-  --text:    #d5e5f5;
-  --muted:   #4a6080;
-  --teal:    #00d4aa;
-  --teal-d:  rgba(0,212,170,.12);
-  --teal-b:  rgba(0,212,170,.25);
-  --gold:    #ffc845;
-  --green:   #50e3a4;
-  --coral:   #ff7a6e;
-  --violet:  #c084fc;
-  --blue:    #5b9cf6;
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  line-height: 1.65;
-}
-
-body::before {
-  content:'';
-  position:fixed;inset:0;
-  background-image: radial-gradient(rgba(0,212,170,.05) 1px, transparent 1px);
-  background-size: 28px 28px;
-  pointer-events:none;z-index:0;
-}
-
-.wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px 80px; position: relative; z-index: 1; }
-
-header { padding: 52px 0 40px; border-bottom: 1px solid var(--border2); margin-bottom: 40px; }
-
-.eyebrow {
-  font-family: 'Source Code Pro', monospace;
-  font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--teal); margin-bottom: 12px;
-}
-
-h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(36px, 6vw, 64px);
-  line-height: .95; letter-spacing: 2px; color: #fff; margin-bottom: 16px;
-}
-h1 .acc { color: var(--teal); }
-
-.header-sub { font-size: 14px; color: var(--muted); max-width: 740px; line-height: 1.7; }
-.header-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-.chip {
-  font-family: 'Source Code Pro', monospace;
-  font-size: 12px; padding: 4px 12px;
-  border: 1px solid var(--border2); color: var(--text);
-}
-.chip.t { background: var(--teal-d); border-color: var(--teal-b); color: var(--teal); font-weight: 600; }
-
-.step {
-  display: grid;
-  grid-template-columns: 60px 1fr;
-  gap: 0 24px;
-  padding: 36px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.step-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px; line-height: 1; color: var(--border2); padding-top: 4px;
-}
-
-.step-body h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 26px; letter-spacing: 1px; color: #fff; margin-bottom: 14px;
-}
-
-.step-body p { margin-bottom: 12px; }
-.step-body p:last-child { margin-bottom: 0; }
-.step-body ul { padding-left: 20px; margin-bottom: 12px; }
-.step-body li { margin-bottom: 6px; }
-
-pre {
-  background: #030810;
-  border-left: 3px solid var(--teal);
-  padding: 16px 20px;
-  margin: 16px 0;
-  overflow-x: auto;
-  font-family: 'Source Code Pro', monospace;
-  font-size: 14px;
-  line-height: 1.7;
-  white-space: pre;
-}
-
-code {
-  font-family: 'Source Code Pro', monospace;
-  font-size: 12px;
-  background: rgba(255,200,69,.1);
-  color: var(--gold);
-  padding: 2px 6px;
-  border-radius: 3px;
-}
-pre code { background: none; color: var(--text); padding: 0; font-size: inherit; }
-
-.kw  { color: var(--violet); }
-.sel { color: var(--teal); }
-.prop{ color: var(--blue); }
-.val { color: var(--green); }
-.cmt { color: var(--muted); font-style: italic; }
-
-.tip-box, .warn-box, .good-box {
-  padding: 14px 18px; margin: 16px 0;
-  border-radius: 4px; font-size: 13px; line-height: 1.6;
-}
-.tip-box  { border-left: 3px solid var(--blue);  background: rgba(91,156,246,.07); }
-.warn-box { border-left: 3px solid var(--coral); background: rgba(255,122,110,.07); }
-.good-box { border-left: 3px solid var(--green); background: rgba(80,227,164,.07); }
-
-.box-label {
-  font-family: 'Source Code Pro', monospace;
-  font-size: 12px; letter-spacing: 2px; font-weight: 600; margin-bottom: 6px;
-}
-.tip-box  .box-label { color: var(--blue); }
-.warn-box .box-label { color: var(--coral); }
-.good-box .box-label { color: var(--green); }
-
-.diagram {
-  font-family: 'Source Code Pro', monospace;
-  font-size: 12px; line-height: 1.5;
-  background: #030810; border-left: 3px solid var(--border2);
-  padding: 16px 20px; margin: 16px 0; color: var(--muted);
-  white-space: pre;
-}
-
-.summary-table {
-  width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px;
-}
-.summary-table th {
-  background: var(--card); color: var(--teal);
-  font-family: 'Source Code Pro', monospace; font-size: 13px; letter-spacing: 1px;
-  padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border2);
-}
-.summary-table td {
-  padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top;
-}
-.summary-table tr:hover td { background: var(--card); }
-
-.back {
-  display: inline-block; margin: 28px 0 32px;
-  font-family: 'Source Code Pro', monospace; font-size: 13px;
-  letter-spacing: 2px; color: var(--text); text-decoration: none; text-transform: uppercase;
-}
-.back:hover { color: var(--teal); }
-
-.practice-cta {
-  margin-top: 60px;
-  padding: 36px 40px;
-  background: var(--teal-d);
-  border: 1px solid var(--teal-b);
-  display: flex; align-items: center; justify-content: space-between; gap: 24px;
-  flex-wrap: wrap;
-}
-.practice-cta-text h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px; letter-spacing: 1px; color: #fff; margin-bottom: 6px;
-}
-.practice-cta-text p { font-size: 13px; color: var(--muted); }
-.practice-btn {
-  display: inline-block;
-  font-family: 'Source Code Pro', monospace;
-  font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--bg); background: var(--teal);
-  padding: 12px 28px; text-decoration: none; white-space: nowrap;
-  transition: opacity .15s;
-}
-.practice-btn:hover { opacity: .85; }
-
-.sandbox-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 24px;
-  padding: 11px 22px;
-  background: var(--teal-d);
-  border: 1px solid var(--teal-b);
-  color: var(--teal);
-  font-family: 'Source Code Pro', monospace;
-  font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
-  text-decoration: none;
-  transition: background .15s, border-color .15s;
-}
-.sandbox-btn:hover { background: rgba(0,212,170,.2); border-color: var(--teal); }
-.sandbox-btn-icon {
-  font-size: 16px; line-height: 1;
-}
-
-footer {
-  margin-top: 40px; padding: 20px 0;
-  border-top: 1px solid var(--border);
-  display: flex; justify-content: space-between;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 13px; letter-spacing: 2px; color: var(--muted);
-}
-
-.demo {
-  background: #030810;
-  border: 1px solid var(--border2);
-  padding: 20px;
-  margin: 16px 0;
-  font-family: 'Source Code Pro', monospace;
-  font-size: 12px;
-  text-align: center;
-}
-.demo-label {
-  font-size: 12px; letter-spacing: 2px; color: var(--muted);
-  margin-bottom: 14px; text-transform: uppercase; text-align: left;
-}
-.box-margin  { background: rgba(255,122,110,.07); border: 2px dashed rgba(255,122,110,.4); padding: 16px; color: var(--coral); }
-.box-border  { background: rgba(255,200,69,.07);  border: 3px solid rgba(255,200,69,.45); padding: 14px; color: var(--gold);  margin-top: 10px; }
-.box-padding { background: rgba(91,156,246,.08);  border: 1px dashed rgba(91,156,246,.4); padding: 14px; color: var(--blue);  margin-top: 10px; }
-.box-content { background: rgba(0,212,170,.1);    border: 1px solid rgba(0,212,170,.35);  padding: 12px; color: var(--teal);  margin-top: 10px; }
-
-@media(max-width:560px){
-  .step { grid-template-columns: 1fr; }
-  .step-num { font-size: 32px; margin-bottom: 8px; }
-}
+.demo { font-family: var(--mono); font-size: 13px; text-align: center; }
+.box-margin  { background: #FDECEC; border: 2px dashed rgba(227,6,19,.45); padding: 16px; color: #B3040F; }
+.box-border  { background: #FFF6DB; border: 3px solid #FBBA00; padding: 14px; color: #9A6F00; margin-top: 10px; }
+.box-padding { background: #E9EEF7; border: 1px dashed rgba(46,94,170,.5); padding: 14px; color: #2E5EAA; margin-top: 10px; }
+.box-content { background: #E6F3FA; border: 1px solid rgba(0,139,210,.45); padding: 12px; color: #006A9F; margin-top: 10px; }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<a class="back" href="index.html">← Всі уроки</a>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-logo" href="index.html"><svg width="138" height="40" viewBox="0 0 545 157" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ліцей №141 ОРТ"><path d="M251.75 156.83V139.23C220.94 137.23 195.53 111.42 195.53 78.41C195.53 46.41 218.53 19.6 251.75 17.6V0.019989C210.34 2.01999 176.75 36.63 176.75 78.43C176.75 121.84 209.96 154.85 251.75 156.85" fill="#008BD2"/><path d="M259.75 156.83V139.23C290.55 137.23 315.96 111.42 315.96 78.41C315.96 46.41 292.96 19.6 259.75 17.6V0.019989C301.15 2.01999 334.75 36.63 334.75 78.43C334.75 121.84 301.54 154.85 259.75 156.85" fill="#008BD2"/><path d="M544.97 2.79999H517.17V20H544.97V2.79999Z" fill="#E30613"/><path d="M454.56 20V2.79999H509.17V153.63H490.37V20H454.56Z" fill="#E30613"/><path d="M441.75 46.2V47.11C441.754 52.8199 440.597 58.4709 438.348 63.7194C436.099 68.9679 432.807 73.7041 428.67 77.64L428.01 78.26L427.89 78.37C425.821 80.3428 423.529 82.0678 421.06 83.51C419.589 84.3523 418.066 85.1005 416.5 85.75C413.592 87.0258 410.55 87.9684 407.43 88.56C400.2 90.11 392.62 90.39 385.26 90.51V73.64C385.47 73.64 385.68 73.64 385.9 73.64C416.67 73.64 424.49 61.57 424.59 46.64C424.49 31.7 416.67 19.64 385.9 19.64H385.26V2.79999C392.62 2.91999 400.2 3.19999 407.43 4.79999C410.551 5.3869 413.594 6.32972 416.5 7.60999C418.066 8.25952 419.589 9.00767 421.06 9.84998C423.529 11.2922 425.821 13.0172 427.89 14.99L428.01 15.1L428.67 15.72C432.808 19.6552 436.101 24.3912 438.35 29.6399C440.598 34.8885 441.755 40.5399 441.75 46.25" fill="#FBBA00"/><path d="M377.27 19.66H377.26V153.63H358.46V2.79999H377.26V2.80999H377.27V19.66Z" fill="#FBBA00"/><path d="M6.36003 75.26C6.70705 70.5602 7.81128 65.9474 9.63003 61.6L9.70004 61.43H22.16L22.09 61.76C21.1658 66.2159 20.6205 70.742 20.46 75.29V75.56H6.34003L6.36003 75.26ZM13.2 54.77C14.9273 52.0666 16.9388 49.5557 19.2 47.28C22.7627 43.7123 26.9091 40.7801 31.46 38.61L31.81 39.02C28.2653 43.8671 25.5609 49.2759 23.81 55.02L23.75 55.21H12.93L13.2 54.77ZM42.46 37.09C43.873 36.0643 45.4482 35.2834 47.12 34.78L47.48 34.68V55.19H30.37L30.5 54.82C31.5806 51.7599 32.9571 48.8127 34.61 46.02C36.5977 42.5352 39.2797 39.4958 42.49 37.09M47.49 75.56H26.65V75.27C26.8269 70.6801 27.4329 66.1169 28.46 61.64L28.52 61.43H47.52L47.49 75.56ZM47.49 95.92H28.49L28.44 95.7C27.4061 91.2271 26.7934 86.6672 26.61 82.08V81.79H47.47L47.49 95.92ZM47.49 122.67L47.13 122.56C45.4611 122.054 43.8868 121.277 42.47 120.26C39.262 117.848 36.5805 114.806 34.59 111.32C32.9371 108.527 31.5606 105.58 30.48 102.52L30.35 102.15H47.49V122.67ZM31.49 118.74C26.9483 116.564 22.8093 113.633 19.25 110.07C16.991 107.792 14.9798 105.282 13.25 102.58L12.98 102.15H23.86L23.92 102.34C25.6709 108.084 28.3753 113.493 31.92 118.34L31.49 118.74ZM9.70004 95.92L9.63003 95.75C7.81345 91.4018 6.7093 86.7894 6.36003 82.09V81.79H20.46V82.02C20.6304 86.5688 21.1857 91.0949 22.12 95.55L22.19 95.89L9.70004 95.92ZM53.7 102.15H70.84L70.71 102.52C69.6295 105.58 68.253 108.527 66.6 111.32C64.6126 114.808 61.9306 117.85 58.72 120.26C57.3044 121.279 55.7297 122.056 54.06 122.56L53.7 122.67V102.15ZM53.7 81.79H74.56V82.08C74.3733 86.6675 73.7573 91.2274 72.72 95.7V95.92H53.72L53.7 81.79ZM53.7 61.43H72.7V61.64C73.7373 66.116 74.3533 70.6792 74.54 75.27V75.56H53.74L53.7 61.43ZM53.7 34.68L54.06 34.78C55.7318 35.2834 57.3071 36.0643 58.72 37.09C61.9329 39.4931 64.6154 42.5331 66.6 46.02C68.253 48.8127 69.6295 51.7599 70.71 54.82L70.84 55.19H53.74L53.7 34.68ZM69.7 38.61C77.1718 42.1966 83.4979 47.7921 87.97 54.77L88.24 55.19H77.46L77.4 55C75.6655 49.2668 72.9816 43.8652 69.46 39.02L69.7 38.61ZM91.54 61.61C93.3588 65.9574 94.463 70.5702 94.81 75.27V75.57H80.83V75.3C80.6565 70.7509 80.0978 66.2247 79.16 61.77L79.09 61.44H91.55L91.54 61.61ZM94.81 82.1C94.4608 86.7994 93.3566 91.4118 91.54 95.76L91.47 95.93H79.09L79.16 95.59C80.1 91.1221 80.6587 86.5825 80.83 82.02V81.76H94.91L94.81 82.1ZM87.97 102.59C86.2434 105.294 84.2319 107.805 81.97 110.08C78.4107 113.643 74.2718 116.574 69.73 118.75L69.38 118.33C72.9071 113.479 75.5945 108.071 77.33 102.33L77.39 102.14H88.27L87.97 102.59ZM14.74 114.48C23.0232 122.77 33.9247 127.931 45.5869 129.084C57.2491 130.237 68.9503 127.311 78.6964 120.803C88.4425 114.295 95.6304 104.609 99.0352 93.3957C102.44 82.1822 101.851 70.135 97.3686 59.307C92.8862 48.4791 84.7878 39.5405 74.4534 34.0146C64.119 28.4886 52.1881 26.7172 40.694 29.0023C29.1999 31.2873 18.8538 37.4874 11.4188 46.5459C3.98381 55.6045 -0.0799472 66.9609 -0.0799679 78.68C-0.0892521 85.3293 1.2152 91.9148 3.75847 98.0585C6.30174 104.202 10.0337 109.783 14.74 114.48" fill="#008BD2"/></svg></a>
+    <nav class="site-nav">
+      <a href="index.html" class="is-active">Уроки</a>
+      <a href="reference.html">Довідник</a>
+    </nav>
+    <div class="site-header-meta">Веб-розробка · HTML · CSS · JS</div>
+  </div>
+</header>
+
+<div class="crumbs">
+  <div class="crumbs-inner">
+    <a href="index.html">Веб-розробка</a>
+    <span class="sep">›</span>
+    <span class="current">Урок 05 · Блокова Модель</span>
+  </div>
+</div>
+
+<div class="page">
+<main class="lesson-layout">
+  <aside class="lesson-toc">
+    <div class="lesson-toc-title">Зміст уроку</div>
+    <nav>
+      <a href="#s1">1. Що таке блокова модель?</a>
+      <a href="#s2">2. Висота та ширина (height, width)</a>
+      <a href="#s3">3. Рамка (border)</a>
+      <a href="#s4">4. Закруглення рамки (border-radius)</a>
+      <a href="#s5">5. Внутрішній відступ (padding)</a>
+      <a href="#s6">6. Зовнішній відступ (margin)</a>
+      <a href="#s7">7. Мінімальна та максимальна ширина/висота</a>
+      <a href="#s8">8. Переповнення (overflow)</a>
+      <a href="#s9">9. Скидання стандартних стилів (normalize)</a>
+      <a href="#s10">10. box-sizing: border-box</a>
+      <a href="#s11">11. Видимість (visibility)</a>
+    </nav>
+    <div class="lesson-toc-time">Орієнтовний час<br><span>40 хвилин</span></div>
+  </aside>
+
+  <article class="lesson-article">
 
 <header>
   <div class="eyebrow">CSS · Урок 05</div>
@@ -256,7 +73,7 @@ footer {
 </header>
 
 <!-- STEP 01 -->
-<div class="step">
+<div class="step" id="s1">
   <div class="step-num">01</div>
   <div class="step-body">
     <h2>Що таке блокова модель?</h2>
@@ -286,7 +103,7 @@ footer {
 </div>
 
 <!-- STEP 02 -->
-<div class="step">
+<div class="step" id="s2">
   <div class="step-num">02</div>
   <div class="step-body">
     <h2>Висота та ширина (height, width)</h2>
@@ -303,7 +120,7 @@ footer {
 </div>
 
 <!-- STEP 03 -->
-<div class="step">
+<div class="step" id="s3">
   <div class="step-num">03</div>
   <div class="step-body">
     <h2>Рамка (border)</h2>
@@ -317,7 +134,7 @@ footer {
 </div>
 
 <!-- STEP 04 -->
-<div class="step">
+<div class="step" id="s4">
   <div class="step-num">04</div>
   <div class="step-body">
     <h2>Закруглення рамки (border-radius)</h2>
@@ -340,7 +157,7 @@ footer {
 </div>
 
 <!-- STEP 05 -->
-<div class="step">
+<div class="step" id="s5">
   <div class="step-num">05</div>
   <div class="step-body">
     <h2>Внутрішній відступ (padding)</h2>
@@ -362,7 +179,7 @@ footer {
 </div>
 
 <!-- STEP 06 -->
-<div class="step">
+<div class="step" id="s6">
   <div class="step-num">06</div>
   <div class="step-body">
     <h2>Зовнішній відступ (margin)</h2>
@@ -380,7 +197,7 @@ footer {
 </div>
 
 <!-- STEP 07 -->
-<div class="step">
+<div class="step" id="s7">
   <div class="step-num">07</div>
   <div class="step-body">
     <h2>Мінімальна та максимальна ширина/висота</h2>
@@ -399,7 +216,7 @@ footer {
 </div>
 
 <!-- STEP 08 -->
-<div class="step">
+<div class="step" id="s8">
   <div class="step-num">08</div>
   <div class="step-body">
     <h2>Переповнення (overflow)</h2>
@@ -412,7 +229,7 @@ footer {
 </div>
 
 <!-- STEP 09 -->
-<div class="step">
+<div class="step" id="s9">
   <div class="step-num">09</div>
   <div class="step-body">
     <h2>Скидання стандартних стилів (normalize)</h2>
@@ -430,7 +247,7 @@ footer {
 </div>
 
 <!-- STEP 10 -->
-<div class="step">
+<div class="step" id="s10">
   <div class="step-num">10</div>
   <div class="step-body">
     <h2>box-sizing: border-box</h2>
@@ -477,7 +294,7 @@ footer {
 </div>
 
 <!-- STEP 11 -->
-<div class="step">
+<div class="step" id="s11">
   <div class="step-num">11</div>
   <div class="step-body">
     <h2>Видимість (visibility)</h2>
@@ -505,10 +322,25 @@ footer {
   <a class="practice-btn" href="https://codesandbox.io/s/github/altyntsevlexus/web-development-lessons/tree/main/site/practice/lesson-5" target="_blank">Відкрити практику →</a>
 </div>
 
-<footer>
-  <span>ВЕБ · HTML · CSS · JS · УРОК 05</span>
-</footer>
-
+<div class="lesson-pager">
+  <a class="btn btn-dark" href="lesson-4.html">← Урок 04</a>
+  <a class="btn btn-primary" href="lesson-6.html">Урок 06 →</a>
 </div>
+
+  </article>
+</main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>© 2013 - 2026 Ліцей №141 «ОРТ» м.Києва. Всі права захищені.</div>
+    <div class="site-footer-contacts">
+      <a href="mailto:141ortlyc@ortlyc.kyiv.ua">141ortlyc@ortlyc.kyiv.ua</a>
+      <a href="tel:+380633197668">+38 (063) 319-76-68</a>
+    </div>
+  </div>
+</footer>
+<script src="assets/ort.js"></script>
+
 </body>
 </html>
