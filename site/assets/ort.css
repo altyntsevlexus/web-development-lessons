@@ -381,3 +381,10 @@ pre code { background: none; border: 0; color: inherit; padding: 0; font-size: i
   .step-num { font-size: 26px; margin-bottom: 12px; }
   pre { font-size: 13px; padding: 16px; }
 }
+
+/* link from a конспект step to its practice exercise */
+.try-link {
+  display: inline-block; margin-top: 18px; font-size: 14px; font-weight: 600;
+  color: var(--brand); border-bottom: 2px solid var(--brand-tint); padding-bottom: 2px;
+}
+.try-link:hover { text-decoration: none; border-bottom-color: var(--brand); }

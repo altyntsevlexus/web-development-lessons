@@ -77,6 +77,9 @@
     <span class="chip t">Теорія</span>
     <span class="chip">~35 хв</span>
   </div>
+  <a class="sandbox-btn" href="sandbox-1/">
+    <span class="sandbox-btn-icon">⌨</span> Практика: 9 вправ з кодом
+  </a>
 </header>
 
 <!-- STEP 01 -->
@@ -98,17 +101,13 @@
   <div class="step-num">02</div>
   <div class="step-body">
     <h2>Теги: відкриваючий і закриваючий</h2>
-    <p>Майже кожен HTML-елемент складається з <strong>відкриваючого тегу</strong>, <strong>вмісту</strong> і <strong>закриваючого тегу</strong>. Закриваючий тег відрізняється косою рискою <code>/</code>:</p>
-<pre><span class="tag">&lt;p&gt;</span>Це абзац тексту.<span class="tag">&lt;/p&gt;</span>
-
-<span class="tag">&lt;h1&gt;</span>Це заголовок<span class="tag">&lt;/h1&gt;</span>
-
-<span class="tag">&lt;strong&gt;</span>Жирний текст<span class="tag">&lt;/strong&gt;</span></pre>
+    <p>Майже кожен HTML-елемент складається з <strong>відкриваючого тегу</strong>, <strong>вмісту</strong> і <strong>закриваючого тегу</strong>. Закриваючий тег відрізняється косою рискою <code>/</code>. Наприклад, абзац записують як <code>&lt;p&gt;Це абзац тексту.&lt;/p&gt;</code>, а заголовок — як <code>&lt;h1&gt;Це заголовок&lt;/h1&gt;</code>.</p>
     <p>Весь вміст між тегами — це те, що побачить користувач або на що подіє браузер.</p>
     <div class="warn-box">
       <div class="box-label">⚠ ВАЖЛИВО</div>
       Якщо забути закриваючий тег, браузер може відобразити сторінку неправильно — стиль чи структура «розповзуться» на решту вмісту.
     </div>
+    <a class="try-link" href="sandbox-1/#1">Практика · вправа 1 →</a>
   </div>
 </div>
 
@@ -118,10 +117,7 @@
   <div class="step-body">
     <h2>Вкладеність: батько і дитина</h2>
     <p>HTML-елементи можна вкладати один в одного. Елемент усередині називається <strong>дитиною (child)</strong>, а той що містить — <strong>батьком (parent)</strong>.</p>
-<pre><span class="tag">&lt;div&gt;</span>                    <span class="cmt">&lt;!-- батько --&gt;</span>
-  <span class="tag">&lt;p&gt;</span>Перший абзац<span class="tag">&lt;/p&gt;</span>   <span class="cmt">&lt;!-- дитина --&gt;</span>
-  <span class="tag">&lt;p&gt;</span>Другий абзац<span class="tag">&lt;/p&gt;</span>   <span class="cmt">&lt;!-- дитина --&gt;</span>
-<span class="tag">&lt;/div&gt;</span></pre>
+    <p>Наприклад, якщо всередині <code>&lt;div&gt;</code> стоять два абзаци <code>&lt;p&gt;</code> і список <code>&lt;ul&gt;</code>, то <code>div</code> — їхній батько. А список сам є батьком для своїх пунктів <code>&lt;li&gt;</code>:</p>
     <div class="demo">
       <div class="demo-label">Структура вкладеності</div>
       <div style="font-family:var(--mono);font-size:14px;line-height:2;color:var(--muted)">
@@ -137,6 +133,7 @@
       <div class="box-label">💡 ПРАВИЛО</div>
       Закривай теги у зворотному порядку: якщо відкрив <code>&lt;div&gt;</code> потім <code>&lt;p&gt;</code> — закривай спочатку <code>&lt;/p&gt;</code>, потім <code>&lt;/div&gt;</code>.
     </div>
+    <a class="try-link" href="sandbox-1/#2">Практика · вправа 2 →</a>
   </div>
 </div>
 
@@ -146,16 +143,12 @@
   <div class="step-body">
     <h2>Тег &lt;body&gt; — видимий вміст</h2>
     <p>Весь вміст, який має бути видимим на сторінці, розміщується між тегами <code>&lt;body&gt;</code> і <code>&lt;/body&gt;</code>. Якщо елемент поза <code>&lt;body&gt;</code> — браузер може не відобразити його або відобразити некоректно.</p>
-<pre><span class="tag">&lt;body&gt;</span>
-
-  <span class="tag">&lt;h1&gt;</span>Привіт, світ!<span class="tag">&lt;/h1&gt;</span>
-  <span class="tag">&lt;p&gt;</span>Це перша сторінка.<span class="tag">&lt;/p&gt;</span>
-
-<span class="tag">&lt;/body&gt;</span></pre>
+    <p>Наприклад, заголовок «Привіт, світ!» і абзац під ним пишуться після відкриваючого <code>&lt;body&gt;</code> і перед закриваючим <code>&lt;/body&gt;</code>.</p>
     <div class="good-box">
       <div class="box-label">✓ ПРАВИЛО</div>
       Увесь видимий вміст — тільки всередині <code>&lt;body&gt;</code>.
     </div>
+    <a class="try-link" href="sandbox-1/#3">Практика · вправа 3 →</a>
   </div>
 </div>
 
@@ -165,9 +158,6 @@
   <div class="step-body">
     <h2>Заголовки &lt;h1&gt; – &lt;h6&gt;</h2>
     <p>Теги від <code>&lt;h1&gt;</code> до <code>&lt;h6&gt;</code> задають заголовки різних рівнів. <code>&lt;h1&gt;</code> — найбільший і найважливіший, <code>&lt;h6&gt;</code> — найменший.</p>
-<pre><span class="tag">&lt;h1&gt;</span>Головний заголовок<span class="tag">&lt;/h1&gt;</span>
-<span class="tag">&lt;h2&gt;</span>Підзаголовок розділу<span class="tag">&lt;/h2&gt;</span>
-<span class="tag">&lt;h3&gt;</span>Підрозділ<span class="tag">&lt;/h3&gt;</span></pre>
     <div class="demo">
       <div class="demo-label">Як виглядає в браузері</div>
       <div class="demo-render">
@@ -183,6 +173,7 @@
       <div class="box-label">💡 SEO</div>
       На кожній сторінці має бути лише <strong>один</strong> <code>&lt;h1&gt;</code> — це головна тема сторінки. Пошукові системи зважають на ієрархію заголовків.
     </div>
+    <a class="try-link" href="sandbox-1/#4">Практика · вправа 4 →</a>
   </div>
 </div>
 
@@ -192,18 +183,11 @@
   <div class="step-body">
     <h2>&lt;p&gt;, &lt;span&gt; і &lt;div&gt;</h2>
     <p>Три найуживаніші теги для роботи з текстом і структурою:</p>
-<pre><span class="tag">&lt;p&gt;</span>Абзац тексту. Блоковий елемент — займає весь рядок.<span class="tag">&lt;/p&gt;</span>
-
-<span class="tag">&lt;p&gt;</span>
-  Звичайний текст, а тут
-  <span class="tag">&lt;span&gt;</span>виділений фрагмент<span class="tag">&lt;/span&gt;</span>
-  прямо в рядку.
-<span class="tag">&lt;/p&gt;</span>
-
-<span class="tag">&lt;div&gt;</span>
-  Контейнер для групування інших елементів.
-  Сам по собі не має вигляду — це просто блок.
-<span class="tag">&lt;/div&gt;</span></pre>
+    <ul>
+      <li><code>&lt;p&gt;</code> — абзац тексту. Блоковий елемент: займає весь рядок і починається з нового.</li>
+      <li><code>&lt;span&gt;</code> — виділений фрагмент <em>усередині</em> рядка, наприклад одне слово в абзаці. Новий рядок не створює.</li>
+      <li><code>&lt;div&gt;</code> — контейнер для групування інших елементів. Сам по собі не має вигляду — це просто блок.</li>
+    </ul>
     <div class="demo">
       <div class="demo-label">Різниця між p, span і div</div>
       <div style="font-family:var(--mono);font-size:14px;line-height:1.8">
@@ -212,6 +196,7 @@
         <div style="background:rgba(91,156,246,.08);border:1px dashed rgba(91,156,246,.3);padding:6px 12px;color:var(--blue)">&lt;div&gt; — контейнер, групує інші елементи</div>
       </div>
     </div>
+    <a class="try-link" href="sandbox-1/#5">Практика · вправа 5 →</a>
   </div>
 </div>
 
@@ -220,14 +205,7 @@
   <div class="step-num">07</div>
   <div class="step-body">
     <h2>Виділення тексту: &lt;em&gt; і &lt;strong&gt;</h2>
-    <p>Два теги для смислового виділення тексту всередині абзацу:</p>
-<pre><span class="tag">&lt;p&gt;</span>
-  Це <span class="tag">&lt;em&gt;</span>курсивний текст<span class="tag">&lt;/em&gt;</span> — легке смислове виділення.
-<span class="tag">&lt;/p&gt;</span>
-
-<span class="tag">&lt;p&gt;</span>
-  Це <span class="tag">&lt;strong&gt;</span>жирний текст<span class="tag">&lt;/strong&gt;</span> — важлива інформація.
-<span class="tag">&lt;/p&gt;</span></pre>
+    <p>Два теги для смислового виділення тексту всередині абзацу: <code>&lt;em&gt;</code> — легке виділення (курсив), <code>&lt;strong&gt;</code> — важлива інформація (жирний). Ними обгортають потрібні слова прямо в реченні, наприклад <code>Це &lt;strong&gt;важливо&lt;/strong&gt;</code>.</p>
     <div class="demo">
       <div class="demo-label">Як виглядає в браузері</div>
       <div class="demo-render">
@@ -239,6 +217,7 @@
       <div class="box-label">💡 СЕМАНТИКА</div>
       <code>&lt;em&gt;</code> і <code>&lt;strong&gt;</code> — це <em>смислові</em> теги. Для суто візуального виділення використовують CSS (<code>font-style: italic</code>, <code>font-weight: bold</code>).
     </div>
+    <a class="try-link" href="sandbox-1/#6">Практика · вправа 6 →</a>
   </div>
 </div>
 
@@ -248,11 +227,7 @@
   <div class="step-body">
     <h2>Перенос рядка &lt;br&gt;</h2>
     <p>Тег <code>&lt;br&gt;</code> переносить текст на новий рядок. Він <strong>самозакриваючий</strong> — не має закриваючого тегу і не містить вмісту.</p>
-<pre><span class="tag">&lt;p&gt;</span>
-  вул. Хрещатик, 1<span class="tag">&lt;br&gt;</span>
-  Київ, 01001<span class="tag">&lt;br&gt;</span>
-  Україна
-<span class="tag">&lt;/p&gt;</span></pre>
+    <p>Його ставлять там, де всередині абзацу має початися новий рядок — наприклад, між рядками адреси:</p>
     <div class="demo">
       <div class="demo-label">Як виглядає в браузері</div>
       <div class="demo-render">
@@ -263,6 +238,7 @@
       <div class="box-label">⚠ НЕ ЗЛОВЖИВАЙ</div>
       <code>&lt;br&gt;</code> — для переносу всередині тексту (адреси, вірші). Для відступів між блоками використовуй CSS <code>margin</code>.
     </div>
+    <a class="try-link" href="sandbox-1/#7">Практика · вправа 7 →</a>
   </div>
 </div>
 
@@ -271,18 +247,7 @@
   <div class="step-num">09</div>
   <div class="step-body">
     <h2>Списки &lt;ul&gt; і &lt;ol&gt;</h2>
-    <p><code>&lt;ul&gt;</code> — невпорядкований список (маркери •). <code>&lt;ol&gt;</code> — впорядкований список (числа 1, 2, 3…). Кожен пункт — тег <code>&lt;li&gt;</code>.</p>
-<pre><span class="tag">&lt;ul&gt;</span>               <span class="cmt">&lt;!-- маркований --&gt;</span>
-  <span class="tag">&lt;li&gt;</span>HTML<span class="tag">&lt;/li&gt;</span>
-  <span class="tag">&lt;li&gt;</span>CSS<span class="tag">&lt;/li&gt;</span>
-  <span class="tag">&lt;li&gt;</span>JavaScript<span class="tag">&lt;/li&gt;</span>
-<span class="tag">&lt;/ul&gt;</span>
-
-<span class="tag">&lt;ol&gt;</span>               <span class="cmt">&lt;!-- нумерований --&gt;</span>
-  <span class="tag">&lt;li&gt;</span>Відкрити редактор<span class="tag">&lt;/li&gt;</span>
-  <span class="tag">&lt;li&gt;</span>Написати HTML<span class="tag">&lt;/li&gt;</span>
-  <span class="tag">&lt;li&gt;</span>Зберегти файл<span class="tag">&lt;/li&gt;</span>
-<span class="tag">&lt;/ol&gt;</span></pre>
+    <p><code>&lt;ul&gt;</code> — невпорядкований список (маркери •). <code>&lt;ol&gt;</code> — впорядкований список (числа 1, 2, 3…). Кожен пункт — тег <code>&lt;li&gt;</code>, який пишеться всередині <code>&lt;ul&gt;</code> або <code>&lt;ol&gt;</code>. Числа в нумерованому списку браузер ставить сам.</p>
     <div class="demo">
       <div class="demo-label">Як виглядає в браузері</div>
       <div class="demo-render" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
@@ -296,6 +261,7 @@
         </div>
       </div>
     </div>
+    <a class="try-link" href="sandbox-1/#8">Практика · вправа 8 →</a>
   </div>
 </div>
 
@@ -304,17 +270,9 @@
   <div class="step-num">10</div>
   <div class="step-body">
     <h2>Зображення &lt;img&gt; і відео &lt;video&gt;</h2>
-    <p>Медіаконтент додається посиланням на файл через атрибути. Обидва теги — самозакриваючі (не мають закриваючого тегу).</p>
-<pre><span class="cmt">&lt;!-- Зображення --&gt;</span>
-<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"photo.jpg"</span> <span class="attr">alt</span>=<span class="val">"Опис фото"</span><span class="tag">&gt;</span>
-
-<span class="cmt">&lt;!-- Відео --&gt;</span>
-<span class="tag">&lt;video</span> <span class="attr">src</span>=<span class="val">"clip.mp4"</span> <span class="attr">controls</span><span class="tag">&gt;&lt;/video&gt;</span>
-
-<span class="cmt">&lt;!-- Зображення з мережі --&gt;</span>
-<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"https://site.com/img.jpg"</span> <span class="attr">alt</span>=<span class="val">"..."</span><span class="tag">&gt;</span></pre>
+    <p>Зображення і відео не вставляються в HTML — на них <strong>посилаються</strong> через атрибути. Картинку додає тег <code>&lt;img&gt;</code> — він самозакриваючий. Відео додає тег <code>&lt;video&gt;</code>, у нього є закриваючий тег <code>&lt;/video&gt;</code>.</p>
     <ul>
-      <li><code>src</code> — шлях до файлу (локальний або URL)</li>
+      <li><code>src</code> — шлях до файлу: назва файлу поруч зі сторінкою (<code>photo.jpg</code>) або повна адреса з мережі (<code>https://…</code>)</li>
       <li><code>alt</code> — текстовий опис зображення (обов'язково!)</li>
       <li><code>controls</code> — показує кнопки керування відео</li>
     </ul>
@@ -322,7 +280,16 @@
       <div class="box-label">💡 АТРИБУТ ALT</div>
       <code>alt</code> відображається якщо зображення не завантажилось, а також зачитується екранними читачами для людей з вадами зору. Завжди заповнюй його.
     </div>
+    <a class="try-link" href="sandbox-1/#9">Практика · вправа 9 →</a>
   </div>
+</div>
+
+<div class="practice-cta">
+  <div class="practice-cta-text">
+    <h2>Тепер — практика</h2>
+    <p>9 вправ: пишеш HTML у редакторі, бачиш результат у браузері, тиснеш «Перевірити».</p>
+  </div>
+  <a class="practice-btn" href="sandbox-1/">Почати практику →</a>
 </div>
 
 <div class="lesson-pager">

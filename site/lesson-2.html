@@ -58,6 +58,9 @@
     <span class="chip t">Теорія</span>
     <span class="chip">~30 хв</span>
   </div>
+  <a class="sandbox-btn" href="sandbox-2/">
+    <span class="sandbox-btn-icon">⌨</span> Практика: 6 вправ з кодом
+  </a>
 </header>
 
 <!-- STEP 01 -->
@@ -66,10 +69,7 @@
   <div class="step-body">
     <h2>&lt;!DOCTYPE html&gt;</h2>
     <p>Перший рядок будь-якого HTML-файлу — це оголошення типу документа. Воно повідомляє браузеру, що файл написаний за стандартом <strong>HTML5</strong>.</p>
-<pre><span class="doc">&lt;!DOCTYPE html&gt;</span>
-<span class="tag">&lt;html&gt;</span>
-  ...
-<span class="tag">&lt;/html&gt;</span></pre>
+    <p>Воно виглядає так: <code>&lt;!DOCTYPE html&gt;</code> — і стоїть перед тегом <code>&lt;html&gt;</code>, з якого починається решта документа.</p>
     <div class="warn-box">
       <div class="box-label">⚠ ЗАВЖДИ ПЕРШИМ</div>
       <code>&lt;!DOCTYPE html&gt;</code> повинен бути <strong>першим рядком файлу</strong> — до нього нічого не має бути, навіть порожніх рядків. Без нього браузер може перейти в режим сумісності і відображати сторінку некоректно.
@@ -82,19 +82,7 @@
   <div class="step-num">02</div>
   <div class="step-body">
     <h2>Структура HTML-документа</h2>
-    <p>Кожен HTML-файл має стандартну структуру з трьох основних частин:</p>
-<pre><span class="doc">&lt;!DOCTYPE html&gt;</span>
-<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="val">"uk"</span><span class="tag">&gt;</span>
-
-  <span class="tag">&lt;head&gt;</span>
-    <span class="cmt">&lt;!-- інформація про сторінку --&gt;</span>
-  <span class="tag">&lt;/head&gt;</span>
-
-  <span class="tag">&lt;body&gt;</span>
-    <span class="cmt">&lt;!-- видимий вміст --&gt;</span>
-  <span class="tag">&lt;/body&gt;</span>
-
-<span class="tag">&lt;/html&gt;</span></pre>
+    <p>Кожен HTML-файл має стандартну структуру: після DOCTYPE увесь документ загортається в тег <code>&lt;html&gt;</code>, а всередині нього є дві частини — <code>&lt;head&gt;</code> і <code>&lt;body&gt;</code>:</p>
     <div class="tree">
       <span style="color:var(--violet)">&lt;!DOCTYPE html&gt;</span><br>
       <span style="color:var(--teal)">&lt;html&gt;</span>
@@ -104,7 +92,8 @@
       </div>
       <span style="color:var(--teal)">&lt;/html&gt;</span>
     </div>
-    <p>Атрибут <code>lang="uk"</code> вказує браузеру і пошуковим системам мову вмісту сторінки.</p>
+    <p>Атрибут <code>lang="uk"</code> у тегу <code>&lt;html&gt;</code> вказує браузеру і пошуковим системам мову вмісту сторінки.</p>
+    <a class="try-link" href="sandbox-2/#1">Практика · вправа 1 →</a>
   </div>
 </div>
 
@@ -114,17 +103,12 @@
   <div class="step-body">
     <h2>&lt;head&gt; — інформація про сторінку</h2>
     <p>Тег <code>&lt;head&gt;</code> містить мета-дані: інформацію про сторінку, яку браузер використовує, але <strong>не показує</strong> користувачу.</p>
-<pre><span class="tag">&lt;head&gt;</span>
-  <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="val">"UTF-8"</span><span class="tag">&gt;</span>
-  <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="val">"viewport"</span> <span class="attr">content</span>=<span class="val">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
-  <span class="tag">&lt;title&gt;</span>Назва вкладки<span class="tag">&lt;/title&gt;</span>
-  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="val">"stylesheet"</span> <span class="attr">href</span>=<span class="val">"style.css"</span><span class="tag">&gt;</span>
-<span class="tag">&lt;/head&gt;</span></pre>
+    <p>Зазвичай у <code>&lt;head&gt;</code> є чотири теги:</p>
     <ul>
-      <li><code>charset="UTF-8"</code> — підтримка кирилиці та інших символів</li>
-      <li><code>viewport</code> — коректне відображення на мобільних</li>
+      <li><code>&lt;meta charset="UTF-8"&gt;</code> — підтримка кирилиці та інших символів</li>
+      <li><code>&lt;meta name="viewport" …&gt;</code> — коректне відображення на мобільних</li>
       <li><code>&lt;title&gt;</code> — текст у вкладці браузера</li>
-      <li><code>&lt;link&gt;</code> — підключення CSS-файлу</li>
+      <li><code>&lt;link rel="stylesheet" href="style.css"&gt;</code> — підключення CSS-файлу</li>
     </ul>
   </div>
 </div>
@@ -135,9 +119,6 @@
   <div class="step-body">
     <h2>&lt;title&gt; — назва вкладки</h2>
     <p>Тег <code>&lt;title&gt;</code> всередині <code>&lt;head&gt;</code> задає текст, який з'являється у вкладці браузера і в результатах пошуку Google.</p>
-<pre><span class="tag">&lt;head&gt;</span>
-  <span class="tag">&lt;title&gt;</span>Мій перший сайт<span class="tag">&lt;/title&gt;</span>
-<span class="tag">&lt;/head&gt;</span></pre>
     <div class="demo">
       <div class="demo-label">Де з'являється title</div>
       <div style="font-family:var(--mono);font-size:14px">
@@ -156,6 +137,7 @@
       <div class="box-label">💡 SEO</div>
       Хороший title — коротко і точно описує зміст сторінки (до 60 символів). Пошукові системи показують його у результатах пошуку.
     </div>
+    <a class="try-link" href="sandbox-2/#2">Практика · вправа 2 →</a>
   </div>
 </div>
 
@@ -164,20 +146,13 @@
   <div class="step-num">05</div>
   <div class="step-body">
     <h2>Посилання &lt;a&gt;</h2>
-    <p>Тег <code>&lt;a&gt;</code> (anchor — якір) створює посилання. Атрибут <code>href</code> вказує куди воно веде.</p>
-<pre><span class="cmt">&lt;!-- Зовнішнє посилання --&gt;</span>
-<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"https://google.com"</span><span class="tag">&gt;</span>Відкрити Google<span class="tag">&lt;/a&gt;</span>
-
-<span class="cmt">&lt;!-- Внутрішня сторінка --&gt;</span>
-<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"about.html"</span><span class="tag">&gt;</span>Про нас<span class="tag">&lt;/a&gt;</span>
-
-<span class="cmt">&lt;!-- Відкрити в новій вкладці --&gt;</span>
-<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"https://google.com"</span> <span class="attr">target</span>=<span class="val">"_blank"</span><span class="tag">&gt;</span>Google<span class="tag">&lt;/a&gt;</span></pre>
+    <p>Тег <code>&lt;a&gt;</code> (anchor — якір) створює посилання. Атрибут <code>href</code> вказує, куди воно веде, а текст між <code>&lt;a&gt;</code> і <code>&lt;/a&gt;</code> — це те, на що клікає відвідувач.</p>
     <ul>
       <li>Зовнішні посилання починаються з <code>https://</code></li>
       <li>Внутрішні — просто ім'я файлу: <code>about.html</code></li>
       <li><code>target="_blank"</code> — відкрити в новій вкладці</li>
     </ul>
+    <a class="try-link" href="sandbox-2/#3">Практика · вправа 3 →</a>
   </div>
 </div>
 
@@ -187,20 +162,12 @@
   <div class="step-body">
     <h2>Якоря — переходи по сторінці</h2>
     <p>Можна створити посилання на конкретний розділ тієї самої сторінки. Для цього елементу присвоюється <code>id</code>, а посилання веде на <code>#id</code>.</p>
-<pre><span class="cmt">&lt;!-- Посилання-якір (зазвичай у навігації) --&gt;</span>
-<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"#contacts"</span><span class="tag">&gt;</span>Перейти до контактів<span class="tag">&lt;/a&gt;</span>
-
-<span class="cmt">&lt;!-- ... далі по сторінці ... --&gt;</span>
-
-<span class="cmt">&lt;!-- Цільовий розділ --&gt;</span>
-<span class="tag">&lt;section</span> <span class="attr">id</span>=<span class="val">"contacts"</span><span class="tag">&gt;</span>
-  <span class="tag">&lt;h2&gt;</span>Контакти<span class="tag">&lt;/h2&gt;</span>
-  ...
-<span class="tag">&lt;/section&gt;</span></pre>
+    <p>Наприклад, розділ <code>&lt;section id="contacts"&gt;</code> стоїть унизу сторінки, а в меню нагорі є посилання <code>&lt;a href="#contacts"&gt;</code> — клік по ньому прокручує сторінку прямо до контактів.</p>
     <div class="tip-box">
       <div class="box-label">💡 ЗАСТОСУВАННЯ</div>
       Якоря використовують для навігаційних меню на landing-сторінках: «Про нас», «Послуги», «Контакти» — кліки прокручують сторінку до потрібного розділу.
     </div>
+    <a class="try-link" href="sandbox-2/#4">Практика · вправа 4 →</a>
   </div>
 </div>
 
@@ -210,12 +177,7 @@
   <div class="step-body">
     <h2>Пробіли і відступи в коді</h2>
     <p>Браузер ігнорує зайві пробіли, переноси рядків і відступи в HTML-коді — вони впливають лише на <strong>читабельність коду</strong>, не на вигляд сторінки.</p>
-<pre><span class="cmt">&lt;!-- Обидва варіанти дають однаковий результат: --&gt;</span>
-
-<span class="tag">&lt;p&gt;</span>Привіт<span class="tag">&lt;/p&gt;</span><span class="tag">&lt;p&gt;</span>Світ<span class="tag">&lt;/p&gt;</span>
-
-<span class="tag">&lt;p&gt;</span>Привіт<span class="tag">&lt;/p&gt;</span>
-<span class="tag">&lt;p&gt;</span>Світ<span class="tag">&lt;/p&gt;</span></pre>
+    <p>Наприклад, два абзаци <code>&lt;p&gt;</code>, записані в одному рядку коду, і ті самі абзаци на окремих рядках виглядають на сторінці однаково. А якщо в коді розбити текст одного абзацу на кілька рядків, на сторінці він однаково буде суцільним.</p>
     <p>Між словами в тексті кілька пробілів підряд браузер стиснить до одного. Для реальних відступів між елементами використовуй CSS <code>margin</code>.</p>
     <div class="good-box">
       <div class="box-label">✓ ПОРАДА</div>
@@ -230,18 +192,12 @@
   <div class="step-body">
     <h2>Відступи (індентація)</h2>
     <p>Вкладені елементи прийнято зсувати вправо на два або чотири пробіли (або один Tab). Це не впливає на роботу коду, але робить структуру наочною.</p>
-<pre><span class="cmt">&lt;!-- Погано — важко зрозуміти структуру --&gt;</span>
-<span class="tag">&lt;ul&gt;</span><span class="tag">&lt;li&gt;</span>HTML<span class="tag">&lt;/li&gt;</span><span class="tag">&lt;li&gt;</span>CSS<span class="tag">&lt;/li&gt;</span><span class="tag">&lt;/ul&gt;</span>
-
-<span class="cmt">&lt;!-- Добре — структура видна одразу --&gt;</span>
-<span class="tag">&lt;ul&gt;</span>
-  <span class="tag">&lt;li&gt;</span>HTML<span class="tag">&lt;/li&gt;</span>
-  <span class="tag">&lt;li&gt;</span>CSS<span class="tag">&lt;/li&gt;</span>
-<span class="tag">&lt;/ul&gt;</span></pre>
+    <p>Порівняй: список <code>&lt;ul&gt;</code>, де всі <code>&lt;li&gt;</code> записані в один рядок, читати важко. Якщо ж кожен <code>&lt;li&gt;</code> стоїть на окремому рядку і зсунутий на два пробіли відносно <code>&lt;ul&gt;</code>, структуру видно одразу.</p>
     <div class="tip-box">
       <div class="box-label">💡 ПРАВИЛО</div>
       Кожен рівень вкладеності — один відступ Tab. Відступи показують відносини батько–дитина так само, як дерево структури.
     </div>
+    <a class="try-link" href="sandbox-2/#5">Практика · вправа 5 →</a>
   </div>
 </div>
 
@@ -251,19 +207,21 @@
   <div class="step-body">
     <h2>Коментарі &lt;!-- --&gt;</h2>
     <p>Коментарі — це нотатки в коді. Браузер їх не відображає. Вони допомагають пояснити код собі та іншим розробникам.</p>
-<pre><span class="cmt">&lt;!-- Це коментар — браузер його ігнорує --&gt;</span>
-
-<span class="tag">&lt;header&gt;</span>
-  <span class="cmt">&lt;!-- Навігація --&gt;</span>
-  <span class="tag">&lt;nav&gt;</span>...<span class="tag">&lt;/nav&gt;</span>
-<span class="tag">&lt;/header&gt;</span>
-
-<span class="cmt">&lt;!-- TODO: додати форму зворотнього зв'язку --&gt;</span></pre>
+    <p>Коментар починається з <code>&lt;!--</code> і закінчується <code>--&gt;</code>. Ним підписують блоки коду (наприклад, <code>&lt;!-- Навігація --&gt;</code> над <code>&lt;nav&gt;</code>) і залишають нагадування на майбутнє: <code>&lt;!-- TODO: додати форму --&gt;</code>.</p>
     <div class="warn-box">
       <div class="box-label">⚠ УВАГА</div>
       Коментарі видно у вихідному коді сторінки (через «Переглянути код» у браузері). Не пиши в коментарях паролі чи конфіденційні дані.
     </div>
+    <a class="try-link" href="sandbox-2/#6">Практика · вправа 6 →</a>
   </div>
+</div>
+
+<div class="practice-cta">
+  <div class="practice-cta-text">
+    <h2>Тепер — практика</h2>
+    <p>6 вправ: пишеш HTML у редакторі, бачиш результат у браузері, тиснеш «Перевірити».</p>
+  </div>
+  <a class="practice-btn" href="sandbox-2/">Почати практику →</a>
 </div>
 
 <div class="lesson-pager">

@@ -57,8 +57,8 @@
     <span class="chip t">Теорія</span>
     <span class="chip">~25 хв</span>
   </div>
-  <a class="sandbox-btn" href="sandbox-4/" target="_blank">
-    <span class="sandbox-btn-icon">⌨</span> Відкрити CSS Sandbox
+  <a class="sandbox-btn" href="sandbox-4/">
+    <span class="sandbox-btn-icon">⌨</span> Практика: 7 вправ з кодом
   </a>
 </header>
 
@@ -67,18 +67,13 @@
   <div class="step-num">01</div>
   <div class="step-body">
     <h2>Шрифт (font-family)</h2>
-    <p>Властивість <code>font-family</code> задає шрифт тексту. Якщо назва шрифту складається з кількох слів — вона береться в лапки:</p>
-<pre><span class="sel">h1</span> {
-  <span class="prop">font-family</span>: <span class="val">Garamond</span>;
-}
-
-<span class="sel">h2</span> {
-  <span class="prop">font-family</span>: <span class="val">"Courier New"</span>; <span class="cmt">/* кілька слів — у лапках */</span>
-}</pre>
+    <p>Властивість <code>font-family</code> задає шрифт тексту, наприклад <code>font-family: Garamond;</code>. Якщо назва шрифту складається з кількох слів — вона береться в лапки: <code>"Courier New"</code>.</p>
+    <p>Через кому можна вказати запасний шрифт — браузер використає його, якщо першого немає: <code>Georgia, serif</code>.</p>
     <div class="tip-box">
       <div class="box-label">💡 ПІДКАЗКА</div>
       Шрифт повинен бути встановлений на комп'ютері користувача. Стандартний шрифт браузера — <strong>Times New Roman</strong>. Для веб-шрифтів використовуйте Google Fonts.
     </div>
+    <a class="try-link" href="sandbox-4/#1">Практика · вправа 1 →</a>
   </div>
 </div>
 
@@ -87,10 +82,7 @@
   <div class="step-num">02</div>
   <div class="step-body">
     <h2>Розмір шрифту (font-size)</h2>
-    <p>Властивість <code>font-size</code> задає розмір тексту. Найпоширеніша одиниця — пікселі (<code>px</code>):</p>
-<pre><span class="sel">p</span> {
-  <span class="prop">font-size</span>: <span class="val">18px</span>;
-}</pre>
+    <p>Властивість <code>font-size</code> задає розмір тексту. Найпоширеніша одиниця — пікселі: <code>font-size: 18px;</code></p>
     <p>Також можна використовувати <code>em</code> (відносно батьківського елемента), <code>rem</code> (відносно кореневого елемента), <code>%</code>.</p>
   </div>
 </div>
@@ -100,10 +92,9 @@
   <div class="step-num">03</div>
   <div class="step-body">
     <h2>Жирність шрифту (font-weight)</h2>
-    <p>Властивість <code>font-weight</code> задає товщину (жирність) шрифту:</p>
-<pre><span class="sel">p</span>    { <span class="prop">font-weight</span>: <span class="val">bold</span>; }   <span class="cmt">/* жирний */</span>
-<span class="sel">span</span> { <span class="prop">font-weight</span>: <span class="val">normal</span>; } <span class="cmt">/* звичайний */</span></pre>
+    <p>Властивість <code>font-weight</code> задає товщину (жирність) шрифту: <code>bold</code> — жирний, <code>normal</code> — звичайний.</p>
     <p>Замість ключових слів можна використовувати числа: <code>100</code> (найтонший) … <code>900</code> (найжирніший). Стандартне значення — <code>400</code>, жирне — <code>700</code>.</p>
+    <a class="try-link" href="sandbox-4/#2">Практика · вправа 2 →</a>
   </div>
 </div>
 
@@ -113,9 +104,13 @@
   <div class="step-body">
     <h2>Вирівнювання тексту (text-align)</h2>
     <p>Властивість <code>text-align</code> керує горизонтальним вирівнюванням тексту всередині елемента:</p>
-<pre><span class="sel">h1</span> { <span class="prop">text-align</span>: <span class="val">center</span>; } <span class="cmt">/* по центру */</span>
-<span class="sel">p</span>  { <span class="prop">text-align</span>: <span class="val">left</span>; }   <span class="cmt">/* зліва (за замовчуванням) */</span>
-<span class="sel">.q</span> { <span class="prop">text-align</span>: <span class="val">right</span>; }  <span class="cmt">/* справа */</span></pre>
+    <ul>
+      <li><code>left</code> — зліва (за замовчуванням)</li>
+      <li><code>center</code> — по центру</li>
+      <li><code>right</code> — справа</li>
+      <li><code>justify</code> — по ширині, рівні обидва краї</li>
+    </ul>
+    <a class="try-link" href="sandbox-4/#3">Практика · вправа 3 →</a>
   </div>
 </div>
 
@@ -124,11 +119,7 @@
   <div class="step-num">05</div>
   <div class="step-body">
     <h2>Колір (color та background-color)</h2>
-    <p><code>color</code> — колір тексту. <code>background-color</code> — колір фону елемента:</p>
-<pre><span class="sel">h1</span> {
-  <span class="prop">color</span>: <span class="val">red</span>;             <span class="cmt">/* колір тексту */</span>
-  <span class="prop">background-color</span>: <span class="val">blue</span>; <span class="cmt">/* колір фону */</span>
-}</pre>
+    <p><code>color</code> — колір тексту. <code>background-color</code> — колір фону елемента. Обидві властивості можна задати в одному правилі.</p>
     <p>Колір можна задавати різними способами:</p>
     <ul>
       <li>Назва: <code>red</code>, <code>coral</code>, <code>teal</code></li>
@@ -136,6 +127,7 @@
       <li>RGB: <code>rgb(255, 0, 0)</code></li>
       <li>RGBA (з прозорістю): <code>rgba(0, 212, 170, 0.5)</code></li>
     </ul>
+    <a class="try-link" href="sandbox-4/#4">Практика · вправа 4 →</a>
   </div>
 </div>
 
@@ -144,18 +136,12 @@
   <div class="step-num">06</div>
   <div class="step-body">
     <h2>Прозорість (opacity)</h2>
-    <p>Властивість <code>opacity</code> задає прозорість всього елемента. Значення від <code>0</code> (повністю прозорий) до <code>1</code> (повністю непрозорий):</p>
-<pre><span class="sel">.overlay</span> {
-  <span class="prop">opacity</span>: <span class="val">0.5</span>; <span class="cmt">/* 50% прозорості */</span>
-}
-
-<span class="sel">.hidden</span> {
-  <span class="prop">opacity</span>: <span class="val">0</span>;   <span class="cmt">/* невидимий, але займає місце */</span>
-}</pre>
+    <p>Властивість <code>opacity</code> задає прозорість всього елемента. Значення від <code>0</code> (повністю прозорий) до <code>1</code> (повністю непрозорий): <code>0.5</code> — це 50% прозорості, а з <code>0</code> елемент стає невидимим, але все одно займає місце.</p>
     <div class="tip-box">
       <div class="box-label">💡 ПІДКАЗКА</div>
       <code>opacity</code> впливає на весь елемент разом із вмістом. Для прозорості лише фону використовуйте <code>rgba()</code> у <code>background-color</code>.
     </div>
+    <a class="try-link" href="sandbox-4/#5">Практика · вправа 5 →</a>
   </div>
 </div>
 
@@ -164,17 +150,14 @@
   <div class="step-num">07</div>
   <div class="step-body">
     <h2>Фонове зображення (background-image)</h2>
-    <p>Властивість <code>background-image</code> задає зображення як фон елемента:</p>
-<pre><span class="sel">.hero</span> {
-  <span class="prop">background-image</span>: <span class="kw">url</span>(<span class="str">"https://example.com/photo.jpg"</span>);
-}</pre>
+    <p>Властивість <code>background-image</code> задає зображення як фон елемента. Адреса картинки пишеться всередині <code>url("...")</code>.</p>
     <p>Зазвичай разом із зображенням використовують додаткові властивості:</p>
-<pre><span class="sel">.hero</span> {
-  <span class="prop">background-image</span>:    <span class="kw">url</span>(<span class="str">"photo.jpg"</span>);
-  <span class="prop">background-size</span>:     <span class="val">cover</span>;   <span class="cmt">/* заповнює весь елемент */</span>
-  <span class="prop">background-position</span>: <span class="val">center</span>;  <span class="cmt">/* центрує зображення */</span>
-  <span class="prop">background-repeat</span>:   <span class="val">no-repeat</span>;
-}</pre>
+    <ul>
+      <li><code>background-size: cover</code> — зображення заповнює весь елемент</li>
+      <li><code>background-position: center</code> — центрує зображення</li>
+      <li><code>background-repeat: no-repeat</code> — зображення не повторюється плиткою</li>
+    </ul>
+    <a class="try-link" href="sandbox-4/#6">Практика · вправа 6 →</a>
   </div>
 </div>
 
@@ -198,7 +181,16 @@
         <tr><td><code>background-image</code></td><td>Фонове зображення</td><td><code>background-image: url("img.jpg");</code></td></tr>
       </tbody>
     </table>
+    <a class="try-link" href="sandbox-4/#7">Практика · вправа 7 →</a>
   </div>
+</div>
+
+<div class="practice-cta">
+  <div class="practice-cta-text">
+    <h2>Тепер — практика</h2>
+    <p>7 вправ: пишеш CSS у редакторі, бачиш результат у браузері, тиснеш «Перевірити».</p>
+  </div>
+  <a class="practice-btn" href="sandbox-4/">Почати практику →</a>
 </div>
 
 <div class="lesson-pager">

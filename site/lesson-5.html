@@ -67,8 +67,8 @@
     <span class="chip t">Теорія</span>
     <span class="chip">~40 хв</span>
   </div>
-  <a class="sandbox-btn" href="sandbox-5/" target="_blank">
-    <span class="sandbox-btn-icon">⌨</span> Відкрити CSS Sandbox
+  <a class="sandbox-btn" href="sandbox-5/">
+    <span class="sandbox-btn-icon">⌨</span> Практика: 8 вправ з кодом
   </a>
 </header>
 
@@ -107,15 +107,12 @@
   <div class="step-num">02</div>
   <div class="step-body">
     <h2>Висота та ширина (height, width)</h2>
-    <p>За замовчуванням браузер підлаштовує розмір елемента під вміст. CSS дозволяє задати точні розміри:</p>
-<pre><span class="sel">p</span> {
-  <span class="prop">height</span>: <span class="val">80px</span>;
-  <span class="prop">width</span>:  <span class="val">240px</span>;
-}</pre>
+    <p>За замовчуванням браузер підлаштовує розмір елемента під вміст. Властивості <code>width</code> (ширина) і <code>height</code> (висота) задають точний розмір області вмісту — наприклад, <code>width: 240px</code> і <code>height: 80px</code>.</p>
     <div class="warn-box">
       <div class="box-label">⚠ УВАГА</div>
       Фіксовані пікселі дають точний розмір, але можуть зламати макет на мобільних пристроях. Для адаптивного дизайну використовуйте <code>%</code>, <code>min-width</code>, <code>max-width</code>.
     </div>
+    <a class="try-link" href="sandbox-5/#1">Практика · вправа 1 →</a>
   </div>
 </div>
 
@@ -124,10 +121,7 @@
   <div class="step-num">03</div>
   <div class="step-body">
     <h2>Рамка (border)</h2>
-    <p>Border — лінія навколо елемента. Три обов'язкові параметри: товщина, стиль, колір:</p>
-<pre><span class="sel">p</span> {
-  <span class="prop">border</span>: <span class="val">3px solid coral</span>;
-}</pre>
+    <p>Border — лінія навколо елемента. Вона має три параметри, які пишуть через пробіл: <strong>товщина, стиль, колір</strong> — наприклад, <code>border: 3px solid coral</code>.</p>
     <p>Стилі рамки: <code>solid</code>, <code>dashed</code>, <code>dotted</code>, <code>none</code>.</p>
     <p>За замовчуванням: <code>border: medium none currentColor</code> — рамки не видно.</p>
   </div>
@@ -138,21 +132,12 @@
   <div class="step-num">04</div>
   <div class="step-body">
     <h2>Закруглення рамки (border-radius)</h2>
-    <p>Закруглює кути елемента. Значення — радіус кривизни:</p>
-<pre><span class="sel">div</span> {
-  <span class="prop">border</span>:        <span class="val">3px solid blue</span>;
-  <span class="prop">border-radius</span>: <span class="val">8px</span>;    <span class="cmt">/* закруглені кути */</span>
-}
-
-<span class="sel">.avatar</span> {
-  <span class="prop">width</span>:         <span class="val">60px</span>;
-  <span class="prop">height</span>:        <span class="val">60px</span>;
-  <span class="prop">border-radius</span>: <span class="val">50%</span>;   <span class="cmt">/* ідеальне коло */</span>
-}</pre>
+    <p>Закруглює кути елемента. Значення — радіус кривизни: <code>border-radius: 8px</code> дає м'які закруглені кути, а <code>border-radius: 50%</code> на квадратному елементі перетворює його на ідеальне коло (так роблять круглі аватарки).</p>
     <div class="tip-box">
       <div class="box-label">💡 ПІДКАЗКА</div>
       <code>border-radius: 50%</code> створює коло лише якщо <code>width === height</code>.
     </div>
+    <a class="try-link" href="sandbox-5/#2">Практика · вправа 2 →</a>
   </div>
 </div>
 
@@ -161,20 +146,15 @@
   <div class="step-num">05</div>
   <div class="step-body">
     <h2>Внутрішній відступ (padding)</h2>
-    <p>Padding — простір між вмістом і рамкою. Він використовує колір фону елемента:</p>
-<pre><span class="sel">p</span> {
-  <span class="prop">padding</span>: <span class="val">10px</span>;           <span class="cmt">/* з усіх боків */</span>
-  <span class="prop">padding</span>: <span class="val">10px 20px</span>;     <span class="cmt">/* top/bottom  left/right */</span>
-  <span class="prop">padding</span>: <span class="val">5px 10px 15px</span>; <span class="cmt">/* top  left/right  bottom */</span>
-}
-
-<span class="cmt">/* Або окремо: */</span>
-<span class="sel">p</span> {
-  <span class="prop">padding-top</span>:    <span class="val">10px</span>;
-  <span class="prop">padding-right</span>:  <span class="val">20px</span>;
-  <span class="prop">padding-bottom</span>: <span class="val">10px</span>;
-  <span class="prop">padding-left</span>:   <span class="val">20px</span>;
-}</pre>
+    <p>Padding — простір між вмістом і рамкою. Він використовує колір фону елемента. Скорочений запис залежить від кількості значень:</p>
+    <ul>
+      <li><code>padding: 10px</code> — однаково з усіх боків;</li>
+      <li><code>padding: 10px 20px</code> — верх/низ, ліво/право;</li>
+      <li><code>padding: 5px 10px 15px</code> — верх, ліво/право, низ;</li>
+      <li><code>padding: 5px 10px 15px 20px</code> — верх, право, низ, ліво (за годинниковою стрілкою).</li>
+    </ul>
+    <p>Кожен бік можна задати й окремо: <code>padding-top</code>, <code>padding-right</code>, <code>padding-bottom</code>, <code>padding-left</code>.</p>
+    <a class="try-link" href="sandbox-5/#3">Практика · вправа 3 →</a>
   </div>
 </div>
 
@@ -183,16 +163,13 @@
   <div class="step-num">06</div>
   <div class="step-body">
     <h2>Зовнішній відступ (margin)</h2>
-    <p>Margin — простір зовні елемента, між ним і сусідніми елементами. Скорочений запис такий самий, як у padding:</p>
-<pre><span class="sel">p</span> {
-  <span class="prop">margin</span>: <span class="val">20px</span>;         <span class="cmt">/* з усіх боків */</span>
-  <span class="prop">margin</span>: <span class="val">0 auto</span>;      <span class="cmt">/* центрування по горизонталі */</span>
-}</pre>
+    <p>Margin — простір зовні елемента, між ним і сусідніми елементами. Скорочений запис такий самий, як у padding: <code>margin: 20px</code> — з усіх боків, <code>margin-top</code> — лише зверху тощо.</p>
     <p><strong>Злиття margin:</strong> вертикальні відступи двох сусідніх елементів зливаються — береться більший. Горизонтальні завжди додаються.</p>
     <div class="tip-box">
       <div class="box-label">💡 ЦЕНТРУВАННЯ</div>
       <code>margin: 0 auto</code> центрує блок горизонтально. Обов'язкова умова — елемент повинен мати задану ширину (<code>width</code>).
     </div>
+    <a class="try-link" href="sandbox-5/#4">Практика · вправа 4 →</a>
   </div>
 </div>
 
@@ -202,16 +179,17 @@
   <div class="step-body">
     <h2>Мінімальна та максимальна ширина/висота</h2>
     <p>Задають межі розміру елемента для адаптивного дизайну:</p>
-<pre><span class="sel">p</span> {
-  <span class="prop">min-width</span>:  <span class="val">300px</span>; <span class="cmt">/* не вужче */</span>
-  <span class="prop">max-width</span>:  <span class="val">600px</span>; <span class="cmt">/* не ширше */</span>
-  <span class="prop">min-height</span>: <span class="val">150px</span>; <span class="cmt">/* не нижче */</span>
-  <span class="prop">max-height</span>: <span class="val">300px</span>; <span class="cmt">/* не вище */</span>
-}</pre>
+    <ul>
+      <li><code>min-width</code> — не вужче;</li>
+      <li><code>max-width</code> — не ширше;</li>
+      <li><code>min-height</code> — не нижче;</li>
+      <li><code>max-height</code> — не вище.</li>
+    </ul>
     <div class="warn-box">
       <div class="box-label">⚠ УВАГА</div>
       Якщо <code>max-height</code> задано занадто малим, вміст може «вилізти» за межі елемента. Вирішення — властивість <code>overflow</code>.
     </div>
+    <a class="try-link" href="sandbox-5/#5">Практика · вправа 5 →</a>
   </div>
 </div>
 
@@ -221,10 +199,13 @@
   <div class="step-body">
     <h2>Переповнення (overflow)</h2>
     <p>Якщо вміст більший за контейнер, <code>overflow</code> визначає що з ним робити:</p>
-<pre><span class="sel">div</span> { <span class="prop">overflow</span>: <span class="val">visible</span>; } <span class="cmt">/* за замовчуванням — виходить за межі */</span>
-<span class="sel">div</span> { <span class="prop">overflow</span>: <span class="val">hidden</span>; }  <span class="cmt">/* обрізається */</span>
-<span class="sel">div</span> { <span class="prop">overflow</span>: <span class="val">scroll</span>; }  <span class="cmt">/* прокрутка */</span></pre>
+    <ul>
+      <li><code>visible</code> — за замовчуванням: вміст виходить за межі;</li>
+      <li><code>hidden</code> — зайве обрізається;</li>
+      <li><code>scroll</code> — з'являється прокрутка.</li>
+    </ul>
     <p>Для керування окремими осями: <code>overflow-x</code> (горизонталь) та <code>overflow-y</code> (вертикаль).</p>
+    <a class="try-link" href="sandbox-5/#6">Практика · вправа 6 →</a>
   </div>
 </div>
 
@@ -233,12 +214,7 @@
   <div class="step-num">09</div>
   <div class="step-body">
     <h2>Скидання стандартних стилів (normalize)</h2>
-    <p>Браузери додають власні <code>margin</code> і <code>padding</code> до елементів, а ширина елементів рахується по-різному залежно від браузера. Розробники скидають це на самому початку CSS:</p>
-<pre><span class="sel">*</span> {
-  <span class="prop">margin</span>:      <span class="val">0</span>;
-  <span class="prop">padding</span>:     <span class="val">0</span>;
-  <span class="prop">box-sizing</span>: <span class="val">border-box</span>;
-}</pre>
+    <p>Браузери додають власні <code>margin</code> і <code>padding</code> до елементів, а ширина елементів рахується по-різному залежно від браузера. Тому розробники на самому початку CSS пишуть правило з універсальним селектором <code>*</code>, яке обнуляє <code>margin</code> і <code>padding</code> усіх елементів і задає їм <code>box-sizing: border-box</code>.</p>
     <div class="tip-box">
       <div class="box-label">💡 ПІДКАЗКА</div>
       Значення <code>0</code> не потребує одиниці виміру. Явно написані правила (<code>margin-top: 24px</code>) перевизначать скидання завдяки вищій специфічності. Цей блок завжди пишеться <strong>першим рядком</strong> у файлі CSS.
@@ -251,32 +227,19 @@
   <div class="step-num">10</div>
   <div class="step-body">
     <h2>box-sizing: border-box</h2>
-    <p>За замовчуванням (<code>content-box</code>) властивості <code>width</code> і <code>height</code> задають розмір лише <strong>вмісту</strong>. Padding і border додаються зверху — реальний елемент виявляється ширшим, ніж написано в CSS:</p>
+    <p>За замовчуванням (<code>content-box</code>) властивості <code>width</code> і <code>height</code> задають розмір лише <strong>вмісту</strong>. Padding і border додаються зверху — реальний елемент виявляється ширшим, ніж написано в CSS. Наприклад, блок з <code>width: 200px</code>, <code>padding: 20px</code> і рамкою <code>2px</code>:</p>
 <div class="diagram">content-box (DEFAULT)
 ─────────────────────────────────────
   width: 200px   → лише контент
 
   реальна ширина = 200 + 20 + 20 + 2 + 2 = 244px
                         ↑padding↑   ↑border↑</div>
-<pre><span class="sel">.box</span> {
-  <span class="prop">width</span>:      <span class="val">200px</span>;
-  <span class="prop">padding</span>:    <span class="val">20px</span>;
-  <span class="prop">border</span>:     <span class="val">2px solid black</span>;
-  <span class="cmt">/* реальна ширина = 200 + 20×2 + 2×2 = 244px */</span>
-}</pre>
     <p>З <code>box-sizing: border-box</code> браузер <strong>вписує</strong> padding і border всередину заданого розміру. Що написано в CSS — те й займає місце на сторінці:</p>
 <div class="diagram">border-box
 ─────────────────────────────────────
   width: 200px   → разом із padding і border
 
   реальна ширина = 200px  ✓</div>
-<pre><span class="sel">.box</span> {
-  <span class="prop">width</span>:       <span class="val">200px</span>;
-  <span class="prop">padding</span>:     <span class="val">20px</span>;
-  <span class="prop">border</span>:      <span class="val">2px solid black</span>;
-  <span class="prop">box-sizing</span>: <span class="val">border-box</span>;
-  <span class="cmt">/* реальна ширина = 200px */</span>
-}</pre>
     <div class="good-box">
       <div class="box-label">✓ НАЙКРАЩА ПРАКТИКА</div>
       Завжди починай CSS з нормалізації: <code>* { margin: 0; padding: 0; box-sizing: border-box; }</code>. Це усуває браузерні відступи і робить розрахунок розмірів передбачуваним.
@@ -290,6 +253,7 @@
         <tr><td><code>border-box</code></td><td>контент + padding + border</td><td>рівно width</td></tr>
       </tbody>
     </table>
+    <a class="try-link" href="sandbox-5/#7">Практика · вправа 7 →</a>
   </div>
 </div>
 
@@ -298,9 +262,7 @@
   <div class="step-num">11</div>
   <div class="step-body">
     <h2>Видимість (visibility)</h2>
-    <p>Приховує або показує елемент:</p>
-<pre><span class="sel">.hidden</span> { <span class="prop">visibility</span>: <span class="val">hidden</span>; } <span class="cmt">/* невидимий, але займає місце */</span>
-<span class="sel">.gone</span>   { <span class="prop">display</span>:     <span class="val">none</span>; }   <span class="cmt">/* повністю видалений з макету */</span></pre>
+    <p>Приховати елемент можна двома способами: <code>visibility: hidden</code> робить його невидимим, але він і далі займає місце; <code>display: none</code> повністю видаляє його з макету.</p>
     <table class="summary-table">
       <thead>
         <tr><th>Властивість</th><th>Видимий?</th><th>Займає місце?</th></tr>
@@ -311,15 +273,16 @@
         <tr><td><code>display: none</code></td><td>Ні</td><td><strong>Ні</strong></td></tr>
       </tbody>
     </table>
+    <a class="try-link" href="sandbox-5/#8">Практика · вправа 8 →</a>
   </div>
 </div>
 
 <div class="practice-cta">
   <div class="practice-cta-text">
-    <h2>Практика · Урок 05</h2>
-    <p>Відкрий проєкт у CodeSandbox, прочитай завдання і редагуй style.css прямо в браузері.</p>
+    <h2>Тепер — практика</h2>
+    <p>8 вправ: пишеш CSS у редакторі, бачиш результат у браузері, тиснеш «Перевірити».</p>
   </div>
-  <a class="practice-btn" href="https://codesandbox.io/s/github/altyntsevlexus/web-development-lessons/tree/main/site/practice/lesson-5" target="_blank">Відкрити практику →</a>
+  <a class="practice-btn" href="sandbox-5/">Почати практику →</a>
 </div>
 
 <div class="lesson-pager">

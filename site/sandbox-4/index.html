@@ -1,219 +1,26 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSS Sandbox — Візуальні правила</title>
-  <link rel="stylesheet" href="../sandbox-core/sandbox.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Практика</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="../sandbox-core/ide.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/runmode/runmode.min.js"></script>
 </head>
 <body>
-
-<div class="toolbar">
-  <a class="toolbar-back" href="../lesson-4.html">← Урок 4</a>
-  <span class="toolbar-title">CSS Sandbox — Візуальні правила</span>
-  <button class="btn btn-reset" onclick="resetCSS()">↺ Скинути</button>
-  <button class="btn btn-answer" onclick="showAnswer()">Показати відповідь</button>
-</div>
-
-<div class="main">
-
-  <!-- ── Tasks panel ── -->
-  <div class="tasks-panel">
-
-    <div class="task open" id="t1">
-      <div class="task-header" onclick="toggle('t1')">
-        <div class="task-num">1</div>
-        <span class="task-title">font-family</span>
-        <span class="task-arrow">▶</span>
-      </div>
-      <div class="task-body">
-        <div class="section-label">Теорія</div>
-        <p>Змінює шрифт тексту. Якщо назва складається з кількох слів — береться в лапки. Через кому вказується запасний шрифт.</p>
-        <div class="section-label">Що зробити</div>
-        <pre><code>h1, h2 {
-  font-family: 'Georgia', serif;
-}</code></pre>
-        <button class="btn-insert" onclick="insert('h1, h2 {\n  font-family: \'Georgia\', serif;\n}\n')">Вставити в редактор</button>
-        <div class="section-label">Що спостерігати</div>
-        <p>Заголовки змінили шрифт — виглядають більш елегантно.</p>
-        <div class="section-label">Подумай</div>
-        <ul>
-          <li>Навіщо запасний шрифт <code>serif</code>? Що буде, якщо <code>Georgia</code> не знайдена?</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="task" id="t2">
-      <div class="task-header" onclick="toggle('t2')">
-        <div class="task-num">2</div>
-        <span class="task-title">font-size</span>
-        <span class="task-arrow">▶</span>
-      </div>
-      <div class="task-body">
-        <div class="section-label">Теорія</div>
-        <p>Розмір тексту. <code>px</code> — фіксований розмір. <code>rem</code> — відносно кореневого елемента (1rem = 16px).</p>
-        <div class="section-label">Що зробити</div>
-        <pre><code>.hero-title {
-  font-size: 3rem;
-}</code></pre>
-        <button class="btn-insert" onclick="insert('.hero-title {\n  font-size: 3rem;\n}\n')">Вставити в редактор</button>
-        <div class="section-label">Що спостерігати</div>
-        <p>Заголовок у hero-секції став великим і домінує на сторінці.</p>
-        <div class="section-label">Подумай</div>
-        <ul>
-          <li>Спробуй <code>4rem</code> або <code>5rem</code>. Скільки пікселів = 3rem?</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="task" id="t3">
-      <div class="task-header" onclick="toggle('t3')">
-        <div class="task-num">3</div>
-        <span class="task-title">font-weight</span>
-        <span class="task-arrow">▶</span>
-      </div>
-      <div class="task-body">
-        <div class="section-label">Теорія</div>
-        <p>Товщина шрифту. <code>bold</code> = 700, <code>normal</code> = 400. Можна числом від 100 до 900.</p>
-        <div class="section-label">Що зробити</div>
-        <pre><code>.nav-link {
-  font-weight: bold;
-}</code></pre>
-        <button class="btn-insert" onclick="insert('.nav-link {\n  font-weight: bold;\n}\n')">Вставити в редактор</button>
-        <div class="section-label">Що спостерігати</div>
-        <p>Посилання в навігації стали жирнішими та помітнішими.</p>
-        <div class="section-label">Подумай</div>
-        <ul>
-          <li>Яка різниця між <code>font-weight: 400</code> і <code>font-weight: bold</code>? (Ніякої — bold = 700.)</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="task" id="t4">
-      <div class="task-header" onclick="toggle('t4')">
-        <div class="task-num">4</div>
-        <span class="task-title">text-align</span>
-        <span class="task-arrow">▶</span>
-      </div>
-      <div class="task-body">
-        <div class="section-label">Теорія</div>
-        <p>Вирівнювання тексту всередині блокового елемента. Значення: <code>left</code>, <code>center</code>, <code>right</code>, <code>justify</code>.</p>
-        <div class="section-label">Що зробити</div>
-        <pre><code>.hero-overlay {
-  text-align: center;
-}</code></pre>
-        <button class="btn-insert" onclick="insert('.hero-overlay {\n  text-align: center;\n}\n')">Вставити в редактор</button>
-        <div class="section-label">Що спостерігати</div>
-        <p>Текст у hero відцентрований — виглядає як справжній банер.</p>
-        <div class="section-label">Подумай</div>
-        <ul>
-          <li><code>text-align</code> центрує текст <em>всередині</em> елемента. Як відцентрувати сам елемент на сторінці?</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="task" id="t5">
-      <div class="task-header" onclick="toggle('t5')">
-        <div class="task-num">5</div>
-        <span class="task-title">color + background-color</span>
-        <span class="task-arrow">▶</span>
-      </div>
-      <div class="task-body">
-        <div class="section-label">Теорія</div>
-        <p><code>color</code> — колір тексту. <code>background-color</code> — колір фону. Кольори: назва, HEX, RGB, RGBA.</p>
-        <div class="section-label">Що зробити</div>
-        <pre><code>.site-header {
-  background-color: #1a1a2e;
-  color: #ffffff;
-}</code></pre>
-        <button class="btn-insert" onclick="insert('.site-header {\n  background-color: #1a1a2e;\n  color: #ffffff;\n}\n')">Вставити в редактор</button>
-        <div class="section-label">Що спостерігати</div>
-        <p>Шапка стала темною зі світлим текстом — сайт набуває характеру.</p>
-        <div class="section-label">Подумай</div>
-        <ul>
-          <li>Спробуй <code>background-color: rgba(26, 26, 46, 0.9)</code>. Що змінилося?</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="task" id="t6">
-      <div class="task-header" onclick="toggle('t6')">
-        <div class="task-num">6</div>
-        <span class="task-title">opacity</span>
-        <span class="task-arrow">▶</span>
-      </div>
-      <div class="task-body">
-        <div class="section-label">Теорія</div>
-        <p>Прозорість елемента від 0 (невидимий) до 1 (непрозорий). Впливає на весь елемент разом з вмістом.</p>
-        <p><strong>Порада:</strong> спочатку виконай завдання 7, щоб додати фонове зображення — тоді ефект opacity буде помітний.</p>
-        <div class="section-label">Що зробити</div>
-        <pre><code>.hero-overlay {
-  opacity: 0.85;
-}</code></pre>
-        <button class="btn-insert" onclick="insert('.hero-overlay {\n  opacity: 0.85;\n}\n')">Вставити в редактор</button>
-        <div class="section-label">Що спостерігати</div>
-        <p>Overlay стає напівпрозорим — крізь нього просвічує фонове зображення.</p>
-        <div class="section-label">Подумай</div>
-        <ul>
-          <li>Різниця між <code>opacity: 0</code> і <code>display: none</code>? Спробуй <code>0.3</code>, <code>0.6</code>, <code>1</code>.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="task" id="t7">
-      <div class="task-header" onclick="toggle('t7')">
-        <div class="task-num">7</div>
-        <span class="task-title">background-image</span>
-        <span class="task-arrow">▶</span>
-      </div>
-      <div class="task-body">
-        <div class="section-label">Теорія</div>
-        <p>Задає зображення як фон елемента. Завжди разом з <code>background-size</code> і <code>background-position</code>.</p>
-        <div class="section-label">Що зробити</div>
-        <pre><code>.hero {
-  background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=80');
-  background-size: cover;
-  background-position: center;
-}</code></pre>
-        <button class="btn-insert" onclick="insert('.hero {\n  background-image: url(\'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=80\');\n  background-size: cover;\n  background-position: center;\n}\n')">Вставити в редактор</button>
-        <div class="section-label">Що спостерігати</div>
-        <p>За текстом hero з'явилося фото концерту — сторінка ожила!</p>
-        <div class="section-label">Подумай</div>
-        <ul>
-          <li>Різниця між <code>background-size: cover</code> і <code>background-size: contain</code>?</li>
-        </ul>
-      </div>
-    </div>
-
-  </div><!-- /tasks-panel -->
-
-  <!-- ── Editor + Preview ── -->
-  <div class="right-panel">
-
-    <div class="editor-wrap">
-      <div class="panel-header">
-        <span class="dot" style="background:#ff5f57"></span>
-        <span class="dot" style="background:#febc2e"></span>
-        <span class="dot" style="background:#28c840"></span>
-        <span style="margin-left:6px;">style.css — твій CSS</span>
-      </div>
-      <textarea id="css-editor" spellcheck="false" autocomplete="off"></textarea>
-    </div>
-
-    <div class="resizer" id="resizer"></div>
-
-    <div class="preview-wrap">
-      <div class="panel-header">
-        Попередній перегляд (оновлюється автоматично)
-      </div>
-      <iframe id="preview" sandbox="allow-same-origin allow-scripts"></iframe>
-    </div>
-
-  </div>
-
-</div><!-- /main -->
-
+<noscript>Для практики потрібен JavaScript.</noscript>
+<script src="../sandbox-core/ide.js"></script>
 <script src="content.js"></script>
-<script src="../sandbox-core/sandbox.js"></script>
 </body>
 </html>

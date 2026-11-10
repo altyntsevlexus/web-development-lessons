@@ -59,8 +59,8 @@
     <span class="chip t">Теорія</span>
     <span class="chip">~35 хв</span>
   </div>
-  <a class="sandbox-btn" href="sandbox-3/" target="_blank">
-    <span class="sandbox-btn-icon">⌨</span> Відкрити CSS Sandbox
+  <a class="sandbox-btn" href="sandbox-3/">
+    <span class="sandbox-btn-icon">⌨</span> Практика: 8 вправ з кодом
   </a>
 </header>
 
@@ -70,16 +70,14 @@
   <div class="step-body">
     <h2>Що таке CSS?</h2>
     <p><strong>CSS</strong> (Cascading Style Sheets — Каскадні таблиці стилів) — це мова, яку веб-розробники використовують для стилізації HTML-контенту на веб-сторінці.</p>
-    <p>Кожне CSS-правило складається з чотирьох частин:</p>
-<pre><span class="sel">h1</span> {
-  <span class="prop">color</span>: <span class="val">blue</span>;
-}</pre>
+    <p>Кожне CSS-правило складається з чотирьох частин — наприклад, у правилі <code>h1 { color: blue; }</code>:</p>
     <ul>
       <li><strong>Селектор</strong> — <code>h1</code> (який елемент стилізуємо)</li>
       <li><strong>Властивість</strong> — <code>color</code> (що змінюємо)</li>
       <li><strong>Значення</strong> — <code>blue</code> (яке значення задаємо)</li>
       <li><strong>Декларація</strong> — <code>color: blue;</code> (властивість + значення разом)</li>
     </ul>
+    <a class="try-link" href="sandbox-3/#1">Практика · вправа 1 →</a>
   </div>
 </div>
 
@@ -88,8 +86,7 @@
   <div class="step-num">02</div>
   <div class="step-body">
     <h2>Вбудовані стилі (Inline)</h2>
-    <p>Стиль можна додати прямо в HTML-тег через атрибут <code>style</code>:</p>
-<pre><span class="kw">&lt;p</span> <span class="prop">style</span>=<span class="str">"color: red; font-size: 20px;"</span><span class="kw">&gt;</span>Текст<span class="kw">&lt;/p&gt;</span></pre>
+    <p>Стиль можна додати прямо в HTML-тег через атрибут <code>style</code> — він діє лише на цей один елемент.</p>
     <div class="warn-box">
       <div class="box-label">⚠ АНТИПАТЕРН</div>
       Вбудовані стилі важко підтримувати: щоб змінити один колір, доведеться правити кожен тег окремо. Використовуйте лише у крайніх випадках.
@@ -102,12 +99,7 @@
   <div class="step-num">03</div>
   <div class="step-body">
     <h2>Тег &lt;style&gt; (внутрішня таблиця)</h2>
-    <p>CSS можна писати між тегами <code>&lt;style&gt;</code> всередині <code>&lt;head&gt;</code>:</p>
-<pre><span class="kw">&lt;head&gt;</span>
-  <span class="kw">&lt;style&gt;</span>
-    <span class="sel">p</span> { <span class="prop">color</span>: <span class="val">red</span>; <span class="prop">font-size</span>: <span class="val">20px</span>; }
-  <span class="kw">&lt;/style&gt;</span>
-<span class="kw">&lt;/head&gt;</span></pre>
+    <p>CSS можна писати між тегами <code>&lt;style&gt;</code> всередині <code>&lt;head&gt;</code>. Такі стилі діють на всю сторінку, але лише на одну.</p>
     <div class="warn-box">
       <div class="box-label">⚠ АНТИПАТЕРН</div>
       Внутрішня таблиця підходить лише для маленьких сторінок. У реальних проєктах CSS зберігають окремо.
@@ -120,15 +112,13 @@
   <div class="step-num">04</div>
   <div class="step-body">
     <h2>Зовнішній CSS-файл ✅</h2>
-    <p>Найкращий підхід — окремий файл <code>.css</code>, підключений через тег <code>&lt;link&gt;</code> у <code>&lt;head&gt;</code>:</p>
-<pre><span class="kw">&lt;head&gt;</span>
-  <span class="kw">&lt;link</span> <span class="prop">href</span>=<span class="str">"style.css"</span> <span class="prop">type</span>=<span class="str">"text/css"</span> <span class="prop">rel</span>=<span class="str">"stylesheet"</span><span class="kw">&gt;</span>
-<span class="kw">&lt;/head&gt;</span></pre>
-    <p>Тег <code>&lt;link&gt;</code> потребує трьох атрибутів: <code>href</code> (шлях до файлу), <code>type</code> (завжди <code>text/css</code>), <code>rel</code> (завжди <code>stylesheet</code>).</p>
+    <p>Найкращий підхід — окремий файл <code>.css</code>, підключений через тег <code>&lt;link&gt;</code> у <code>&lt;head&gt;</code>.</p>
+    <p>Тег <code>&lt;link&gt;</code> потребує атрибутів: <code>href</code> (шлях до файлу) і <code>rel</code> (завжди <code>stylesheet</code>). Іноді ще додають <code>type="text/css"</code>.</p>
     <div class="good-box">
       <div class="box-label">✓ НАЙКРАЩИЙ ПІДХІД</div>
       Один CSS-файл керує стилями всього сайту. Зміна в одному місці — оновлення на всіх сторінках.
     </div>
+    <a class="try-link" href="sandbox-3/#2">Практика · вправа 2 →</a>
   </div>
 </div>
 
@@ -137,18 +127,13 @@
   <div class="step-num">05</div>
   <div class="step-body">
     <h2>Селектор за тегом і універсальний *</h2>
-    <p><strong>Селектор за тегом</strong> стилізує всі елементи з вказаним тегом:</p>
-<pre><span class="sel">p</span>  { <span class="prop">color</span>: <span class="val">green</span>; }
-<span class="sel">h1</span> { <span class="prop">color</span>: <span class="val">maroon</span>; }</pre>
-    <p><strong>Універсальний селектор</strong> <code>*</code> вибирає всі елементи на сторінці. Зазвичай використовується для скидання стилів:</p>
-<pre><span class="sel">*</span> {
-  <span class="prop">margin</span>: <span class="val">0</span>;
-  <span class="prop">padding</span>: <span class="val">0</span>;
-}</pre>
+    <p><strong>Селектор за тегом</strong> — назва тегу без кутових дужок (<code>p</code>, <code>h1</code>). Стилізує <em>всі</em> елементи з цим тегом.</p>
+    <p><strong>Універсальний селектор</strong> <code>*</code> вибирає всі елементи на сторінці. Зазвичай ним скидають відступи, які браузер додає сам (<code>margin</code> і <code>padding</code> = 0).</p>
     <div class="tip-box">
       <div class="box-label">💡 ПІДКАЗКА</div>
       <code>*</code> має найнижчу специфічність (0) — будь-який інший селектор перевизначить його.
     </div>
+    <a class="try-link" href="sandbox-3/#3">Практика · вправа 3 →</a>
   </div>
 </div>
 
@@ -157,16 +142,9 @@
   <div class="step-num">06</div>
   <div class="step-body">
     <h2>Селектор за класом</h2>
-    <p>Додайте атрибут <code>class</code> до HTML-елемента, а в CSS використовуйте крапку перед назвою класу:</p>
-<pre><span class="cmt">/* HTML */</span>
-<span class="kw">&lt;p</span> <span class="prop">class</span>=<span class="str">"title"</span><span class="kw">&gt;</span>Заголовок<span class="kw">&lt;/p&gt;</span>
-
-<span class="cmt">/* CSS */</span>
-<span class="sel">.title</span> { <span class="prop">color</span>: <span class="val">teal</span>; }</pre>
-    <p>Елемент може мати <strong>кілька класів</strong> (через пробіл у HTML):</p>
-<pre><span class="kw">&lt;h1</span> <span class="prop">class</span>=<span class="str">"title uppercase"</span><span class="kw">&gt;</span>Заголовок<span class="kw">&lt;/h1&gt;</span>
-
-<span class="sel">.uppercase</span> { <span class="prop">text-transform</span>: <span class="val">uppercase</span>; }</pre>
+    <p>Додайте атрибут <code>class</code> до HTML-елемента, а в CSS поставте <strong>крапку</strong> перед назвою класу: клас <code>title</code> → селектор <code>.title</code>.</p>
+    <p>Один клас можна дати багатьом елементам — всі отримають однаковий стиль. А один елемент може мати <strong>кілька класів</strong> через пробіл: <code>class="title uppercase"</code>.</p>
+    <a class="try-link" href="sandbox-3/#4">Практика · вправа 4 →</a>
   </div>
 </div>
 
@@ -175,19 +153,13 @@
   <div class="step-num">07</div>
   <div class="step-body">
     <h2>Селектор за ID та специфічність</h2>
-    <p><strong>ID</strong> — унікальний ідентифікатор елемента. У CSS використовується <code>#</code>:</p>
-<pre><span class="kw">&lt;h1</span> <span class="prop">id</span>=<span class="str">"article-title"</span><span class="kw">&gt;</span>Великий заголовок<span class="kw">&lt;/h1&gt;</span>
-
-<span class="sel">#article-title</span> { <span class="prop">font-family</span>: <span class="val">cursive</span>; }</pre>
-    <p><strong>Специфічність</strong> — порядок пріоритету (від найвищого до найнижчого):</p>
-<pre><span class="sel">h1</span>        { <span class="prop">color</span>: <span class="val">red</span>; }        <span class="cmt">/* тег    → 001 */</span>
-<span class="sel">.headline</span> { <span class="prop">color</span>: <span class="val">firebrick</span>; } <span class="cmt">/* клас   → 010 */</span>
-<span class="sel">#heading</span>  { <span class="prop">color</span>: <span class="val">blue</span>; }       <span class="cmt">/* id     → 100 */</span>
-<span class="cmt">/* Переможе: blue */</span></pre>
+    <p><strong>ID</strong> — унікальний ідентифікатор елемента (атрибут <code>id</code>). У CSS перед ним ставлять <code>#</code>: <code>id="article-title"</code> → <code>#article-title</code>.</p>
+    <p><strong>Специфічність</strong> — «вага» селектора. Якщо кілька правил змінюють ту саму властивість, перемагає важче: ID (100) → клас (10) → тег (1).</p>
     <div class="tip-box">
       <div class="box-label">💡 ПРАВИЛО</div>
       ID → Клас → Тег. Використовуйте ID рідко — тільки для дійсно унікальних елементів.
     </div>
+    <a class="try-link" href="sandbox-3/#5">Практика · вправа 5 →</a>
   </div>
 </div>
 
@@ -196,15 +168,15 @@
   <div class="step-num">08</div>
   <div class="step-body">
     <h2>Селектор за атрибутом і псевдокласи</h2>
-    <p><strong>Атрибутний селектор</strong> стилізує елементи за наявністю або значенням атрибута:</p>
-<pre><span class="sel">[disabled]</span>        { <span class="prop">opacity</span>: <span class="val">0.5</span>; }
-<span class="sel">[type="text"]</span>     { <span class="prop">border</span>: <span class="val">1px solid gray</span>; }
-<span class="sel">[href^="https"]</span>   { <span class="prop">color</span>: <span class="val">green</span>; }  <span class="cmt">/* починається з */</span>
-<span class="sel">[href$=".pdf"]</span>    { <span class="prop">color</span>: <span class="val">red</span>; }    <span class="cmt">/* закінчується на */</span></pre>
-    <p><strong>Псевдоклас</strong> описує стан або позицію елемента (через <code>:</code>):</p>
-<pre><span class="sel">a:hover</span>       { <span class="prop">color</span>: <span class="val">darkorange</span>; }
-<span class="sel">li:first-child</span>{ <span class="prop">font-weight</span>: <span class="val">bold</span>; }
-<span class="sel">input:focus</span>   { <span class="prop">border-color</span>: <span class="val">blue</span>; }</pre>
+    <p><strong>Атрибутний селектор</strong> пишеться у квадратних дужках і вибирає елементи за наявністю або значенням атрибута:</p>
+    <ul>
+      <li><code>[disabled]</code> — атрибут є;</li>
+      <li><code>[type="text"]</code> — значення дорівнює;</li>
+      <li><code>[href^="https"]</code> — значення починається з;</li>
+      <li><code>[href$=".pdf"]</code> — значення закінчується на.</li>
+    </ul>
+    <p><strong>Псевдоклас</strong> описує стан або позицію елемента й пишеться через <code>:</code> — <code>a:hover</code> (курсор над елементом), <code>li:first-child</code> (перший у списку), <code>input:focus</code> (поле активне).</p>
+    <a class="try-link" href="sandbox-3/#6">Практика · вправа 6 →</a>
   </div>
 </div>
 
@@ -213,19 +185,17 @@
   <div class="step-num">09</div>
   <div class="step-body">
     <h2>Ланцюжок, вкладеність, групування</h2>
-    <p><strong>Ланцюжок</strong> — вимагає декількох селекторів одночасно:</p>
-<pre><span class="sel">h1.special</span> { <span class="prop">color</span>: <span class="val">gold</span>; } <span class="cmt">/* тільки h1 з класом "special" */</span></pre>
-    <p><strong>Вкладеність</strong> (нащадок) — вибирає елемент всередині іншого:</p>
-<pre><span class="sel">.main-list li</span> { <span class="prop">color</span>: <span class="val">green</span>; } <span class="cmt">/* li всередині .main-list */</span></pre>
-    <p><strong>Групування</strong> — кілька селекторів через кому:</p>
-<pre><span class="sel">h1,
-.menu</span> { <span class="prop">font-family</span>: <span class="val">Georgia</span>; }</pre>
-    <p><strong>!important</strong> — перевизначає будь-який стиль незалежно від специфічності:</p>
-<pre><span class="sel">p</span> { <span class="prop">color</span>: <span class="val">blue</span> <span class="kw">!important</span>; }</pre>
+    <ul>
+      <li><strong>Ланцюжок</strong> (без пробілу) — <code>h1.special</code>: тільки <code>h1</code> з класом <code>special</code>.</li>
+      <li><strong>Вкладеність</strong> (через пробіл) — <code>.main-list li</code>: <code>li</code> всередині <code>.main-list</code>.</li>
+      <li><strong>Групування</strong> (через кому) — <code>h1, .menu</code>: одне правило для кількох селекторів.</li>
+    </ul>
+    <p><strong>!important</strong> після значення перевизначає будь-який стиль незалежно від специфічності.</p>
     <div class="warn-box">
       <div class="box-label">⛔ УНИКАЙТЕ</div>
       <code>!important</code> ускладнює підтримку коду. Використовуйте лише як крайній захід.
     </div>
+    <a class="try-link" href="sandbox-3/#7">Практика · вправа 7 →</a>
   </div>
 </div>
 
@@ -249,7 +219,16 @@
         <tr><td>!important</td><td><code>color: red !important</code></td><td>перемагає все</td></tr>
       </tbody>
     </table>
+    <a class="try-link" href="sandbox-3/#8">Практика · вправа 8 →</a>
   </div>
+</div>
+
+<div class="practice-cta">
+  <div class="practice-cta-text">
+    <h2>Тепер — практика</h2>
+    <p>8 вправ: пишеш CSS у редакторі, бачиш результат у браузері, тиснеш «Перевірити».</p>
+  </div>
+  <a class="practice-btn" href="sandbox-3/">Почати практику →</a>
 </div>
 
 <div class="lesson-pager">

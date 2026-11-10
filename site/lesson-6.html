@@ -95,8 +95,8 @@
     <span class="chip t">Теорія</span>
     <span class="chip">~45 хв</span>
   </div>
-  <a class="sandbox-btn" href="sandbox-6/" target="_blank">
-    <span class="sandbox-btn-icon">⌨</span> Відкрити CSS Sandbox
+  <a class="sandbox-btn" href="sandbox-6/">
+    <span class="sandbox-btn-icon">⌨</span> Практика: 10 вправ з кодом
   </a>
 </header>
 
@@ -119,6 +119,7 @@
   </div>
 </div>
     <p>Властивості <code>position</code> та <code>display</code> дозволяють змінити цей потік і розмістити елементи саме так, як потрібно.</p>
+    <a class="try-link" href="sandbox-6/#1">Практика · вправа 1 →</a>
   </div>
 </div>
 
@@ -127,17 +128,13 @@
   <div class="step-num">02</div>
   <div class="step-body">
     <h2>position: relative</h2>
-    <p>Елемент залишається в потоці, але може бути <strong>зсунутий</strong> відносно свого нормального місця за допомогою <code>top</code>, <code>left</code>, <code>right</code>, <code>bottom</code>.</p>
-<pre><span class="sel">.card</span> {
-  <span class="prop">position</span>: <span class="val">relative</span>;
-  <span class="prop">top</span>:      <span class="val">10px</span>;  <span class="cmt">/* зсув вниз на 10px */</span>
-  <span class="prop">left</span>:     <span class="val">20px</span>;  <span class="cmt">/* зсув вправо на 20px */</span>
-}</pre>
+    <p>Елемент залишається в потоці, але може бути <strong>зсунутий</strong> відносно свого нормального місця за допомогою <code>top</code>, <code>left</code>, <code>right</code>, <code>bottom</code>. Наприклад, <code>top: 10px</code> зсуває елемент на 10px вниз, а <code>left: 20px</code> — на 20px вправо.</p>
     <div class="tip-box">
       <div class="box-label">💡 ГОЛОВНА РОЛЬ</div>
       Найчастіше <code>position: relative</code> використовують <strong>не для зсуву</strong>, а щоб зробити елемент <strong>«контейнером позиціонування»</strong> для вкладених <code>absolute</code>-елементів.
     </div>
     <p>Місце, яке елемент займав у потоці, <strong>зберігається</strong> — інші елементи не «заповнюють» його позицію.</p>
+    <a class="try-link" href="sandbox-6/#2">Практика · вправа 2 →</a>
   </div>
 </div>
 
@@ -147,15 +144,7 @@
   <div class="step-body">
     <h2>position: absolute</h2>
     <p>Елемент <strong>повністю виходить з потоку</strong> і позиціонується відносно найближчого предка з <code>position</code> (не static). Якщо такого предка немає — відносно вікна браузера.</p>
-<pre><span class="sel">.parent</span> {
-  <span class="prop">position</span>: <span class="val">relative</span>; <span class="cmt">/* контейнер */</span>
-}
-
-<span class="sel">.badge</span> {
-  <span class="prop">position</span>: <span class="val">absolute</span>;
-  <span class="prop">top</span>:      <span class="val">16px</span>;
-  <span class="prop">right</span>:    <span class="val">16px</span>; <span class="cmt">/* кут батьківського елемента */</span>
-}</pre>
+    <p>Тому зазвичай працюють парою: батьківському блоку дають <code>position: relative</code> (він стає контейнером), а вкладеному — <code>position: absolute</code> і відступи від країв контейнера, наприклад <code>top: 16px</code> і <code>right: 16px</code> — це правий верхній кут.</p>
 <div class="demo">
   <div class="demo-label">Живий приклад — .badge всередині .parent</div>
   <div class="d-relative">
@@ -167,6 +156,7 @@
       <div class="box-label">⚠ ВАЖЛИВО</div>
       Absolute-елемент <strong>не займає місця</strong> в потоці — решта елементів його ігнорують і можуть перекриватися з ним.
     </div>
+    <a class="try-link" href="sandbox-6/#3">Практика · вправа 3 →</a>
   </div>
 </div>
 
@@ -176,17 +166,13 @@
   <div class="step-body">
     <h2>position: fixed</h2>
     <p>Елемент фіксується відносно <strong>вікна браузера (viewport)</strong>. Він <strong>не рухається при прокрутці</strong>.</p>
-<pre><span class="sel">.header</span> {
-  <span class="prop">position</span>: <span class="val">fixed</span>;
-  <span class="prop">top</span>:      <span class="val">0</span>;
-  <span class="prop">width</span>:    <span class="val">100%</span>;
-  <span class="prop">z-index</span>:  <span class="val">100</span>;
-}</pre>
+    <p>Для шапки сайту зазвичай пишуть <code>position: fixed</code>, <code>top: 0</code> і <code>width: 100%</code> — без ширини fixed-елемент стискається до розміру свого вмісту.</p>
     <p>Типові застосування: навігаційна шапка, кнопка «вгору», чат-кнопка, cookie-банер.</p>
     <div class="tip-box">
       <div class="box-label">💡 КОМПЕНСАЦІЯ</div>
       Fixed-елемент виходить з потоку. Щоб вміст не ховався під шапкою, додайте <code>padding-top</code> до <code>body</code> — рівний висоті шапки.
     </div>
+    <a class="try-link" href="sandbox-6/#4">Практика · вправа 4 →</a>
   </div>
 </div>
 
@@ -195,11 +181,7 @@
   <div class="step-num">05</div>
   <div class="step-body">
     <h2>position: sticky</h2>
-    <p>Гібрид <code>relative</code> і <code>fixed</code>. Елемент рухається в потоці як звичайний, але <strong>«прилипає»</strong> до краю viewport при прокрутці до заданого порогу.</p>
-<pre><span class="sel">.sidebar</span> {
-  <span class="prop">position</span>: <span class="val">sticky</span>;
-  <span class="prop">top</span>:      <span class="val">80px</span>; <span class="cmt">/* прилипає коли залишається 80px до верху */</span>
-}</pre>
+    <p>Гібрид <code>relative</code> і <code>fixed</code>. Елемент рухається в потоці як звичайний, але <strong>«прилипає»</strong> до краю viewport при прокрутці до заданого порогу. Поріг задають так само, як відступ: <code>top: 80px</code> означає «прилипни, коли до верху вікна залишиться 80px».</p>
 <div class="demo demo-scroll">
   <div class="demo-label" style="padding:0 14px">Прокрути вниз — заголовок прилипне ↓</div>
   <div class="d-content">текст... текст... текст...</div>
@@ -217,6 +199,7 @@
       <div class="box-label">⚠ ОБМЕЖЕННЯ</div>
       Sticky не працює, якщо батьківський елемент має <code>overflow: hidden</code> або <code>overflow: auto</code>.
     </div>
+    <a class="try-link" href="sandbox-6/#5">Практика · вправа 5 →</a>
   </div>
 </div>
 
@@ -225,21 +208,7 @@
   <div class="step-num">06</div>
   <div class="step-body">
     <h2>z-index — порядок шарів</h2>
-    <p>Коли елементи перекриваються, <code>z-index</code> визначає, хто буде «зверху». Більший номер — вище.</p>
-<pre><span class="sel">.header</span> {
-  <span class="prop">position</span>: <span class="val">fixed</span>;
-  <span class="prop">z-index</span>:  <span class="val">100</span>;
-}
-
-<span class="sel">.popup</span> {
-  <span class="prop">position</span>: <span class="val">absolute</span>;
-  <span class="prop">z-index</span>:  <span class="val">200</span>; <span class="cmt">/* поверх header */</span>
-}
-
-<span class="sel">.overlay</span> {
-  <span class="prop">position</span>: <span class="val">fixed</span>;
-  <span class="prop">z-index</span>:  <span class="val">150</span>; <span class="cmt">/* між header і popup */</span>
-}</pre>
+    <p>Коли елементи перекриваються, <code>z-index</code> визначає, хто буде «зверху». Більший номер — вище. Наприклад, якщо в шапки <code>z-index: 100</code>, у затемнення під модальним вікном — <code>150</code>, а в самого вікна — <code>200</code>, то вікно буде поверх затемнення, а затемнення — поверх шапки.</p>
     <div class="warn-box">
       <div class="box-label">⚠ УМОВА</div>
       <code>z-index</code> працює <strong>лише на позиціонованих елементах</strong> — тих, що мають <code>position</code>, відмінний від <code>static</code> (тобто relative, absolute, fixed або sticky).
@@ -248,6 +217,7 @@
       <div class="box-label">💡 КОНВЕНЦІЯ</div>
       У реальних проектах задають «рівні»: контент — 1–10, шапка — 100, модальне вікно — 1000, tooltip — 9999.
     </div>
+    <a class="try-link" href="sandbox-6/#6">Практика · вправа 6 →</a>
   </div>
 </div>
 
@@ -256,10 +226,7 @@
   <div class="step-num">07</div>
   <div class="step-body">
     <h2>display: inline</h2>
-    <p>Елемент ведеться як частина тексту: <strong>не починає новий рядок</strong> і займає рівно стільки ширини, скільки потрібно для вмісту.</p>
-<pre><span class="sel">span</span>    { <span class="prop">display</span>: <span class="val">inline</span>; }   <span class="cmt">/* за замовчуванням */</span>
-<span class="sel">a</span>       { <span class="prop">display</span>: <span class="val">inline</span>; }
-<span class="sel">strong</span>  { <span class="prop">display</span>: <span class="val">inline</span>; }</pre>
+    <p>Елемент ведеться як частина тексту: <strong>не починає новий рядок</strong> і займає рівно стільки ширини, скільки потрібно для вмісту. Для <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code> це значення за замовчуванням — писати <code>display: inline</code> для них не потрібно.</p>
     <p>Обмеження <code>display: inline</code>:</p>
     <ul>
       <li><code>width</code> та <code>height</code> — не мають ефекту</li>
@@ -270,6 +237,7 @@
       <div class="box-label">💡 INLINE ЗА ЗАМОВЧУВАННЯМ</div>
       <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>
     </div>
+    <a class="try-link" href="sandbox-6/#7">Практика · вправа 7 →</a>
   </div>
 </div>
 
@@ -278,10 +246,7 @@
   <div class="step-num">08</div>
   <div class="step-body">
     <h2>display: block</h2>
-    <p>Елемент <strong>починає новий рядок</strong> і займає всю доступну ширину батьківського контейнера.</p>
-<pre><span class="sel">div</span> { <span class="prop">display</span>: <span class="val">block</span>; }   <span class="cmt">/* за замовчуванням */</span>
-<span class="sel">p</span>   { <span class="prop">display</span>: <span class="val">block</span>; }
-<span class="sel">h1</span>  { <span class="prop">display</span>: <span class="val">block</span>; }</pre>
+    <p>Елемент <strong>починає новий рядок</strong> і займає всю доступну ширину батьківського контейнера. Це значення за замовчуванням для <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code> та інших блокових тегів.</p>
     <p>Переваги <code>display: block</code>:</p>
     <ul>
       <li>Можна задати <code>width</code>, <code>height</code></li>
@@ -292,6 +257,7 @@
       <div class="box-label">💡 BLOCK ЗА ЗАМОВЧУВАННЯМ</div>
       <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;–&lt;h6&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code>
     </div>
+    <a class="try-link" href="sandbox-6/#8">Практика · вправа 8 →</a>
   </div>
 </div>
 
@@ -300,14 +266,7 @@
   <div class="step-num">09</div>
   <div class="step-body">
     <h2>display: inline-block</h2>
-    <p>Гібрид: елементи <strong>стоять в рядок</strong> (як inline), але їм можна задавати <strong>ширину, висоту і всі відступи</strong> (як block).</p>
-<pre><span class="sel">.button</span> {
-  <span class="prop">display</span>:        <span class="val">inline-block</span>;
-  <span class="prop">width</span>:          <span class="val">120px</span>;
-  <span class="prop">height</span>:         <span class="val">40px</span>;
-  <span class="prop">padding</span>:        <span class="val">8px 16px</span>;
-  <span class="prop">vertical-align</span>: <span class="val">top</span>; <span class="cmt">/* вирівнювання по верху */</span>
-}</pre>
+    <p>Гібрид: елементи <strong>стоять в рядок</strong> (як inline), але їм можна задавати <strong>ширину, висоту і всі відступи</strong> (як block). Щоб такі елементи різної висоти вирівнювались по верхньому краю, додають <code>vertical-align: top</code>.</p>
 <div class="demo">
   <div class="demo-label">display: block — кожен на новому рядку</div>
   <div class="d-block" style="margin-bottom:8px">block елемент</div>
@@ -318,6 +277,7 @@
   <span class="d-inline-block">inline-block</span>
 </div>
     <p>Сьогодні <code>inline-block</code> часто замінюють <code>flex</code>, але він досі корисний для <strong>кнопок, іконок, чіпів</strong>.</p>
+    <a class="try-link" href="sandbox-6/#9">Практика · вправа 9 →</a>
   </div>
 </div>
 
@@ -387,15 +347,16 @@
       </tbody>
     </table>
     <p style="font-size:12px;color:var(--muted);margin-top:8px;">* <code>sticky</code> — у потоці до моменту «прилипання», потім поводиться як fixed.</p>
+    <a class="try-link" href="sandbox-6/#10">Практика · вправа 10 →</a>
   </div>
 </div>
 
-<div class="practice-cta" style="opacity:.4; pointer-events:none;">
+<div class="practice-cta">
   <div class="practice-cta-text">
-    <h2>Практика · Урок 06</h2>
-    <p>Практичне завдання з'явиться після уроку.</p>
+    <h2>Тепер — практика</h2>
+    <p>10 вправ: розставляєш елементи новинного сайту за допомогою position і display, бачиш результат у браузері, тиснеш «Перевірити».</p>
   </div>
-  <span class="practice-btn" style="background:var(--muted); cursor:default;">Скоро</span>
+  <a class="practice-btn" href="sandbox-6/">Почати практику →</a>
 </div>
 
 <div class="lesson-pager">
